@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>老于真的不老の随笔</title>
+  <icon>https://carlyuhq.github.io/Blogs/icon.png</icon>
+  <subtitle>紫荆花开，岁月如歌</subtitle>
+  <link href="https://carlyuhq.github.io/Blogs/atom.xml" rel="self"/>
+  
+  <link href="https://carlyuhq.github.io/Blogs/"/>
+  <updated>2025-06-02T16:04:53.429Z</updated>
+  <id>https://carlyuhq.github.io/Blogs/</id>
+  
+  <author>
+    <name>老于真的不老</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://carlyuhq.github.io/Blogs/2025/06/03/hello-world/"/>
+    <id>https://carlyuhq.github.io/Blogs/2025/06/03/hello-world/</id>
+    <published>2025-06-02T16:07:35.875Z</published>
+    <updated>2025-06-02T16:04:53.429Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
