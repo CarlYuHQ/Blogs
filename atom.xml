@@ -6,7 +6,7 @@
   <link href="https://carlyuhq.github.io/Blogs/atom.xml" rel="self"/>
   
   <link href="https://carlyuhq.github.io/Blogs/"/>
-  <updated>2025-07-06T09:00:36.636Z</updated>
+  <updated>2025-07-06T09:04:28.352Z</updated>
   <id>https://carlyuhq.github.io/Blogs/</id>
   
   <author>
@@ -21,16 +21,14 @@
     <link href="https://carlyuhq.github.io/Blogs/2025/07/06/%E6%9D%82%E8%B0%88%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2/"/>
     <id>https://carlyuhq.github.io/Blogs/2025/07/06/%E6%9D%82%E8%B0%88%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2/</id>
     <published>2025-07-06T07:36:34.000Z</published>
-    <updated>2025-07-06T09:00:36.636Z</updated>
+    <updated>2025-07-06T09:04:28.352Z</updated>
     
     
-    <summary type="html">&lt;!-- &lt;style&gt;
+    <summary type="html">&lt;style&gt;
 .markdown-body {
   font-family: &quot;宋体&quot;;
 }
-&lt;/style&gt; --&gt;
-&lt;script src=&quot;https://polyfill.io/v3/polyfill.min.js?features=es6&quot;&gt;&lt;/script&gt;
-&lt;script id=&quot;MathJax-script&quot; async src=&quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&quot;&gt;&lt;/script&gt;
+&lt;/style&gt;
 &lt;ul&gt;
 &lt;li&gt;经历了两天的折腾，彻底让我放弃了迁移博客改用Mix-Space+Shiro的想法&lt;/li&gt;
 &lt;li&gt;记录一下放弃的原因，也是让“老于真的不老の随笔”暂时保留了下来吧，以后有时间再折腾吧</summary>
