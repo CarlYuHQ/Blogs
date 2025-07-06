@@ -6,7 +6,7 @@
   <link href="https://carlyuhq.github.io/Blogs/atom.xml" rel="self"/>
   
   <link href="https://carlyuhq.github.io/Blogs/"/>
-  <updated>2025-06-13T15:40:21.859Z</updated>
+  <updated>2025-07-06T07:39:56.400Z</updated>
   <id>https://carlyuhq.github.io/Blogs/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>杂谈迁移博客</title>
+    <link href="https://carlyuhq.github.io/Blogs/2025/07/06/%E6%9D%82%E8%B0%88%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://carlyuhq.github.io/Blogs/2025/07/06/%E6%9D%82%E8%B0%88%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2/</id>
+    <published>2025-07-06T07:36:34.000Z</published>
+    <updated>2025-07-06T07:39:56.400Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;!-- &lt;style&gt;
+.markdown-body {
+  font-family: &quot;宋体&quot;;
+}
+&lt;/style&gt; --&gt;
+&lt;script</summary>
+        
+      
+    
+    
+    
+    <category term="随笔" scheme="https://carlyuhq.github.io/Blogs/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="https://carlyuhq.github.io/Blogs/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+    <category term="生活" scheme="https://carlyuhq.github.io/Blogs/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+    <category term="Linux" scheme="https://carlyuhq.github.io/Blogs/tags/Linux/"/>
+    
+  </entry>
   
   <entry>
     <title>地理信息系统概论</title>
@@ -51,14 +85,14 @@
     <link href="https://carlyuhq.github.io/Blogs/2025/06/04/%E4%BF%A1%E6%81%AF%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/"/>
     <id>https://carlyuhq.github.io/Blogs/2025/06/04/%E4%BF%A1%E6%81%AF%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/</id>
     <published>2025-06-04T07:19:31.000Z</published>
-    <updated>2025-06-04T07:20:30.288Z</updated>
+    <updated>2025-07-06T07:41:04.632Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;信息论-王立威&quot;&gt;&lt;a href=&quot;#信息论-王立威&quot; class=&quot;headerlink&quot; title=&quot;信息论 王立威&quot;&gt;&lt;/a&gt;信息论</summary>
+    <summary type="html">&lt;h2 id=&quot;信息论-王立威&quot;&gt;&lt;a href=&quot;#信息论-王立威&quot; class=&quot;headerlink&quot; title=&quot;信息论 王立威&quot;&gt;&lt;/a&gt;信息论</summary>
         
       
     
@@ -95,27 +129,6 @@
     <category term="游戏" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%B8%B8%E6%88%8F/"/>
     
     <category term="动漫" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%8A%A8%E6%BC%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="https://carlyuhq.github.io/Blogs/2025/06/03/hello-world/"/>
-    <id>https://carlyuhq.github.io/Blogs/2025/06/03/hello-world/</id>
-    <published>2025-06-02T16:07:35.875Z</published>
-    <updated>2025-06-02T16:04:53.429Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
     
   </entry>
   
