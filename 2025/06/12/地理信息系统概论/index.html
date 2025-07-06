@@ -31,71 +31,71 @@ document.addEventListener("pjax:success", initScrollReveal);
 <meta property="og:site_name" content="老于真的不老の随笔">
 <meta property="og:description" content="GIS简介 什么是GIS：简单的说，地理信息系统是采用计算机管理地理空间信息，并提供各种服务。  地理信息系统简介 地理信息：  是指表征地理圈或地理环境固有要素或物质的数量、质量、分布特征、联系和规律的数字、文字、图像和图形等的总称。 是有关地理实体的性质、特征和运动状态的表征和一切有用的知识，它是对地理数据的解释。  在地理信息中，其位置通过数据进行标识，这是地理信息区别于其它类型信息的">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gisfunc.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gisthree.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/Varenius.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/huafen.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/sample.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/shiliangshange.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/geometry.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/shange.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/fenceng.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/earthproject.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/mokatuo.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/albers.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/UTM.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/poufen.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/shitai.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/chidu.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/chidu1.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/chidu2.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/chidu3.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/tuopu.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/fangxiang.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/zhufangwei.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/duobianxing.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/shiliangbuffer.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/samplefunc.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/chazhis.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis4.1.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis2.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis3.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis4.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis5.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis6.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis7.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis8.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis9.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis10.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis11.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis12.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis13.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis14.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/GIS.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gfunc.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/ffunc.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/kfunc.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/kfunc2.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis15.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis16.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis17.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis18.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis19.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis20.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis21.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis22.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis23.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis24.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis25.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis26.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis27.png">
-<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis28.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gisfunc.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gisthree.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/Varenius.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/huafen.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/sample.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/shiliangshange.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/geometry.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/shange.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/fenceng.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/earthproject.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/mokatuo.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/albers.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/UTM.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/poufen.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/shitai.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/chidu.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/chidu1.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/chidu2.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/chidu3.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/tuopu.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/fangxiang.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/zhufangwei.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/duobianxing.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/shiliangbuffer.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/samplefunc.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/chazhis.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis4.1.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis2.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis3.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis4.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis5.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis6.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis7.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis8.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis9.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis10.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis11.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis12.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis13.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis14.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/GIS.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gfunc.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/ffunc.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/kfunc.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/kfunc2.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis15.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis16.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis17.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis18.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis19.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis20.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis21.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis22.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis23.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis24.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis25.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis26.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis27.png">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/gis/gis28.png">
 <meta property="article:published_time" content="2025-06-12T04:43:18.000Z">
-<meta property="article:modified_time" content="2025-06-13T15:40:21.859Z">
+<meta property="article:modified_time" content="2025-07-06T08:04:02.933Z">
 <meta property="article:author" content="老于真的不老">
 <meta property="article:tag" content="学习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://carlyuhq.github.io/Blogs/images/gisfunc.png"><script>(function() {
+<meta name="twitter:image" content="https://carlyuhq.github.io/Blogs/images/gis/gisfunc.png"><script>(function() {
   if (CONFIG.mode !== 'auto') return
   const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
   const setting = localStorage.getItem('darken-mode') || 'auto'
@@ -114,7 +114,7 @@ IconifyProviders = {
     // Wait for 1 second before switching API hosts
     rotate: 1000,
   },
-};</script><script defer src="https://fastly.jsdelivr.net/npm/animejs@latest"></script><script defer src="/Blogs/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/Blogs/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="Table of Contents"><span class="icon iconify" data-icon="ri:list-ordered"></span></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="Overview"><span class="icon iconify" data-icon="ri:passport-line"></span></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/Blogs/about/" title="老于真的不老"><img width="96" loading="lazy" src="/Blogs/images/avatar.png" alt="老于真的不老"><span class="site-author-status" title="静待花开">😄</span></a><div class="site-author-name"><a href="/Blogs/about/">老于真的不老</a></div><span class="site-name">老于真的不老の随笔</span><sub class="site-subtitle">紫荆花开，岁月如歌</sub><div class="site-description">致我们终将逝去的青春</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/Blogs/" title="Home"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:home-4-line"></span></span></a><div class="site-state-item"><a href="/Blogs/archives/" title="Archives"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:archive-line"></span></span><span class="site-state-item-count">4</span></a></div><div class="site-state-item"><a href="/Blogs/categories/" title="Categories"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:folder-2-line"></span></span><span class="site-state-item-count">3</span></a></div><div class="site-state-item"><a href="/Blogs/tags/" title="Tags"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="site-state-item-count">6</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:settings-line"></span></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="/atom.xml" title="RSS" target="_blank" style="color:orange"><span class="icon iconify" data-icon="ri:rss-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="/Blogs/images/qq.jpg" title="QQ" target="_blank" style="color:#12B7F5"><span class="icon iconify" data-icon="ri:qq-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/YunYouJun" title="GitHub" target="_blank" style="color:#6e5494"><span class="icon iconify" data-icon="ri:github-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.zhihu.com/people/deng-feng-28-75" title="知乎" target="_blank" style="color:#0084FF"><span class="icon iconify" data-icon="ri:zhihu-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/1783114481" title="哔哩哔哩" target="_blank" style="color:#FF8EB3"><span class="icon iconify" data-icon="ri:bilibili-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="/Blogs/images/weixin.jpg" title="微信" target="_blank" style="color:#1AAD19"><span class="icon iconify" data-icon="ri:wechat-2-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://x.com/yhnqng3" title="Twitter" target="_blank" style="color:#1da1f2"><span class="icon iconify" data-icon="ri:twitter-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:2100016634@stu.pku.edu.cn" title="E-Mail" target="_blank" style="color:#8E71C1"><span class="icon iconify" data-icon="ri:mail-line"></span></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/Blogs/links/" title="我的小伙伴们" style="color:dodgerblue"><span class="icon iconify" data-icon="ri:genderless-line"></span></a><a class="links-item hty-icon-button" href="/Blogs/girls/" title="喜欢的女孩子" style="color:hotpink"><span class="icon iconify" data-icon="ri:women-line"></span></a><a class="links-item hty-icon-button" href="/Blogs/albums/" title="相册" style="color:null"><span class="icon iconify" data-icon="ri:gallery-line"></span></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><span class="icon iconify" data-icon="ri:contrast-2-line"></span></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GIS%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">GIS简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">地理信息系统简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GIS%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="toc-number">1.2.</span> <span class="toc-text">GIS发展历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GIS%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD"><span class="toc-number">1.3.</span> <span class="toc-text">GIS系统功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%A7%91%E5%AD%A6"><span class="toc-number">1.4.</span> <span class="toc-text">地理信息科学</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E8%BD%AF%E4%BB%B6%E5%92%8C%E7%BD%91%E7%AB%99"><span class="toc-number">1.5.</span> <span class="toc-text">相关软件和网站</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">空间数据模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B-1"><span class="toc-number">2.1.</span> <span class="toc-text">空间数据模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%BA%E6%A8%A1%E5%9E%8B%E5%92%8C%E8%A6%81%E7%B4%A0%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text">场模型和要素模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%9C%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">2.3.</span> <span class="toc-text">对象和场的数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE%E5%92%8C%E6%A0%85%E6%A0%BC%E6%95%B0%E6%8D%AE"><span class="toc-number">2.4.</span> <span class="toc-text">矢量数据和栅格数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E5%80%BC%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.5.</span> <span class="toc-text">属性值的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E8%A7%84%E5%88%99%E4%B8%89%E8%A7%92%E7%BD%91%E6%95%B0%E6%8D%AE"><span class="toc-number">2.6.</span> <span class="toc-text">不规则三角网数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%BB%B4%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.7.</span> <span class="toc-text">三维模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B1%82%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.8.</span> <span class="toc-text">分层数据模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%8F%82%E7%85%A7%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.9.</span> <span class="toc-text">空间参照系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E5%9D%90%E6%A0%87"><span class="toc-number">2.10.</span> <span class="toc-text">地理坐标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E6%8A%95%E5%BD%B1"><span class="toc-number">2.11.</span> <span class="toc-text">地理投影</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E7%8E%B0%E8%B1%A1%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">2.12.</span> <span class="toc-text">地理现象的特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GIS%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%A6%E9%87%8F%E5%92%8C%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">GIS的基本度量和分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E9%87%8F%E7%AE%97"><span class="toc-number">3.1.</span> <span class="toc-text">空间量算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%85%B3%E7%B3%BB"><span class="toc-number">3.2.</span> <span class="toc-text">空间关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E6%9F%A5%E8%AF%A2"><span class="toc-number">3.3.</span> <span class="toc-text">空间查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A0%E5%8A%A0%E5%88%86%E6%9E%90-Overlay"><span class="toc-number">3.4.</span> <span class="toc-text">叠加分析 Overlay</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E5%88%86%E6%9E%90Buffer"><span class="toc-number">3.5.</span> <span class="toc-text">缓冲区分析Buffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E6%8F%92%E5%80%BC%E5%9F%BA%E7%A1%80"><span class="toc-number">3.6.</span> <span class="toc-text">空间插值基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%8F%92%E5%80%BC%E6%96%B9%E6%B3%95"><span class="toc-number">3.7.</span> <span class="toc-text">整体插值方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E6%8F%92%E5%80%BC%E6%96%B9%E6%B3%95"><span class="toc-number">3.8.</span> <span class="toc-text">局部插值方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E8%BF%91%E9%82%BB%E7%82%B9%E6%B3%95%EF%BC%9A%E6%B3%B0%E6%A3%AE%E5%A4%9A%E8%BE%B9%E5%BD%A2%E6%96%B9%E6%B3%95"><span class="toc-number">3.9.</span> <span class="toc-text">最近邻点法：泰森多边形方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%9D%87%E6%8F%92%E5%80%BC%E6%96%B9%E6%B3%95%EF%BC%9A%E8%B7%9D%E7%A6%BB%E5%80%92%E6%95%B0%E6%8F%92%E5%80%BC"><span class="toc-number">3.10.</span> <span class="toc-text">移动平均插值方法：距离倒数插值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B7%E6%9D%A1%E5%87%BD%E6%95%B0%E6%8F%92%E5%80%BC%E6%96%B9%E6%B3%95"><span class="toc-number">3.11.</span> <span class="toc-text">样条函数插值方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E6%8F%92%E5%80%BC%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%93%E6%9E%9C"><span class="toc-number">3.12.</span> <span class="toc-text">不同插值方法的结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%85%E6%A0%BC%E5%8F%8ADEM%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">栅格及DEM分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A2%E9%87%8F%E6%A0%85%E6%A0%BC%E8%BD%AC%E6%8D%A2"><span class="toc-number">4.1.</span> <span class="toc-text">矢量栅格转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%85%E6%A0%BC%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.2.</span> <span class="toc-text">栅格数据操作的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DEM"><span class="toc-number">4.3.</span> <span class="toc-text">DEM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DEM%E7%9A%84%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.4.</span> <span class="toc-text">DEM的数据模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DEM%E8%8E%B7%E5%8F%96"><span class="toc-number">4.5.</span> <span class="toc-text">DEM获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%A1%E5%BA%A6%E5%92%8C%E5%9D%A1%E5%90%91"><span class="toc-number">4.6.</span> <span class="toc-text">坡度和坡向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E9%98%B6%E5%B7%AE%E5%88%86%E6%B3%95%E8%AE%A1%E7%AE%97%E5%9D%A1%E5%BA%A6%E5%9D%A1%E5%90%91%E7%9A%84%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E"><span class="toc-number">4.7.</span> <span class="toc-text">二阶差分法计算坡度坡向的详细说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%A1%E5%BA%A6%E5%9D%A1%E5%90%91%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">4.8.</span> <span class="toc-text">坡度坡向分析中的问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%88%86%E5%B8%83%E6%A8%A1%E5%BC%8F%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">空间分布模式分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E7%82%B9"><span class="toc-number">5.1.</span> <span class="toc-text">空间分析中的点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%B9%E5%88%86%E5%B8%83%E5%88%86%E6%9E%90"><span class="toc-number">5.2.</span> <span class="toc-text">点分布分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E5%80%BC%E7%82%B9%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%88%86%E6%9E%90"><span class="toc-number">5.3.</span> <span class="toc-text">带值点的模式分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Moran%E2%80%99s-I%E6%8C%87%E6%A0%87"><span class="toc-number">5.4.</span> <span class="toc-text">Moran’s I指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Moran%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="toc-number">5.5.</span> <span class="toc-text">Moran散点图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90"><span class="toc-number">6.</span> <span class="toc-text">网络分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%AE%97%E6%B3%95"><span class="toc-number">6.1.</span> <span class="toc-text">最短路径算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D"><span class="toc-number">6.2.</span> <span class="toc-text">资源分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E4%BA%A4%E4%BA%92-Spatial-Interaction"><span class="toc-number">6.3.</span> <span class="toc-text">空间交互(Spatial Interaction)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0%E6%95%B0%E6%8D%AE"><span class="toc-number">6.4.</span> <span class="toc-text">签到数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C%E5%BA%A6%E9%87%8F%E6%8C%87%E6%A0%87"><span class="toc-number">6.5.</span> <span class="toc-text">复杂网络度量指标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B6%E5%9B%BE%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">7.</span> <span class="toc-text">制图与可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9B%BE%E8%A6%81%E7%B4%A0"><span class="toc-number">7.1.</span> <span class="toc-text">地图要素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%93%E9%A2%98%E5%9C%B0%E5%9B%BE"><span class="toc-number">7.2.</span> <span class="toc-text">专题地图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E7%8A%B6%E4%B8%93%E9%A2%98%E5%86%85%E5%AE%B9%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="toc-number">7.3.</span> <span class="toc-text">面状专题内容的表示方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%93%E9%A2%98%E5%9C%B0%E5%9B%BE%E8%AE%BE%E8%AE%A1%E2%80%94%E2%80%94%E5%88%B6%E5%9B%BE"><span class="toc-number">7.4.</span> <span class="toc-text">专题地图设计——制图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">7.5.</span> <span class="toc-text">可视化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GIS%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">8.</span> <span class="toc-text">GIS的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E7%84%B6%E8%B5%84%E6%BA%90%E4%B8%8E%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86"><span class="toc-number">8.1.</span> <span class="toc-text">自然资源与环境管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%8E%E5%B8%82%E8%A7%84%E5%88%92%E5%92%8C%E7%AE%A1%E7%90%86"><span class="toc-number">8.2.</span> <span class="toc-text">城市规划和管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%81%BE%E5%AE%B3%E7%AE%A1%E7%90%86%E5%92%8C%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94"><span class="toc-number">8.3.</span> <span class="toc-text">灾害管理和应急响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AC%E5%85%B1%E5%8D%AB%E7%94%9F%E5%92%8C%E7%8A%AF%E7%BD%AA"><span class="toc-number">8.4.</span> <span class="toc-text">公共卫生和犯罪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E9%A2%86%E5%9F%9F%EF%BC%9A%E7%B2%BE%E5%87%86%E5%86%9C%E4%B8%9A"><span class="toc-number">8.5.</span> <span class="toc-text">其它领域：精准农业</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#0078E7;"><link itemprop="mainEntityOfPage" href="https://CarlYuHQ.github.io/Blogs/Blogs/2025/06/12/%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="老于真的不老"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="老于真的不老の随笔"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">地理信息系统概论</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-line"></span></span> <time title="Created: 2025-06-12 12:43:18" itemprop="dateCreated datePublished" datetime="2025-06-12T12:43:18+08:00">2025-06-12</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-2-line"></span></span> <time title="Modified: 2025-06-13 23:40:21" itemprop="dateModified" datetime="2025-06-13T23:40:21+08:00">2025-06-13</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="Word count in article"><span class="icon iconify" data-icon="ri:file-word-line"></span></span> <span title="Word count in article">15.7k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="Reading time"><span class="icon iconify" data-icon="ri:timer-line"></span></span> <span title="Reading time">54m</span></span></span><span class="leancloud_visitors" id="/Blogs/2025/06/12/%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" data-flag-title="地理信息系统概论"><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="Views"><span class="icon iconify" data-icon="ri:eye-line"></span> <span class="leancloud-visitors-count"></span></span></span><span class="post-meta-divider">-</span><a href="#comment"><span class="post-meta-item-icon" title="Comments"><span class="icon iconify" data-icon="ri:chat-3-line"></span> <span class="waline-comment-count" id="/Blogs/2025/06/12/%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/"></span></span></a><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><span class="icon iconify" data-icon="ri:folder-line"></span></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">课程笔记</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag-item" href="/Blogs/tags/%E5%AD%A6%E4%B9%A0/" style="--text-color:saddlebrown"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">学习</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><!-- <style>
+};</script><script defer src="https://fastly.jsdelivr.net/npm/animejs@latest"></script><script defer src="/Blogs/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/Blogs/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="Table of Contents"><span class="icon iconify" data-icon="ri:list-ordered"></span></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="Overview"><span class="icon iconify" data-icon="ri:passport-line"></span></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/Blogs/about/" title="老于真的不老"><img width="96" loading="lazy" src="/Blogs/images/avatar.png" alt="老于真的不老"><span class="site-author-status" title="静待花开">😄</span></a><div class="site-author-name"><a href="/Blogs/about/">老于真的不老</a></div><span class="site-name">老于真的不老の随笔</span><sub class="site-subtitle">紫荆花开，岁月如歌</sub><div class="site-description">致我们终将逝去的青春</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/Blogs/" title="Home"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:home-4-line"></span></span></a><div class="site-state-item"><a href="/Blogs/archives/" title="Archives"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:archive-line"></span></span><span class="site-state-item-count">3</span></a></div><div class="site-state-item"><a href="/Blogs/categories/" title="Categories"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:folder-2-line"></span></span><span class="site-state-item-count">2</span></a></div><div class="site-state-item"><a href="/Blogs/tags/" title="Tags"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="site-state-item-count">4</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:settings-line"></span></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="/atom.xml" title="RSS" target="_blank" style="color:orange"><span class="icon iconify" data-icon="ri:rss-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="/Blogs/images/qq.jpg" title="QQ" target="_blank" style="color:#12B7F5"><span class="icon iconify" data-icon="ri:qq-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/YunYouJun" title="GitHub" target="_blank" style="color:#6e5494"><span class="icon iconify" data-icon="ri:github-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.zhihu.com/people/deng-feng-28-75" title="知乎" target="_blank" style="color:#0084FF"><span class="icon iconify" data-icon="ri:zhihu-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/1783114481" title="哔哩哔哩" target="_blank" style="color:#FF8EB3"><span class="icon iconify" data-icon="ri:bilibili-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="/Blogs/images/weixin.jpg" title="微信" target="_blank" style="color:#1AAD19"><span class="icon iconify" data-icon="ri:wechat-2-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://x.com/yhnqng3" title="Twitter" target="_blank" style="color:#1da1f2"><span class="icon iconify" data-icon="ri:twitter-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:2100016634@stu.pku.edu.cn" title="E-Mail" target="_blank" style="color:#8E71C1"><span class="icon iconify" data-icon="ri:mail-line"></span></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/Blogs/links/" title="我的小伙伴们" style="color:dodgerblue"><span class="icon iconify" data-icon="ri:genderless-line"></span></a><a class="links-item hty-icon-button" href="/Blogs/girls/" title="喜欢的女孩子" style="color:hotpink"><span class="icon iconify" data-icon="ri:women-line"></span></a><a class="links-item hty-icon-button" href="/Blogs/albums/" title="相册" style="color:null"><span class="icon iconify" data-icon="ri:gallery-line"></span></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><span class="icon iconify" data-icon="ri:contrast-2-line"></span></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GIS%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">GIS简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">地理信息系统简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GIS%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="toc-number">1.2.</span> <span class="toc-text">GIS发展历史</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GIS%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD"><span class="toc-number">1.3.</span> <span class="toc-text">GIS系统功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%A7%91%E5%AD%A6"><span class="toc-number">1.4.</span> <span class="toc-text">地理信息科学</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E8%BD%AF%E4%BB%B6%E5%92%8C%E7%BD%91%E7%AB%99"><span class="toc-number">1.5.</span> <span class="toc-text">相关软件和网站</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">空间数据模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B-1"><span class="toc-number">2.1.</span> <span class="toc-text">空间数据模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%BA%E6%A8%A1%E5%9E%8B%E5%92%8C%E8%A6%81%E7%B4%A0%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.2.</span> <span class="toc-text">场模型和要素模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%9C%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">2.3.</span> <span class="toc-text">对象和场的数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE%E5%92%8C%E6%A0%85%E6%A0%BC%E6%95%B0%E6%8D%AE"><span class="toc-number">2.4.</span> <span class="toc-text">矢量数据和栅格数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E5%80%BC%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">2.5.</span> <span class="toc-text">属性值的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E8%A7%84%E5%88%99%E4%B8%89%E8%A7%92%E7%BD%91%E6%95%B0%E6%8D%AE"><span class="toc-number">2.6.</span> <span class="toc-text">不规则三角网数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E7%BB%B4%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.7.</span> <span class="toc-text">三维模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B1%82%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.8.</span> <span class="toc-text">分层数据模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%8F%82%E7%85%A7%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.9.</span> <span class="toc-text">空间参照系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E5%9D%90%E6%A0%87"><span class="toc-number">2.10.</span> <span class="toc-text">地理坐标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E6%8A%95%E5%BD%B1"><span class="toc-number">2.11.</span> <span class="toc-text">地理投影</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E7%8E%B0%E8%B1%A1%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">2.12.</span> <span class="toc-text">地理现象的特性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GIS%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%A6%E9%87%8F%E5%92%8C%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">GIS的基本度量和分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E9%87%8F%E7%AE%97"><span class="toc-number">3.1.</span> <span class="toc-text">空间量算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%85%B3%E7%B3%BB"><span class="toc-number">3.2.</span> <span class="toc-text">空间关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E6%9F%A5%E8%AF%A2"><span class="toc-number">3.3.</span> <span class="toc-text">空间查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A0%E5%8A%A0%E5%88%86%E6%9E%90-Overlay"><span class="toc-number">3.4.</span> <span class="toc-text">叠加分析 Overlay</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%86%B2%E5%8C%BA%E5%88%86%E6%9E%90Buffer"><span class="toc-number">3.5.</span> <span class="toc-text">缓冲区分析Buffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E6%8F%92%E5%80%BC%E5%9F%BA%E7%A1%80"><span class="toc-number">3.6.</span> <span class="toc-text">空间插值基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%8F%92%E5%80%BC%E6%96%B9%E6%B3%95"><span class="toc-number">3.7.</span> <span class="toc-text">整体插值方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E6%8F%92%E5%80%BC%E6%96%B9%E6%B3%95"><span class="toc-number">3.8.</span> <span class="toc-text">局部插值方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E8%BF%91%E9%82%BB%E7%82%B9%E6%B3%95%EF%BC%9A%E6%B3%B0%E6%A3%AE%E5%A4%9A%E8%BE%B9%E5%BD%A2%E6%96%B9%E6%B3%95"><span class="toc-number">3.9.</span> <span class="toc-text">最近邻点法：泰森多边形方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%9D%87%E6%8F%92%E5%80%BC%E6%96%B9%E6%B3%95%EF%BC%9A%E8%B7%9D%E7%A6%BB%E5%80%92%E6%95%B0%E6%8F%92%E5%80%BC"><span class="toc-number">3.10.</span> <span class="toc-text">移动平均插值方法：距离倒数插值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B7%E6%9D%A1%E5%87%BD%E6%95%B0%E6%8F%92%E5%80%BC%E6%96%B9%E6%B3%95"><span class="toc-number">3.11.</span> <span class="toc-text">样条函数插值方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E6%8F%92%E5%80%BC%E6%96%B9%E6%B3%95%E7%9A%84%E7%BB%93%E6%9E%9C"><span class="toc-number">3.12.</span> <span class="toc-text">不同插值方法的结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%85%E6%A0%BC%E5%8F%8ADEM%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">栅格及DEM分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A2%E9%87%8F%E6%A0%85%E6%A0%BC%E8%BD%AC%E6%8D%A2"><span class="toc-number">4.1.</span> <span class="toc-text">矢量栅格转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%85%E6%A0%BC%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-number">4.2.</span> <span class="toc-text">栅格数据操作的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DEM"><span class="toc-number">4.3.</span> <span class="toc-text">DEM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DEM%E7%9A%84%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-number">4.4.</span> <span class="toc-text">DEM的数据模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DEM%E8%8E%B7%E5%8F%96"><span class="toc-number">4.5.</span> <span class="toc-text">DEM获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%A1%E5%BA%A6%E5%92%8C%E5%9D%A1%E5%90%91"><span class="toc-number">4.6.</span> <span class="toc-text">坡度和坡向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E9%98%B6%E5%B7%AE%E5%88%86%E6%B3%95%E8%AE%A1%E7%AE%97%E5%9D%A1%E5%BA%A6%E5%9D%A1%E5%90%91%E7%9A%84%E8%AF%A6%E7%BB%86%E8%AF%B4%E6%98%8E"><span class="toc-number">4.7.</span> <span class="toc-text">二阶差分法计算坡度坡向的详细说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%A1%E5%BA%A6%E5%9D%A1%E5%90%91%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">4.8.</span> <span class="toc-text">坡度坡向分析中的问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%88%86%E5%B8%83%E6%A8%A1%E5%BC%8F%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">空间分布模式分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E7%82%B9"><span class="toc-number">5.1.</span> <span class="toc-text">空间分析中的点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%82%B9%E5%88%86%E5%B8%83%E5%88%86%E6%9E%90"><span class="toc-number">5.2.</span> <span class="toc-text">点分布分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E5%80%BC%E7%82%B9%E7%9A%84%E6%A8%A1%E5%BC%8F%E5%88%86%E6%9E%90"><span class="toc-number">5.3.</span> <span class="toc-text">带值点的模式分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Moran%E2%80%99s-I%E6%8C%87%E6%A0%87"><span class="toc-number">5.4.</span> <span class="toc-text">Moran’s I指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Moran%E6%95%A3%E7%82%B9%E5%9B%BE"><span class="toc-number">5.5.</span> <span class="toc-text">Moran散点图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90"><span class="toc-number">6.</span> <span class="toc-text">网络分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%AE%97%E6%B3%95"><span class="toc-number">6.1.</span> <span class="toc-text">最短路径算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D"><span class="toc-number">6.2.</span> <span class="toc-text">资源分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E9%97%B4%E4%BA%A4%E4%BA%92-Spatial-Interaction"><span class="toc-number">6.3.</span> <span class="toc-text">空间交互(Spatial Interaction)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%BE%E5%88%B0%E6%95%B0%E6%8D%AE"><span class="toc-number">6.4.</span> <span class="toc-text">签到数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C%E5%BA%A6%E9%87%8F%E6%8C%87%E6%A0%87"><span class="toc-number">6.5.</span> <span class="toc-text">复杂网络度量指标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B6%E5%9B%BE%E4%B8%8E%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">7.</span> <span class="toc-text">制图与可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9B%BE%E8%A6%81%E7%B4%A0"><span class="toc-number">7.1.</span> <span class="toc-text">地图要素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%93%E9%A2%98%E5%9C%B0%E5%9B%BE"><span class="toc-number">7.2.</span> <span class="toc-text">专题地图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E7%8A%B6%E4%B8%93%E9%A2%98%E5%86%85%E5%AE%B9%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95"><span class="toc-number">7.3.</span> <span class="toc-text">面状专题内容的表示方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%93%E9%A2%98%E5%9C%B0%E5%9B%BE%E8%AE%BE%E8%AE%A1%E2%80%94%E2%80%94%E5%88%B6%E5%9B%BE"><span class="toc-number">7.4.</span> <span class="toc-text">专题地图设计——制图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">7.5.</span> <span class="toc-text">可视化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GIS%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">8.</span> <span class="toc-text">GIS的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E7%84%B6%E8%B5%84%E6%BA%90%E4%B8%8E%E7%8E%AF%E5%A2%83%E7%AE%A1%E7%90%86"><span class="toc-number">8.1.</span> <span class="toc-text">自然资源与环境管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%8E%E5%B8%82%E8%A7%84%E5%88%92%E5%92%8C%E7%AE%A1%E7%90%86"><span class="toc-number">8.2.</span> <span class="toc-text">城市规划和管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%81%BE%E5%AE%B3%E7%AE%A1%E7%90%86%E5%92%8C%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94"><span class="toc-number">8.3.</span> <span class="toc-text">灾害管理和应急响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AC%E5%85%B1%E5%8D%AB%E7%94%9F%E5%92%8C%E7%8A%AF%E7%BD%AA"><span class="toc-number">8.4.</span> <span class="toc-text">公共卫生和犯罪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E9%A2%86%E5%9F%9F%EF%BC%9A%E7%B2%BE%E5%87%86%E5%86%9C%E4%B8%9A"><span class="toc-number">8.5.</span> <span class="toc-text">其它领域：精准农业</span></a></li></ol></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#0078E7;"><link itemprop="mainEntityOfPage" href="https://CarlYuHQ.github.io/Blogs/Blogs/2025/06/12/%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="老于真的不老"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="老于真的不老の随笔"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">地理信息系统概论</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-line"></span></span> <time title="Created: 2025-06-12 12:43:18" itemprop="dateCreated datePublished" datetime="2025-06-12T12:43:18+08:00">2025-06-12</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-2-line"></span></span> <time title="Modified: 2025-07-06 16:04:02" itemprop="dateModified" datetime="2025-07-06T16:04:02+08:00">2025-07-06</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="Word count in article"><span class="icon iconify" data-icon="ri:file-word-line"></span></span> <span title="Word count in article">15.7k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="Reading time"><span class="icon iconify" data-icon="ri:timer-line"></span></span> <span title="Reading time">54m</span></span></span><span class="leancloud_visitors" id="/Blogs/2025/06/12/%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" data-flag-title="地理信息系统概论"><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="Views"><span class="icon iconify" data-icon="ri:eye-line"></span> <span class="leancloud-visitors-count"></span></span></span><span class="post-meta-divider">-</span><a href="#comment"><span class="post-meta-item-icon" title="Comments"><span class="icon iconify" data-icon="ri:chat-3-line"></span> <span class="waline-comment-count" id="/Blogs/2025/06/12/%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/"></span></span></a><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><span class="icon iconify" data-icon="ri:folder-line"></span></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">课程笔记</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag-item" href="/Blogs/tags/%E5%AD%A6%E4%B9%A0/" style="--text-color:saddlebrown"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">学习</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><!-- <style>
 .markdown-body {
   font-family: "宋体";
 }
@@ -198,7 +198,7 @@ IconifyProviders = {
 <li>随着移动互联网的发展，一系列基于位置的服务企业创办，如Foursquare(2009)、Uber(2009)、滴滴(2014)、摩拜(2016)等</li>
 <li>2014，Google首示自动驾驶原型车成品且可全功能运行</li>
 </ul>
-<h3 id="GIS系统功能"><a href="#GIS系统功能" class="headerlink" title="GIS系统功能"></a>GIS系统功能</h3><p>系统功能所涉及的处理过程有：数据获取、数据预处理、查询和分析、存储与检索、交互与可视化。<br>涉及的输入、输出有：地理事物和现象 文件和地图、原始数据、结构化数据、结果数据、制图、数据库。<br><img src="/Blogs/./images/gisfunc.png" alt="GIS系统功能" loading="lazy"><br>同时总结可分为三项功能：空间分析、空间可视化、空间数据库<br><img src="/Blogs/./images/gisthree.png" alt="GIS三项功能" loading="lazy"></p>
+<h3 id="GIS系统功能"><a href="#GIS系统功能" class="headerlink" title="GIS系统功能"></a>GIS系统功能</h3><p>系统功能所涉及的处理过程有：数据获取、数据预处理、查询和分析、存储与检索、交互与可视化。<br>涉及的输入、输出有：地理事物和现象 文件和地图、原始数据、结构化数据、结果数据、制图、数据库。<br><img src="/Blogs/./images/gis/gisfunc.png" alt="GIS系统功能" loading="lazy"><br>同时总结可分为三项功能：空间分析、空间可视化、空间数据库<br><img src="/Blogs/./images/gis/gisthree.png" alt="GIS三项功能" loading="lazy"></p>
 <h3 id="地理信息科学"><a href="#地理信息科学" class="headerlink" title="地理信息科学"></a>地理信息科学</h3><ul>
 <li>定义： (Geographic Information Science, GISci) 主要研究地理信息生成、处理、存储以及应用地理信息过程中出现的基本问题  </li>
 <li>Varenius三角<ul>
@@ -212,7 +212,7 @@ IconifyProviders = {
 </li>
 <li>社会<ul>
 <li>社会冲突和背景</li>
-<li>政策、制度、规范、法规<br><img src="/Blogs/./images/Varenius.png" alt="Varenius三角" loading="lazy"></li>
+<li>政策、制度、规范、法规<br><img src="/Blogs/./images/gis/Varenius.png" alt="Varenius三角" loading="lazy"></li>
 </ul>
 </li>
 </ul>
@@ -287,20 +287,20 @@ IconifyProviders = {
 <h3 id="对象和场的数据结构"><a href="#对象和场的数据结构" class="headerlink" title="对象和场的数据结构"></a>对象和场的数据结构</h3><ul>
 <li>离散对象：很自然地用矢量结构表达为点、线或面</li>
 <li>连续场：<ul>
-<li>基于划分的表达<br><img src="/Blogs/./images/huafen.png" alt="huafen" loading="lazy"></li>
-<li>基于采样与插值的表达<br><img src="/Blogs/./images/sample.png" alt="sample" loading="lazy"></li>
+<li>基于划分的表达<br><img src="/Blogs/./images/gis/huafen.png" alt="huafen" loading="lazy"></li>
+<li>基于采样与插值的表达<br><img src="/Blogs/./images/gis/sample.png" alt="sample" loading="lazy"></li>
 </ul>
 </li>
 </ul>
-<h3 id="矢量数据和栅格数据"><a href="#矢量数据和栅格数据" class="headerlink" title="矢量数据和栅格数据"></a>矢量数据和栅格数据</h3><p><img src="/Blogs/./images/shiliangshange.png" alt="shiliangshange" loading="lazy"></p>
+<h3 id="矢量数据和栅格数据"><a href="#矢量数据和栅格数据" class="headerlink" title="矢量数据和栅格数据"></a>矢量数据和栅格数据</h3><p><img src="/Blogs/./images/gis/shiliangshange.png" alt="shiliangshange" loading="lazy"></p>
 <ul>
 <li>基本矢量数据结构<ul>
 <li>点</li>
 <li>线</li>
-<li>多边形<br><img src="/Blogs/./images/geometry.png" alt="geometry" loading="lazy"><br>多边形存储拓扑结构</li>
+<li>多边形<br><img src="/Blogs/./images/gis/geometry.png" alt="geometry" loading="lazy"><br>多边形存储拓扑结构</li>
 </ul>
 </li>
-<li>栅格数据结构<br><img src="/Blogs/./images/shange.png" alt="shange" loading="lazy"><br>栅格值的确定</li>
+<li>栅格数据结构<br><img src="/Blogs/./images/gis/shange.png" alt="shange" loading="lazy"><br>栅格值的确定</li>
 </ul>
 <h3 id="属性值的类型"><a href="#属性值的类型" class="headerlink" title="属性值的类型"></a>属性值的类型</h3><ul>
 <li>命名（Nominal）量：<br><strong>定性而非定量，不能进行任何算术运算</strong>，如一个城市的名字。命名式的测量尺度也称为类型测量尺度，只对特定现象进行 标识，赋予一定的数值或符号而不定量描述。例如，可以 用不同数值表示不同的土地利用类型、植被类型或岩石类型，但是这些数值之间无数量关系，对命名数据的逻辑运算只有 “等于”或“不等于”两种形式，而其近似均值只能使用众数。</li>
@@ -322,7 +322,7 @@ IconifyProviders = {
 </ul>
 </li>
 </ul>
-<h3 id="三维模型"><a href="#三维模型" class="headerlink" title="三维模型"></a>三维模型</h3><h3 id="分层数据模型"><a href="#分层数据模型" class="headerlink" title="分层数据模型"></a>分层数据模型</h3><p><img src="/Blogs/./images/fenceng.png" alt="fenceng" loading="lazy">  </p>
+<h3 id="三维模型"><a href="#三维模型" class="headerlink" title="三维模型"></a>三维模型</h3><h3 id="分层数据模型"><a href="#分层数据模型" class="headerlink" title="分层数据模型"></a>分层数据模型</h3><p><img src="/Blogs/./images/gis/fenceng.png" alt="fenceng" loading="lazy">  </p>
 <h3 id="空间参照系统"><a href="#空间参照系统" class="headerlink" title="空间参照系统"></a>空间参照系统</h3><ul>
 <li>空间参照系统（spatial reference system）<ul>
 <li>确定空间<strong>目标平面位置</strong>和<strong>高程</strong>的平面坐标系和高程系</li>
@@ -361,21 +361,21 @@ IconifyProviders = {
 </li>
 </ul>
 <h3 id="地理坐标"><a href="#地理坐标" class="headerlink" title="地理坐标"></a>地理坐标</h3><p>经纬度坐标</p>
-<h3 id="地理投影"><a href="#地理投影" class="headerlink" title="地理投影"></a>地理投影</h3><p>解决从地球曲面到空间坐标的转换<br><img src="/Blogs/./images/earthproject.png" alt="earthproject" loading="lazy">  </p>
+<h3 id="地理投影"><a href="#地理投影" class="headerlink" title="地理投影"></a>地理投影</h3><p>解决从地球曲面到空间坐标的转换<br><img src="/Blogs/./images/gis/earthproject.png" alt="earthproject" loading="lazy">  </p>
 <ul>
-<li>墨卡托投影：导致面积变形<br><img src="/Blogs/./images/mokatuo.png" alt="mokatuo" loading="lazy">   </li>
-<li>Albers投影<br><img src="/Blogs/./images/albers.png" alt="albers" loading="lazy">   </li>
-<li>UTM投影<br><img src="/Blogs/./images/UTM.png" alt="UTM" loading="lazy">   </li>
-<li>全球剖分格网<br><img src="/Blogs/./images/poufen.png" alt="poufen" loading="lazy"></li>
+<li>墨卡托投影：导致面积变形<br><img src="/Blogs/./images/gis/mokatuo.png" alt="mokatuo" loading="lazy">   </li>
+<li>Albers投影<br><img src="/Blogs/./images/gis/albers.png" alt="albers" loading="lazy">   </li>
+<li>UTM投影<br><img src="/Blogs/./images/gis/UTM.png" alt="UTM" loading="lazy">   </li>
+<li>全球剖分格网<br><img src="/Blogs/./images/gis/poufen.png" alt="poufen" loading="lazy"></li>
 </ul>
 <h3 id="地理现象的特性"><a href="#地理现象的特性" class="headerlink" title="地理现象的特性"></a>地理现象的特性</h3><ul>
-<li>时态特性<br><img src="/Blogs/./images/shitai.png" alt="shitai" loading="lazy"></li>
-<li>尺度特征<br><img src="/Blogs/./images/chidu.png" alt="chidu" loading="lazy">  <ul>
-<li>尺度效应（1）：可变面积单元问题<br><img src="/Blogs/./images/chidu1.png" alt="chidu1" loading="lazy">    </li>
-<li>尺度效应（2）：分形问题<br><img src="/Blogs/./images/chidu2.png" alt="chidu2" loading="lazy"></li>
+<li>时态特性<br><img src="/Blogs/./images/gis/shitai.png" alt="shitai" loading="lazy"></li>
+<li>尺度特征<br><img src="/Blogs/./images/gis/chidu.png" alt="chidu" loading="lazy">  <ul>
+<li>尺度效应（1）：可变面积单元问题<br><img src="/Blogs/./images/gis/chidu1.png" alt="chidu1" loading="lazy">    </li>
+<li>尺度效应（2）：分形问题<br><img src="/Blogs/./images/gis/chidu2.png" alt="chidu2" loading="lazy"></li>
 </ul>
 </li>
-<li>地理空间数据的尺度特性<br><img src="/Blogs/./images/chidu3.png" alt="chidu3" loading="lazy"></li>
+<li>地理空间数据的尺度特性<br><img src="/Blogs/./images/gis/chidu3.png" alt="chidu3" loading="lazy"></li>
 </ul>
 <h2 id="GIS的基本度量和分析"><a href="#GIS的基本度量和分析" class="headerlink" title="GIS的基本度量和分析"></a>GIS的基本度量和分析</h2><h3 id="空间量算"><a href="#空间量算" class="headerlink" title="空间量算"></a>空间量算</h3><ul>
 <li>几何量算<ul>
@@ -431,19 +431,19 @@ IconifyProviders = {
 </ul>
 <p>自然语言中的空间关系</p>
 <ul>
-<li>拓扑关系<br><img src="/Blogs/./images/tuopu.png" alt="tuopu" loading="lazy"></li>
+<li>拓扑关系<br><img src="/Blogs/./images/gis/tuopu.png" alt="tuopu" loading="lazy"></li>
 <li>方向关系  <ul>
 <li>定量表达方式 如：东北35度</li>
 <li>定性表达方式 如：东、东北</li>
 <li>三种参照方式<ul>
 <li>内部参照</li>
 <li>直接参照</li>
-<li>外部参照<br><img src="/Blogs/./images/fangxiang.png" alt="fangxiang" loading="lazy"></li>
+<li>外部参照<br><img src="/Blogs/./images/gis/fangxiang.png" alt="fangxiang" loading="lazy"></li>
 </ul>
 </li>
 </ul>
 </li>
-<li>主方位关系 (Cardinal Direction)模型<br><img src="/Blogs/./images/zhufangwei.png" alt="zhufangwei" loading="lazy"></li>
+<li>主方位关系 (Cardinal Direction)模型<br><img src="/Blogs/./images/gis/zhufangwei.png" alt="zhufangwei" loading="lazy"></li>
 </ul>
 <h3 id="空间查询"><a href="#空间查询" class="headerlink" title="空间查询"></a>空间查询</h3><ul>
 <li>概念：<strong>按一定要求对GIS所描述的空间实体及其空间信息进行访问，从众多的空间实体中挑选出用户要求的空间实体及其相应的属性</strong></li>
@@ -531,7 +531,7 @@ IconifyProviders = {
 </li>
 </ul>
 </li>
-<li>多边形叠加<br>将两个或多个多边形图层进行叠加产生一个新多边形图层的操作<br>其结果将原来多边形要素分割成新要素。新要素综合了原来两层或多层的属性。<br><img src="/Blogs/./images/duobianxing.png" alt="duobianxing" loading="lazy">      <ul>
+<li>多边形叠加<br>将两个或多个多边形图层进行叠加产生一个新多边形图层的操作<br>其结果将原来多边形要素分割成新要素。新要素综合了原来两层或多层的属性。<br><img src="/Blogs/./images/gis/duobianxing.png" alt="duobianxing" loading="lazy">      <ul>
 <li>多边形叠加的计算方法<ul>
 <li>几何求交  <ol>
 <li>首先求出所有多边形边界线的交点</li>
@@ -576,7 +576,7 @@ IconifyProviders = {
 </li>
 <li><p>缓冲区的形态</p>
 <ul>
-<li>矢量地物的缓冲区<br><img src="/Blogs/./images/shiliangbuffer.png" alt="shiliangbuffer" loading="lazy"></li>
+<li>矢量地物的缓冲区<br><img src="/Blogs/./images/gis/shiliangbuffer.png" alt="shiliangbuffer" loading="lazy"></li>
 <li>特殊形态的缓冲区<ul>
 <li>点对象有三角形，矩形和圈形等</li>
 <li>线对象有双侧对称，双侧不对称或单侧缓冲区</li>
@@ -645,7 +645,7 @@ IconifyProviders = {
 <li>规则采样和随机采样好的结合方法是成层随机采样，即单个的点随机的分布于规则的格网内</li>
 <li>聚集采样可用于分析不同尺度的空间变化</li>
 <li>规则断面采样常用于河流、山坡剖面的测量</li>
-<li>等值线采样是数字化等高线图插值数字高程模型最常用的方法<br><img src="/Blogs/./images/samplefunc.png" alt="samplefunc" loading="lazy"></li>
+<li>等值线采样是数字化等高线图插值数字高程模型最常用的方法<br><img src="/Blogs/./images/gis/samplefunc.png" alt="samplefunc" loading="lazy"></li>
 </ul>
 </li>
 <li>空间插值方法: <ul>
@@ -755,7 +755,7 @@ IconifyProviders = {
 <li>泰森多边形（voronoi多边形）:要求原始数据空间分布相对均匀</li>
 <li>距离倒数:极值和人工粗糙度</li>
 <li>Kriging: 细微不连续</li>
-<li>样条法:小尖锐现象<br><img src="/Blogs/./images/chazhis.png" alt="chazhis" loading="lazy"></li>
+<li>样条法:小尖锐现象<br><img src="/Blogs/./images/gis/chazhis.png" alt="chazhis" loading="lazy"></li>
 </ul>
 <h2 id="栅格及DEM分析"><a href="#栅格及DEM分析" class="headerlink" title="栅格及DEM分析"></a>栅格及DEM分析</h2><p>栅格数据表达的内容：</p>
 <ul>
@@ -791,7 +791,7 @@ IconifyProviders = {
 </ul>
 </li>
 </ul>
-<h3 id="矢量栅格转换"><a href="#矢量栅格转换" class="headerlink" title="矢量栅格转换"></a>矢量栅格转换</h3><p><img src="/Blogs/./images/gis4.1.png" alt="gis4.1" loading="lazy"><br>其它示例：空间插值、距离和邻近性、密度（道路，河流，POI）、专业模型：污染物扩散<br>常栅格文件格式（文本格式）：</p>
+<h3 id="矢量栅格转换"><a href="#矢量栅格转换" class="headerlink" title="矢量栅格转换"></a>矢量栅格转换</h3><p><img src="/Blogs/./images/gis/gis4.1.png" alt="gis4.1" loading="lazy"><br>其它示例：空间插值、距离和邻近性、密度（道路，河流，POI）、专业模型：污染物扩散<br>常栅格文件格式（文本格式）：</p>
 <table>
 <thead>
 <tr>
@@ -828,7 +828,7 @@ IconifyProviders = {
 <td>每个栅格点数值</td>
 </tr>
 </tbody></table>
-<h3 id="栅格数据操作的类型"><a href="#栅格数据操作的类型" class="headerlink" title="栅格数据操作的类型"></a>栅格数据操作的类型</h3><p><img src="/Blogs/./images/gis2.png" alt="gis2" loading="lazy">  </p>
+<h3 id="栅格数据操作的类型"><a href="#栅格数据操作的类型" class="headerlink" title="栅格数据操作的类型"></a>栅格数据操作的类型</h3><p><img src="/Blogs/./images/gis/gis2.png" alt="gis2" loading="lazy">  </p>
 <ul>
 <li>栅格数据的Overlay<ul>
 <li>栅格数据的叠加分析</li>
@@ -846,14 +846,14 @@ IconifyProviders = {
 <li>邻域分析<ul>
 <li>邻域分析是指对栅格图层中每个栅格点的值进行计算，计算时考虑该点周围一定范围内的其他栅格点的值</li>
 <li>邻域分析可以用于平滑、滤波、边缘检测等操作</li>
-<li>通过邻域分析可以提取出栅格数据中的空间特征信息<br>  <img src="/Blogs/./images/gis3.png" alt="gis3" loading="lazy"></li>
+<li>通过邻域分析可以提取出栅格数据中的空间特征信息<br>  <img src="/Blogs/./images/gis/gis3.png" alt="gis3" loading="lazy"></li>
 </ul>
 </li>
 </ul>
 </li>
 <li>图像边缘提取</li>
-<li>模板滤波<br>  <img src="/Blogs/./images/gis4.png" alt="gis4" loading="lazy"></li>
-<li>Zonal操作<br>  <img src="/Blogs/./images/gis5.png" alt="gis5" loading="lazy"></li>
+<li>模板滤波<br>  <img src="/Blogs/./images/gis/gis4.png" alt="gis4" loading="lazy"></li>
+<li>Zonal操作<br>  <img src="/Blogs/./images/gis/gis5.png" alt="gis5" loading="lazy"></li>
 </ul>
 <h3 id="DEM"><a href="#DEM" class="headerlink" title="DEM"></a>DEM</h3><ul>
 <li>数字高程模型（Digital Elevation Model, DEM）是地形表面的数字化表示，通常以栅格数据形式存储。DEM广泛应用于地形分析、可视化、模拟等领域。</li>
@@ -870,7 +870,7 @@ IconifyProviders = {
 <h3 id="DEM的数据模型"><a href="#DEM的数据模型" class="headerlink" title="DEM的数据模型"></a>DEM的数据模型</h3><ol>
 <li>规则格网模型</li>
 <li>等高线模型</li>
-<li>不规则三角网（TIN）模型<br> <img src="/Blogs/./images/gis6.png" alt="gis6" loading="lazy"></li>
+<li>不规则三角网（TIN）模型<br> <img src="/Blogs/./images/gis/gis6.png" alt="gis6" loading="lazy"></li>
 </ol>
 <ul>
 <li>规则格网模型<ul>
@@ -950,7 +950,7 @@ IconifyProviders = {
 </li>
 <li>坡向图<ul>
 <li>分为东、南、西、北、东北、西北、<br> 东南、西南8类，再加上平地，共9类</li>
-<li>用不同的色彩显示<br><img src="/Blogs/./images/gis7.png" alt="gis7" loading="lazy"></li>
+<li>用不同的色彩显示<br><img src="/Blogs/./images/gis/gis7.png" alt="gis7" loading="lazy"></li>
 </ul>
 </li>
 </ul>
@@ -1014,7 +1014,7 @@ IconifyProviders = {
 <li>流域分析可以帮助决策者了解水流的分布和变化，从而做出更好的规划和决策</li>
 </ul>
 </li>
-<li><p>流域特征地貌自动提取和分割示例<br>  <img src="/Blogs/./images/gis8.png" alt="gis8" loading="lazy"></p>
+<li><p>流域特征地貌自动提取和分割示例<br>  <img src="/Blogs/./images/gis/gis8.png" alt="gis8" loading="lazy"></p>
 </li>
 <li><p>LiDAR数据</p>
 </li>
@@ -1056,18 +1056,18 @@ IconifyProviders = {
 <ul>
 <li>随机(random)</li>
 <li>均匀(Uniform)</li>
-<li>聚集(Clustered)<br><img src="/Blogs/./images/gis9.png" alt="gis9" loading="lazy"></li>
+<li>聚集(Clustered)<br><img src="/Blogs/./images/gis/gis9.png" alt="gis9" loading="lazy"></li>
 </ul>
 </li>
 <li><p>一个简单的点分布模式模式发现方法：GAM</p>
 </li>
-<li><p>样方法<br>  <img src="/Blogs/./images/gis10.png" alt="gis10" loading="lazy"></p>
+<li><p>样方法<br>  <img src="/Blogs/./images/gis/gis10.png" alt="gis10" loading="lazy"></p>
 </li>
-<li><p>核函数估计(Kernel Density Estimation, KDE)<br>  <img src="/Blogs/./images/gis11.png" alt="gis11" loading="lazy"></p>
+<li><p>核函数估计(Kernel Density Estimation, KDE)<br>  <img src="/Blogs/./images/gis/gis11.png" alt="gis11" loading="lazy"></p>
 </li>
-<li><p>核函数估计的计算方法<br>  <img src="/Blogs/./images/gis12.png" alt="gis12" loading="lazy"></p>
+<li><p>核函数估计的计算方法<br>  <img src="/Blogs/./images/gis/gis12.png" alt="gis12" loading="lazy"></p>
 </li>
-<li><p>不同类型的核函数<br>  <img src="/Blogs/./images/gis13.png" alt="gis13" loading="lazy"></p>
+<li><p>不同类型的核函数<br>  <img src="/Blogs/./images/gis/gis13.png" alt="gis13" loading="lazy"></p>
 </li>
 <li><p>密度图的应用</p>
 </li>
@@ -1077,13 +1077,13 @@ IconifyProviders = {
 <li>没有绝对最适宜的bandwidth</li>
 </ul>
 </li>
-<li><p>最近邻点分析：G函数<br>  <img src="/Blogs/./images/gis14.png" alt="gis14" loading="lazy"></p>
+<li><p>最近邻点分析：G函数<br>  <img src="/Blogs/./images/gis/gis14.png" alt="gis14" loading="lazy"></p>
 </li>
 <li><p>G函数</p>
 <ul>
 <li>G函数是一个统计量，用于描述点分布的聚集程度</li>
 <li>G函数的值越大，表示点分布越聚集；值越小，表示点分布越均匀或随机</li>
-<li>G函数的计算方法是统计每个点到其最近邻点的距离，并计算这些距离的分布情况<br><img src="/Blogs/./images/GIS.png" alt="GIS" loading="lazy"></li>
+<li>G函数的计算方法是统计每个点到其最近邻点的距离，并计算这些距离的分布情况<br><img src="/Blogs/./images/gis/GIS.png" alt="GIS" loading="lazy"></li>
 </ul>
 </li>
 <li><p>如何利用G函数判断一个分布不是随机的</p>
@@ -1093,17 +1093,17 @@ IconifyProviders = {
 <li>根据给定分布绘制G函数曲线</li>
 <li>根据随机分布模拟生成相同数目的点并绘制G函数曲线</li>
 <li>重复若干次，并对G函数排序，得到5%以及95%数值，得到一个区间。</li>
-<li>如果观测G函数曲线在该曲线外面，则说明实际分布不是随机的<br> <img src="/Blogs/./images/gfunc.png" alt="gfunc" loading="lazy"></li>
+<li>如果观测G函数曲线在该曲线外面，则说明实际分布不是随机的<br> <img src="/Blogs/./images/gis/gfunc.png" alt="gfunc" loading="lazy"></li>
 </ol>
 <ul>
-<li><p>F函数<br>  <img src="/Blogs/./images/ffunc.png" alt="ffunc" loading="lazy"></p>
+<li><p>F函数<br>  <img src="/Blogs/./images/gis/ffunc.png" alt="ffunc" loading="lazy"></p>
 </li>
 <li><p>K函数  (Ripley, 1976)</p>
 </li>
 </ul>
 <ol>
 <li>选择一个点i，计算以i为圆心h为半径的圆内点的数目，得到函数K(h)</li>
-<li>平均所有点的K(h)，得到整个区域的K函数<br> <img src="/Blogs/./images/kfunc.png" alt="kfunc" loading="lazy"><blockquote>
+<li>平均所有点的K(h)，得到整个区域的K函数<br> <img src="/Blogs/./images/gis/kfunc.png" alt="kfunc" loading="lazy"><blockquote>
 <p>注意问题：边缘效应</p>
 </blockquote>
 </li>
@@ -1115,7 +1115,7 @@ IconifyProviders = {
 <li>K函数的值越大，表示点分布越聚集；值越小，表示点分布越均匀或随机</li>
 <li>K函数可以帮助识别热点区域、异常点等</li>
 <li>如果点是随机分布的 K(h) 正比于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><msup><mi>h</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">πℎ^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></li>
-<li>可以将K(h)与随机分布的相比较<br><img src="/Blogs/./images/kfunc2.png" alt="kfunc2" loading="lazy"></li>
+<li>可以将K(h)与随机分布的相比较<br><img src="/Blogs/./images/gis/kfunc2.png" alt="kfunc2" loading="lazy"></li>
 </ul>
 </li>
 <li><p>点分布模式的思考</p>
@@ -1125,8 +1125,8 @@ IconifyProviders = {
 </li>
 <li><p>Modifiable areal unit problem</p>
 <ul>
-<li>地理学分析没有天然的边界。<br><img src="/Blogs/./images/gis15.png" alt="gis15" loading="lazy"></li>
-<li>对于地理分析，需要考虑MAUP问题。<br><img src="/Blogs/./images/gis16.png" alt="gis16" loading="lazy"></li>
+<li>地理学分析没有天然的边界。<br><img src="/Blogs/./images/gis/gis15.png" alt="gis15" loading="lazy"></li>
+<li>对于地理分析，需要考虑MAUP问题。<br><img src="/Blogs/./images/gis/gis16.png" alt="gis16" loading="lazy"></li>
 </ul>
 </li>
 </ul>
@@ -1137,7 +1137,7 @@ IconifyProviders = {
 </li>
 <li>空间自相关(Spatial Autocorrelation)<ul>
 <li>如果相近的区域取值相近，则表示空间自相关强，反之，则表示空间自相关弱</li>
-<li>大部分地理现象的分布都具有空间自相关特征<br><img src="/Blogs/./images/gis17.png" alt="gis17" loading="lazy"></li>
+<li>大部分地理现象的分布都具有空间自相关特征<br><img src="/Blogs/./images/gis/gis17.png" alt="gis17" loading="lazy"></li>
 </ul>
 </li>
 <li>空间自相关对于地理空间分析的影响<ul>
@@ -1160,7 +1160,7 @@ IconifyProviders = {
 <h3 id="Moran散点图"><a href="#Moran散点图" class="headerlink" title="Moran散点图"></a>Moran散点图</h3><ul>
 <li><p>绘制每个单元值以及其邻居单元平均值的散点图，并相关系数。</p>
 </li>
-<li><p>回归曲线的斜率就是Moran’s I。<br>  <img src="/Blogs/./images/gis18.png" alt="gis18" loading="lazy"></p>
+<li><p>回归曲线的斜率就是Moran’s I。<br>  <img src="/Blogs/./images/gis/gis18.png" alt="gis18" loading="lazy"></p>
 </li>
 <li><p>如何确定权重矩阵</p>
 <ul>
@@ -1256,7 +1256,7 @@ IconifyProviders = {
 </li>
 <li><p>定位分配(Location-allocation)模型</p>
 <ul>
-<li>一维分配问题<br><img src="/Blogs/./images/gis19.png" alt="gis19" loading="lazy"></li>
+<li>一维分配问题<br><img src="/Blogs/./images/gis/gis19.png" alt="gis19" loading="lazy"></li>
 </ul>
 </li>
 <li><p>可达性(Accessibility)分析</p>
@@ -1429,7 +1429,7 @@ IconifyProviders = {
 <li>等值线间隔的大小首先决定于现象的数值变化范围，变化范围越大，间隔也越大，反之亦然</li>
 </ul>
 </li>
-<li>根据等值线分层设色，颜色应由浅色逐渐加深，或由寒色逐渐过渡到暖色，这样可以提高地图的表现力<br><img src="/Blogs/./images/gis20.png" alt="gis20" loading="lazy"></li>
+<li>根据等值线分层设色，颜色应由浅色逐渐加深，或由寒色逐渐过渡到暖色，这样可以提高地图的表现力<br><img src="/Blogs/./images/gis/gis20.png" alt="gis20" loading="lazy"></li>
 </ul>
 </li>
 <li>质底法<ul>
@@ -1448,7 +1448,7 @@ IconifyProviders = {
 <li>优点是鲜明美观</li>
 <li>缺点是不易表示各类现象的逐渐过渡，而且当分类很多时，图例比较复杂，必须详细阅读图例时才能读图</li>
 <li>两种颜色系统不应该相互重叠，但是底色可以与晕线重合</li>
-<li>质底法易于与其他表示方法结合使用。<br><img src="/Blogs/./images/gis21.png" alt="gis21" loading="lazy"></li>
+<li>质底法易于与其他表示方法结合使用。<br><img src="/Blogs/./images/gis/gis21.png" alt="gis21" loading="lazy"></li>
 </ul>
 </li>
 </ul>
@@ -1469,7 +1469,7 @@ IconifyProviders = {
 </li>
 <li>范围法与质底法的区别<ul>
 <li>所表现的现象不布满整个编图区域</li>
-<li>不一定有精确的范围界线<br><img src="/Blogs/./images/gis22.png" alt="gis22" loading="lazy"></li>
+<li>不一定有精确的范围界线<br><img src="/Blogs/./images/gis/gis22.png" alt="gis22" loading="lazy"></li>
 </ul>
 </li>
 </ul>
@@ -1491,7 +1491,7 @@ IconifyProviders = {
 <li>点值法的优点<ul>
 <li>简单明了</li>
 <li>既可以表示现象的数量特征</li>
-<li>也可以表示它的质量特征和发展概况<br><img src="/Blogs/./images/gis23.png" alt="gis23" loading="lazy"></li>
+<li>也可以表示它的质量特征和发展概况<br><img src="/Blogs/./images/gis/gis23.png" alt="gis23" loading="lazy"></li>
 </ul>
 </li>
 </ul>
@@ -1511,7 +1511,7 @@ IconifyProviders = {
 <li>线状符号<ul>
 <li>可表示几何概念的线划，如分水岭、地面上确定的各种境界线</li>
 <li>可表示线状分布的不能依地图比例尺表示其宽度的地物，如河流与道路</li>
-<li>可用线状符号强调图上按面积表示的地物的主要方向，如山脊线、山脉走向线<br><img src="/Blogs/./images/gis24.png" alt="gis24" loading="lazy"></li>
+<li>可用线状符号强调图上按面积表示的地物的主要方向，如山脊线、山脉走向线<br><img src="/Blogs/./images/gis/gis24.png" alt="gis24" loading="lazy"></li>
 </ul>
 </li>
 </ul>
@@ -1524,7 +1524,7 @@ IconifyProviders = {
 <li>首尾衔接的箭形表示运动的路线</li>
 </ul>
 </li>
-<li>动线法表示面状事物的移动<br><img src="/Blogs/./images/gis25.png" alt="gis25" loading="lazy"></li>
+<li>动线法表示面状事物的移动<br><img src="/Blogs/./images/gis/gis25.png" alt="gis25" loading="lazy"></li>
 </ul>
 </li>
 <li>统计图法<ul>
@@ -1550,7 +1550,7 @@ IconifyProviders = {
 <li>表示一定区域单位范围内某种制图现象平均密度的方法</li>
 <li>是按照各区划单位的统计资料，根据现象的密度、强度或发展水平划分等级，然后依据级别高低，在地- 图上按区划分别填绘深浅不同的颜色或疏密不同的晕线，以显示各区划单位间的差异</li>
 <li>分级时可采用等差的、等比的、逐渐增大的或任意的</li>
-<li>分级统计图适于表示相对的数量指标。绘制简单，阅读容易<br><img src="/Blogs/./images/gis26.png" alt="gis26" loading="lazy"></li>
+<li>分级统计图适于表示相对的数量指标。绘制简单，阅读容易<br><img src="/Blogs/./images/gis/gis26.png" alt="gis26" loading="lazy"></li>
 </ul>
 </li>
 </ul>
@@ -1562,7 +1562,7 @@ IconifyProviders = {
 <li>首先是根据DEM数据计算坡度和坡向</li>
 <li>然后将坡向数据与光源方向比较，面向光源的斜坡得到浅色调灰度值，反方向的得到深色调灰度值，两者之间得到中间灰度值</li>
 <li>灰度值的大小则按坡度进一步确定 </li>
-<li>三维曲面<br>  <img src="/Blogs/./images/gis27.png" alt="gis27" loading="lazy"></li>
+<li>三维曲面<br>  <img src="/Blogs/./images/gis/gis27.png" alt="gis27" loading="lazy"></li>
 </ul>
 </li>
 </ul>
@@ -1618,7 +1618,7 @@ IconifyProviders = {
 <li>水环境监测 湖泊富营养化 水体富营养化</li>
 <li>河流水质监测与评估 长江流域水质监测站分布</li>
 </ul>
-<h3 id="城市规划和管理"><a href="#城市规划和管理" class="headerlink" title="城市规划和管理"></a>城市规划和管理</h3><p><img src="/Blogs/./images/gis28.png" alt="gis28" loading="lazy"></p>
+<h3 id="城市规划和管理"><a href="#城市规划和管理" class="headerlink" title="城市规划和管理"></a>城市规划和管理</h3><p><img src="/Blogs/./images/gis/gis28.png" alt="gis28" loading="lazy"></p>
 <ul>
 <li>城市规划 城市三维可视化 城市规划效果三维可视化</li>
 <li>城市管理 北京市东城区万米网格管理</li>
@@ -1743,7 +1743,7 @@ IconifyProviders = {
 </ul>
 </li>
 </ul>
-</div></section><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="Donate" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><span class="icon iconify" data-icon="ri:hand-coin-line"></span></span><div id="reward-comment">我很可爱，请给我钱</div><div id="qr" style="display:none;"><div style="display:inline-block"><a href="/images/wechatpay-qrcode.png"><img loading="lazy" src="/Blogs/images/wechatpay-qrcode.png" alt="微信支付" title="微信支付"></a><div><span style="color:#2DC100"><span class="icon iconify" data-icon="ri:wechat-pay-line"></span></span></div></div></div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>Post author: </strong>老于真的不老</li><li class="post-copyright-link"><strong>Post link: </strong><a href="https://carlyuhq.github.io/Blogs/2025/06/12/%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" title="地理信息系统概论">https://carlyuhq.github.io/Blogs/2025/06/12/%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/</a></li><li class="post-copyright-license"><strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><span class="icon iconify" data-icon="ri:creative-commons-line"></span><span class="icon iconify" data-icon="ri:creative-commons-by-line"></span><span class="icon iconify" data-icon="ri:creative-commons-nc-line"></span><span class="icon iconify" data-icon="ri:creative-commons-sa-line"></span></a> unless otherwise stated.</li></ul></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/Blogs/2025/07/06/%E6%9D%82%E8%B0%88%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2/" rel="prev" title="杂谈迁移博客"><span class="icon iconify" data-icon="ri:arrow-left-s-line"></span><span class="post-nav-text">杂谈迁移博客</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/Blogs/2025/06/04/%E4%BF%A1%E6%81%AF%E8%AE%BA%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/" rel="next" title="信息论期末复习"><span class="post-nav-text">信息论期末复习</span><span class="icon iconify" data-icon="ri:arrow-right-s-line"></span></a></div></div></div><div class="hty-card" id="comment"><div class="comment-tooltip text-center"><span>如果您有任何关于博客内容的相关讨论，欢迎前往 <a href="https://github.com/CarlYuHQ/CarlYuHQ.github.io/discussions" target="_blank">GitHub Discussions</a> 与我交流。</span><br></div><div id="waline"></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@waline/client@v2/dist/waline.css"><script>window.CONFIG.waline.config.path = "/Blogs/2025/06/12/%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/"</script><div class="js-Pjax"><script src="/Blogs/js/comments/waline.js" type="module" defer></script></div></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2025 </span><span class="with-love" id="animate"><span class="icon iconify" data-icon="ri:cloud-line"></span></span><span class="author"> 老于真的不老</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.10.11</span></div><div class="live-time"><span>本博客已萌萌哒地运行</span><span id="display_live_time"></span><span class="moe-text">(●'◡'●)</span><script>function blog_live_time() {
+</div></section><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="Donate" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><span class="icon iconify" data-icon="ri:hand-coin-line"></span></span><div id="reward-comment">我很可爱，请给我钱</div><div id="qr" style="display:none;"><div style="display:inline-block"><a href="/images/wechatpay-qrcode.png"><img loading="lazy" src="/Blogs/images/wechatpay-qrcode.png" alt="微信支付" title="微信支付"></a><div><span style="color:#2DC100"><span class="icon iconify" data-icon="ri:wechat-pay-line"></span></span></div></div></div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>Post author: </strong>老于真的不老</li><li class="post-copyright-link"><strong>Post link: </strong><a href="https://carlyuhq.github.io/Blogs/2025/06/12/%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" title="地理信息系统概论">https://carlyuhq.github.io/Blogs/2025/06/12/%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/</a></li><li class="post-copyright-license"><strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><span class="icon iconify" data-icon="ri:creative-commons-line"></span><span class="icon iconify" data-icon="ri:creative-commons-by-line"></span><span class="icon iconify" data-icon="ri:creative-commons-nc-line"></span><span class="icon iconify" data-icon="ri:creative-commons-sa-line"></span></a> unless otherwise stated.</li></ul></article><div class="post-nav"><div class="post-nav-item"><a class="post-nav-prev" href="/Blogs/2025/07/06/%E6%9D%82%E8%B0%88%E8%BF%81%E7%A7%BB%E5%8D%9A%E5%AE%A2/" rel="prev" title="杂谈迁移博客"><span class="icon iconify" data-icon="ri:arrow-left-s-line"></span><span class="post-nav-text">杂谈迁移博客</span></a></div><div class="post-nav-item"><a class="post-nav-next" href="/Blogs/2025/06/04/%E4%BF%A1%E6%81%AF%E8%AE%BA/" rel="next" title="信息论"><span class="post-nav-text">信息论</span><span class="icon iconify" data-icon="ri:arrow-right-s-line"></span></a></div></div></div><div class="hty-card" id="comment"><div class="comment-tooltip text-center"><span>如果您有任何关于博客内容的相关讨论，欢迎前往 <a href="https://github.com/CarlYuHQ/CarlYuHQ.github.io/discussions" target="_blank">GitHub Discussions</a> 与我交流。</span><br></div><div id="waline"></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@waline/client@v2/dist/waline.css"><script>window.CONFIG.waline.config.path = "/Blogs/2025/06/12/%E5%9C%B0%E7%90%86%E4%BF%A1%E6%81%AF%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/"</script><div class="js-Pjax"><script src="/Blogs/js/comments/waline.js" type="module" defer></script></div></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2025 </span><span class="with-love" id="animate"><span class="icon iconify" data-icon="ri:cloud-line"></span></span><span class="author"> 老于真的不老</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.10.11</span></div><div class="live-time"><span>本博客已萌萌哒地运行</span><span id="display_live_time"></span><span class="moe-text">(●'◡'●)</span><script>function blog_live_time() {
   setTimeout(blog_live_time, 1000);
   const start = new Date('2025-06-01T00:00:00');
   const now = new Date();
