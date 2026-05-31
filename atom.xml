@@ -138,19 +138,10 @@
     <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E6%97%B6%E5%BA%8F%E5%B7%AE%E5%88%86%E6%96%B9%E6%B3%95/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E6%97%B6%E5%BA%8F%E5%B7%AE%E5%88%86%E6%96%B9%E6%B3%95/</id>
     <published>2026-05-29T06:00:00.000Z</published>
-    <updated>2026-05-29T05:55:10.813Z</updated>
+    <updated>2026-05-31T09:40:44.598Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本章介绍时序差分（Temporal-Difference, TD）方法。与蒙特卡洛（MC）学习类似，TD 学习也是无模型（model-free）的，但由于其增量形式而具有一些优势。借助第六章的准备工作，读者在看到 TD 学习算法时不会感到陌生。事实上，TD 学习算法可以看作是求解 Bellman 方程或 Bellman 最优方程的特殊随机逼近算法。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/Blogs/./images/rl/fig7-1-roadmap.png&quot; alt=&quot;fig7-1&quot;&gt;&lt;/p&gt;
-&lt;p&gt;本章各节内容概述如下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Section 7.1&lt;/strong&gt; 介绍最基本的 TD 算法，用于估计给定策略的状态值。在学习其他 TD 算法之前，理解这个基本算法非常重要。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Section 7.2&lt;/strong&gt; 介绍 Sarsa 算法，可以估计给定策略的动作值。该算法可以与策略改进步骤结合以寻找最优策略。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Section 7.3&lt;/strong&gt; 介绍 n-step Sarsa 算法，是 Sarsa 的推广。可以证明 Sarsa 和 MC 学习是 n-step Sarsa 的两个特殊情况。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Section 7.4&lt;/strong&gt; 介绍 Q-learning 算法，这是最经典的强化学习算法之一。其他 TD 算法旨在求解给定策略的 Bellman 方程，而 Q-learning 旨在直接求解 Bellman 最优方程以获得最优策略。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Section 7.5&lt;/strong&gt; 比较本章介绍的 TD 算法并提供统一视角。&lt;/li&gt;
-&lt;/ul&gt;</summary>
+    <summary type="html">&lt;p&gt;本章介绍时序差分（Temporal-Difference, TD）方法。与蒙特卡洛（MC）学习类似，TD 学习也是无模型（model-free）的，但由于其增量形式而具有一些优势。借助第六章的准备工作，读者在看到 TD 学习算法时不会感到陌生。事实上，TD 学习算法可以看作是求解 Bellman 方程或 Bellman 最优方程的特殊随机逼近算法。&lt;/p&gt;</summary>
     
     
     
