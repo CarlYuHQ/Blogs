@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>老于真的不老の随笔</title>
+  <icon>https://carlyuhq.github.io/Blogs/icon.png</icon>
+  <subtitle>紫荆花开，岁月如歌</subtitle>
+  <link href="https://carlyuhq.github.io/Blogs/atom.xml" rel="self"/>
+  
+  <link href="https://carlyuhq.github.io/Blogs/"/>
+  <updated>2026-05-29T09:56:16.051Z</updated>
+  <id>https://carlyuhq.github.io/Blogs/</id>
+  
+  <author>
+    <name>老于真的不老</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>强化学习笔记（附录）数学预备知识</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E9%99%84%E5%BD%95-%E6%95%B0%E5%AD%A6%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E9%99%84%E5%BD%95-%E6%95%B0%E5%AD%A6%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86/</id>
+    <published>2026-05-29T13:00:00.000Z</published>
+    <updated>2026-05-29T09:56:16.051Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本附录汇总了本书中频繁使用的数学预备知识，包括概率论基础（附录 A）、测度论概率（附录 B）、序列收敛（附录 C）和梯度下降（附录 D）。这些内容为理解正文中的算法推导和收敛性分析提供了必要的数学基础。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>强化学习笔记（六）随机逼近</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9A%8F%E6%9C%BA%E9%80%BC%E8%BF%91/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9A%8F%E6%9C%BA%E9%80%BC%E8%BF%91/</id>
+    <published>2026-05-29T12:00:00.000Z</published>
+    <updated>2026-05-29T05:13:02.126Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本文为强化学习课程 Chapter 6: Stochastic Approximation 的详细笔记。本章不介绍具体的强化学习算法，而是为第七章的&lt;strong&gt;时序差分学习&lt;/strong&gt;奠定数学基础。核心内容是&lt;strong&gt;Robbins-Monro 算法&lt;/strong&gt;和&lt;strong&gt;随机梯度下降（SGD）&lt;/strong&gt;，它们是增量式算法的理论根基。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>强化学习笔记（十）演员-评论家方法</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/</id>
+    <published>2026-05-29T12:00:00.000Z</published>
+    <updated>2026-05-31T08:47:56.859Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本章介绍演员-评论家（Actor-Critic）方法。从一个角度来看，”演员-评论家”指的是一种融合了基于策略方法和基于值方法的结构：”演员”（actor）负责策略更新步骤，之所以称为演员是因为动作是按照策略执行的；”评论家”（critic）负责值更新步骤，之所以称为评论家是因为它通过评估值来”批评”演员的表现。从另一个角度来看，演员-评论家方法仍然是策略梯度算法，可以视为第 9 章策略梯度算法的扩展。在学习本章之前，读者应当充分理解第 8 章和第 9 章的内容。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>强化学习笔记（九）策略梯度方法</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/</id>
+    <published>2026-05-29T08:00:00.000Z</published>
+    <updated>2026-05-31T08:48:06.956Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;函数逼近的思想不仅可以用于表示状态&amp;#x2F;动作值（第 8 章），还可以用于表示策略。本章介绍如何将策略表示为参数化函数 &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;π&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;∣&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mo separator=&quot;true&quot;&gt;,&lt;/mo&gt;&lt;mi&gt;θ&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;&#92;pi(a|s, &#92;theta)&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:1em;vertical-align:-0.25em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.03588em;&quot;&gt;π&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;∣&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;mpunct&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.1667em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.02778em;&quot;&gt;θ&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;，其中 &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;θ&lt;/mi&gt;&lt;mo&gt;∈&lt;/mo&gt;&lt;msup&gt;&lt;mi mathvariant=&quot;double-struck&quot;&gt;R&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;&#92;theta &#92;in &#92;mathbb{R}^m&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.7335em;vertical-align:-0.0391em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.02778em;&quot;&gt;θ&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2778em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;∈&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2778em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.6889em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mord mathbb&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.6644em;&quot;&gt;&lt;span style=&quot;top:-3.063em;margin-right:0.05em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.7em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mathnormal mtight&quot;&gt;m&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 是参数向量。当策略表示为函数时，最优策略可以通过优化某个标量度量来获得——这种方法称为&lt;strong&gt;策略梯度&lt;/strong&gt;（policy gradient）。这是本书的一大步跨越，因为之前所有方法都是基于值的（value-based），而策略梯度是基于策略的（policy-based）。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>强化学习笔记（八）值函数方法</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E5%80%BC%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E5%80%BC%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95/</id>
+    <published>2026-05-29T07:00:00.000Z</published>
+    <updated>2026-05-31T08:48:06.928Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本章继续研究时序差分学习算法，但使用不同的方法来表示状态&amp;#x2F;动作值。目前为止，状态&amp;#x2F;动作值一直用表格表示。表格方法直观易懂，但处理大型状态或动作空间时效率低下。本章介绍值函数方法，它已成为表示值的标准方式，也是将人工神经网络作为函数逼近器引入强化学习的入口。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>强化学习笔记（七）时序差分方法</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E6%97%B6%E5%BA%8F%E5%B7%AE%E5%88%86%E6%96%B9%E6%B3%95/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E6%97%B6%E5%BA%8F%E5%B7%AE%E5%88%86%E6%96%B9%E6%B3%95/</id>
+    <published>2026-05-29T06:00:00.000Z</published>
+    <updated>2026-05-29T05:55:10.813Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本章介绍时序差分（Temporal-Difference, TD）方法。与蒙特卡洛（MC）学习类似，TD 学习也是无模型（model-free）的，但由于其增量形式而具有一些优势。借助第六章的准备工作，读者在看到 TD 学习算法时不会感到陌生。事实上，TD 学习算法可以看作是求解 Bellman 方程或 Bellman 最优方程的特殊随机逼近算法。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/Blogs/./images/rl/fig7-1-roadmap.png&quot; alt=&quot;fig7-1&quot;&gt;&lt;/p&gt;
+&lt;p&gt;本章各节内容概述如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Section 7.1&lt;/strong&gt; 介绍最基本的 TD 算法，用于估计给定策略的状态值。在学习其他 TD 算法之前，理解这个基本算法非常重要。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Section 7.2&lt;/strong&gt; 介绍 Sarsa 算法，可以估计给定策略的动作值。该算法可以与策略改进步骤结合以寻找最优策略。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Section 7.3&lt;/strong&gt; 介绍 n-step Sarsa 算法，是 Sarsa 的推广。可以证明 Sarsa 和 MC 学习是 n-step Sarsa 的两个特殊情况。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Section 7.4&lt;/strong&gt; 介绍 Q-learning 算法，这是最经典的强化学习算法之一。其他 TD 算法旨在求解给定策略的 Bellman 方程，而 Q-learning 旨在直接求解 Bellman 最优方程以获得最优策略。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Section 7.5&lt;/strong&gt; 比较本章介绍的 TD 算法并提供统一视角。&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>强化学习笔记（五）蒙特卡洛方法</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95/</id>
+    <published>2026-05-29T02:00:00.000Z</published>
+    <updated>2026-05-29T04:06:57.159Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本文为强化学习课程 Chapter 5: Monte Carlo Methods 的详细笔记。本章介绍第一个&lt;strong&gt;无模型（model-free）&lt;/strong&gt;强化学习算法——蒙特卡洛方法。核心思想是：如果没有模型，就必须有数据。MC 方法通过经验样本来估计动作值，从而寻找最优策略。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>强化学习笔记（四）值迭代与策略迭代</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/28/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%80%BC%E8%BF%AD%E4%BB%A3%E4%B8%8E%E7%AD%96%E7%95%A5%E8%BF%AD%E4%BB%A3/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/28/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%80%BC%E8%BF%AD%E4%BB%A3%E4%B8%8E%E7%AD%96%E7%95%A5%E8%BF%AD%E4%BB%A3/</id>
+    <published>2026-05-28T12:00:00.000Z</published>
+    <updated>2026-05-28T09:33:18.160Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本文为强化学习课程 Chapter 4: Value Iteration and Policy Iteration 的详细笔记。本章介绍三个密切相关的&lt;strong&gt;动态规划（Dynamic Programming）&lt;/strong&gt;算法：&lt;strong&gt;值迭代（Value Iteration）&lt;/strong&gt;、&lt;strong&gt;策略迭代（Policy Iteration）&lt;/strong&gt;和&lt;strong&gt;截断策略迭代（Truncated Policy Iteration）&lt;/strong&gt;，它们是后续无模型强化学习算法的重要基础。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>谈谈刷leetcode</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/28/%E8%B0%88%E8%B0%88%E5%88%B7leetcode/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/28/%E8%B0%88%E8%B0%88%E5%88%B7leetcode/</id>
+    <published>2026-05-28T07:14:45.000Z</published>
+    <updated>2026-05-29T05:07:26.792Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;刷 LeetCode 是准备技术面试时绕不开的一步，但对我来说，这段过程并不轻松。&lt;br&gt;这篇先记录一下我目前刷题的真实体验和一些心得，后面也会持续更新题目笔记与思路。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://carlyuhq.github.io/Blogs/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="https://carlyuhq.github.io/Blogs/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+    <category term="生活" scheme="https://carlyuhq.github.io/Blogs/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+    <category term="分享" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%88%86%E4%BA%AB/"/>
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="计划" scheme="https://carlyuhq.github.io/Blogs/tags/%E8%AE%A1%E5%88%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>强化学习笔记（三）最优状态值与贝尔曼最优方程</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/28/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%9C%80%E4%BC%98%E7%8A%B6%E6%80%81%E5%80%BC%E4%B8%8E%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E6%96%B9%E7%A8%8B/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/28/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%9C%80%E4%BC%98%E7%8A%B6%E6%80%81%E5%80%BC%E4%B8%8E%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%9C%80%E4%BC%98%E6%96%B9%E7%A8%8B/</id>
+    <published>2026-05-28T02:00:00.000Z</published>
+    <updated>2026-05-28T06:58:35.691Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本文为强化学习课程 Chapter 3: Optimal State Values and Bellman Optimality Equation 的详细笔记。本章引入&lt;strong&gt;最优策略&lt;/strong&gt;和&lt;strong&gt;最优状态值&lt;/strong&gt;的概念，以及分析它们的核心工具——&lt;strong&gt;贝尔曼最优方程（Bellman Optimality Equation, BOE）&lt;/strong&gt;。通过求解 BOE，可以得到最优状态值和最优策略。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>强化学习笔记（二）状态值与贝尔曼方程</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/28/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E7%8A%B6%E6%80%81%E5%80%BC%E4%B8%8E%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/28/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E7%8A%B6%E6%80%81%E5%80%BC%E4%B8%8E%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/</id>
+    <published>2026-05-27T16:00:00.000Z</published>
+    <updated>2026-05-27T15:59:34.399Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本文为强化学习课程 Chapter 2: State Values and Bellman Equation 的详细笔记。本章引入&lt;strong&gt;状态值（state value）&lt;/strong&gt;这一核心概念和&lt;strong&gt;贝尔曼方程（Bellman equation）&lt;/strong&gt;这一重要工具。状态值定义为智能体遵循给定策略时所能获得的平均奖励，可用于评估策略的好坏。贝尔曼方程描述了所有状态值之间的关系，是分析状态值的基本工具。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>强化学习笔记（一）基本概念</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/27/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/27/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%80%E7%AB%A0-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</id>
+    <published>2026-05-27T08:00:00.000Z</published>
+    <updated>2026-05-27T14:18:49.238Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本文为强化学习课程 Chapter 1: Basic Concepts 的详细笔记，内容涵盖状态、动作、状态转移、策略、奖励、回报、马尔可夫决策过程（MDP）等核心概念。这些概念非常重要，因为它们将在本书中被广泛使用。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>主页与博客联动重构纪要</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/27/%E4%B8%BB%E9%A1%B5%E4%B8%8E%E5%8D%9A%E5%AE%A2%E8%81%94%E5%8A%A8%E9%87%8D%E6%9E%84%E7%BA%AA%E8%A6%81/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/27/%E4%B8%BB%E9%A1%B5%E4%B8%8E%E5%8D%9A%E5%AE%A2%E8%81%94%E5%8A%A8%E9%87%8D%E6%9E%84%E7%BA%AA%E8%A6%81/</id>
+    <published>2026-05-27T07:36:00.000Z</published>
+    <updated>2026-05-28T06:34:11.780Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;这篇我想用“复盘 + 操作手册”的方式，完整记录这段时间我对个人主页和随笔博客做的联动重构。&lt;/p&gt;
+&lt;p&gt;说白了这次重构只有三个目标：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;写作只在 Hexo 做一次&lt;/strong&gt;，不用重复搬运到主页；  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;主页最新动态尽量自动更新&lt;/strong&gt;，少手工；  &lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Routine 能真正日更并看得到统计&lt;/strong&gt;，不是摆设。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这篇会写得很细，尽量做到：以后我自己看也能快速恢复现场。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://carlyuhq.github.io/Blogs/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="分享" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%88%86%E4%BA%AB/"/>
+    
+    <category term="博客" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+    <category term="主页" scheme="https://carlyuhq.github.io/Blogs/tags/%E4%B8%BB%E9%A1%B5/"/>
+    
+    <category term="重构" scheme="https://carlyuhq.github.io/Blogs/tags/%E9%87%8D%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>“初识”</title>
+    <link href="https://carlyuhq.github.io/Blogs/2025/08/10/%E2%80%9C%E5%88%9D%E8%AF%86%E2%80%9D/"/>
+    <id>https://carlyuhq.github.io/Blogs/2025/08/10/%E2%80%9C%E5%88%9D%E8%AF%86%E2%80%9D/</id>
+    <published>2025-08-10T09:42:18.000Z</published>
+    <updated>2025-09-07T14:29:15.252Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;“人和人的缘分 不是一场不出门就可以避开的雨。”     &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://carlyuhq.github.io/Blogs/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="https://carlyuhq.github.io/Blogs/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+    <category term="恋爱" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%81%8B%E7%88%B1/"/>
+    
+    <category term="生活" scheme="https://carlyuhq.github.io/Blogs/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+    <category term="分享" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%88%86%E4%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>杂谈更新</title>
+    <link href="https://carlyuhq.github.io/Blogs/2025/07/17/%E6%9D%82%E8%B0%88%E6%9B%B4%E6%96%B0/"/>
+    <id>https://carlyuhq.github.io/Blogs/2025/07/17/%E6%9D%82%E8%B0%88%E6%9B%B4%E6%96%B0/</id>
+    <published>2025-07-17T07:41:05.000Z</published>
+    <updated>2025-07-17T09:20:11.267Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;“自律和不自律，都会吃苦，不同的是，自律的苦会让人生越来越甜。”   &lt;/p&gt;
+&lt;div style=&quot;text-align:right&quot;&gt;- 选择自律，选择更美好的未来。&lt;/div&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="https://carlyuhq.github.io/Blogs/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+    <category term="随笔" scheme="https://carlyuhq.github.io/Blogs/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+    <category term="生活" scheme="https://carlyuhq.github.io/Blogs/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+    <category term="分享" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%88%86%E4%BA%AB/"/>
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="计划" scheme="https://carlyuhq.github.io/Blogs/tags/%E8%AE%A1%E5%88%92/"/>
+    
+  </entry>
+  
+</feed>
