@@ -6,7 +6,7 @@
   <link href="https://carlyuhq.github.io/Blogs/atom.xml" rel="self"/>
   
   <link href="https://carlyuhq.github.io/Blogs/"/>
-  <updated>2026-07-02T10:48:15.504Z</updated>
+  <updated>2026-07-02T13:53:17.963Z</updated>
   <id>https://carlyuhq.github.io/Blogs/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://carlyuhq.github.io/Blogs/2026/07/02/RAG%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA%E7%94%9F%E6%88%90%E5%85%A8%E6%99%AF%E8%A7%A3%E6%9E%90/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/07/02/RAG%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA%E7%94%9F%E6%88%90%E5%85%A8%E6%99%AF%E8%A7%A3%E6%9E%90/</id>
     <published>2026-07-02T08:00:00.000Z</published>
-    <updated>2026-07-02T10:48:15.504Z</updated>
+    <updated>2026-07-02T13:53:17.963Z</updated>
     
     
     <summary type="html">&lt;p&gt;大语言模型（LLM）能力再强，也逃不开”知其然不知其所以然”的尴尬：训练数据有截止日期、领域知识不够深、还时不时一本正经地胡说八道。&lt;strong&gt;RAG（Retrieval-Augmented Generation，检索增强生成）&lt;/strong&gt; 正是为解决这些问题而生的一种技术范式。本文系统梳理 RAG 的核心定义、技术原理、演进分类、选型对比与上手路径，带你建立对 RAG 的完整认知地图。&lt;/p&gt;</summary>
