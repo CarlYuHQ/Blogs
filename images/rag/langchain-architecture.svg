@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 540" font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="lcCore" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#34d399"/><stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="lcMid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="lcTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbbf24"/><stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="820" height="540" fill="#fafafa"/>
+
+  <text x="410" y="36" text-anchor="middle" font-size="22" font-weight="700" fill="#1f2937">LangChain 生态架构</text>
+  <text x="410" y="58" text-anchor="middle" font-size="13" fill="#6b7280">从底层抽象到平台产品的三层结构</text>
+
+  <!-- 顶层：平台 -->
+  <text x="60" y="100" font-size="13" font-weight="700" fill="#92400e">平台层 · Platform</text>
+  <g>
+    <rect x="60"  y="110" width="160" height="70" rx="10" fill="url(#lcTop)"/>
+    <text x="140" y="140" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">LangGraph</text>
+    <text x="140" y="162" text-anchor="middle" font-size="11" fill="#fff">有状态图编排运行时</text>
+
+    <rect x="240" y="110" width="160" height="70" rx="10" fill="url(#lcTop)"/>
+    <text x="320" y="140" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">LangSmith</text>
+    <text x="320" y="162" text-anchor="middle" font-size="11" fill="#fff">可观测性 / 评估</text>
+
+    <rect x="420" y="110" width="160" height="70" rx="10" fill="url(#lcTop)"/>
+    <text x="500" y="140" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">LangServe</text>
+    <text x="500" y="162" text-anchor="middle" font-size="11" fill="#fff">部署为 REST API</text>
+
+    <rect x="600" y="110" width="160" height="70" rx="10" fill="url(#lcTop)"/>
+    <text x="680" y="140" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">Deep Agents</text>
+    <text x="680" y="162" text-anchor="middle" font-size="11" fill="#fff">高层 agent 套件</text>
+  </g>
+
+  <!-- 中层：包 -->
+  <text x="60" y="222" font-size="13" font-weight="700" fill="#1e3a8a">应用层 · Packages</text>
+  <g>
+    <rect x="60"  y="232" width="225" height="86" rx="10" fill="url(#lcMid)"/>
+    <text x="172" y="258" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">langchain</text>
+    <text x="172" y="278" text-anchor="middle" font-size="11" fill="#e0e7ff">chains · agents</text>
+    <text x="172" y="295" text-anchor="middle" font-size="11" fill="#e0e7ff">retrieval strategies</text>
+
+    <rect x="298" y="232" width="225" height="86" rx="10" fill="url(#lcMid)"/>
+    <text x="410" y="258" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">partner packages</text>
+    <text x="410" y="278" text-anchor="middle" font-size="11" fill="#e0e7ff">langchain-openai / -anthropic</text>
+    <text x="410" y="295" text-anchor="middle" font-size="11" fill="#e0e7ff">-pinecone / -chroma …</text>
+
+    <rect x="536" y="232" width="225" height="86" rx="10" fill="url(#lcMid)"/>
+    <text x="648" y="258" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">langchain-community</text>
+    <text x="648" y="278" text-anchor="middle" font-size="11" fill="#e0e7ff">社区第三方集成</text>
+    <text x="648" y="295" text-anchor="middle" font-size="11" fill="#e0e7ff">700+ 集成</text>
+  </g>
+
+  <!-- 底层：core -->
+  <text x="60" y="358" font-size="13" font-weight="700" fill="#065f46">基础层 · Foundation</text>
+  <rect x="60" y="368" width="700" height="86" rx="10" fill="url(#lcCore)"/>
+  <text x="410" y="396" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">langchain-core</text>
+  <text x="410" y="418" text-anchor="middle" font-size="12" fill="#d1fae5">Runnable · ChatModel · BaseRetriever · PromptTemplate · Document · VectorStore · Embeddings</text>
+  <text x="410" y="438" text-anchor="middle" font-size="12" fill="#d1fae5">LCEL（| 运算符）统一 invoke / batch / stream / async</text>
+
+  <!-- 底注 -->
+  <text x="410" y="490" text-anchor="middle" font-size="12" fill="#6b7280">设计哲学：把一切组件统一为 Runnable，用 LCEL 像乐高一样组合</text>
+  <text x="410" y="510" text-anchor="middle" font-size="11" fill="#9ca3af">v1.0 后高层 chain（create_agent）建在 LangGraph 之上</text>
+</svg>

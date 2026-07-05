@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 360" font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="liIngest" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="liIndex" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#34d399"/><stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <linearGradient id="liQuery" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f472b6"/><stop offset="100%" stop-color="#db2777"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <rect width="880" height="360" fill="#fafafa"/>
+
+  <text x="440" y="34" text-anchor="middle" font-size="22" font-weight="700" fill="#1f2937">LlamaIndex 数据流水线</text>
+  <text x="440" y="56" text-anchor="middle" font-size="13" fill="#6b7280">从原始数据到结构化答案的端到端封装</text>
+
+  <!-- 数据源 -->
+  <text x="40" y="170" font-size="12" fill="#6b7280" text-anchor="middle">数据源</text>
+  <g font-size="11" fill="#374151">
+    <rect x="10" y="90" width="60" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/>
+    <text x="40" y="107" text-anchor="middle">PDF</text>
+    <rect x="10" y="122" width="60" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/>
+    <text x="40" y="139" text-anchor="middle">Notion</text>
+    <rect x="10" y="154" width="60" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/>
+    <text x="40" y="171" text-anchor="middle">网页</text>
+    <rect x="10" y="186" width="60" height="26" rx="5" fill="#fff" stroke="#cbd5e1"/>
+    <text x="40" y="203" text-anchor="middle">数据库</text>
+  </g>
+
+  <!-- 阶段1：接入 -->
+  <rect x="120" y="92" width="150" height="150" rx="12" fill="url(#liIngest)"/>
+  <text x="195" y="120" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">Data Ingestion</text>
+  <text x="195" y="142" text-anchor="middle" font-size="11" fill="#ede9fe">LlamaHub · 200+</text>
+  <text x="195" y="158" text-anchor="middle" font-size="11" fill="#ede9fe">数据连接器</text>
+  <text x="195" y="186" text-anchor="middle" font-size="11" fill="#ede9fe">Document / Node</text>
+  <text x="195" y="202" text-anchor="middle" font-size="11" fill="#ede9fe">LlamaParse 解析</text>
+  <text x="195" y="228" text-anchor="middle" font-size="10" fill="#ede9fe">SimpleDirectoryReader</text>
+
+  <!-- 阶段2：索引 -->
+  <rect x="330" y="92" width="150" height="150" rx="12" fill="url(#liIndex)"/>
+  <text x="405" y="120" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">Indices</text>
+  <text x="405" y="142" text-anchor="middle" font-size="11" fill="#d1fae5">VectorStoreIndex</text>
+  <text x="405" y="158" text-anchor="middle" font-size="11" fill="#d1fae5">Summary / Tree</text>
+  <text x="405" y="174" text-anchor="middle" font-size="11" fill="#d1fae5">KeywordTable</text>
+  <text x="405" y="190" text-anchor="middle" font-size="11" fill="#d1fae5">KnowledgeGraph</text>
+  <text x="405" y="228" text-anchor="middle" font-size="10" fill="#d1fae5">嵌入 + 入向量库</text>
+
+  <!-- 阶段3：查询 -->
+  <rect x="540" y="92" width="150" height="150" rx="12" fill="url(#liQuery)"/>
+  <text x="615" y="120" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">Query Engine</text>
+  <text x="615" y="142" text-anchor="middle" font-size="11" fill="#fce7f3">retriever 召回</text>
+  <text x="615" y="158" text-anchor="middle" font-size="11" fill="#fce7f3">node postprocessor</text>
+  <text x="615" y="174" text-anchor="middle" font-size="11" fill="#fce7f3">rerank 重排</text>
+  <text x="615" y="190" text-anchor="middle" font-size="11" fill="#fce7f3">response synthesizer</text>
+  <text x="615" y="228" text-anchor="middle" font-size="10" fill="#fce7f3">as_query_engine()</text>
+
+  <!-- 答案 -->
+  <rect x="740" y="142" width="120" height="50" rx="10" fill="#1f2937"/>
+  <text x="800" y="166" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Response</text>
+  <text x="800" y="184" text-anchor="middle" font-size="10" fill="#d1d5db">带引用的答案</text>
+
+  <!-- 箭头 -->
+  <line x1="72" y1="167" x2="116" y2="167" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="272" y1="167" x2="326" y2="167" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="482" y1="167" x2="536" y2="167" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="692" y1="167" x2="736" y2="167" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="440" y="300" text-anchor="middle" font-size="12" fill="#6b7280">设计哲学：把"接入 → 索引 → 查询"封装成端到端流水线，默认值合理，开箱即用</text>
+  <text x="440" y="320" text-anchor="middle" font-size="11" fill="#9ca3af">三行代码即可跑通：from_documents → as_query_engine → query</text>
+</svg>

@@ -6,7 +6,7 @@
   <link href="https://carlyuhq.github.io/Blogs/atom.xml" rel="self"/>
   
   <link href="https://carlyuhq.github.io/Blogs/"/>
-  <updated>2026-07-02T13:53:17.963Z</updated>
+  <updated>2026-07-05T09:20:08.994Z</updated>
   <id>https://carlyuhq.github.io/Blogs/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浅谈 LangChain 与 LlamaIndex</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/07/05/%E6%B5%85%E8%B0%88LangChain%E4%B8%8ELlamaIndex/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/07/05/%E6%B5%85%E8%B0%88LangChain%E4%B8%8ELlamaIndex/</id>
+    <published>2026-07-05T10:00:00.000Z</published>
+    <updated>2026-07-05T09:20:08.994Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;当你第一次想用大语言模型去回答”自己私人文档里的问题”时，几乎不可避免地会撞上两个名字：&lt;strong&gt;LangChain&lt;/strong&gt; 与 &lt;strong&gt;LlamaIndex&lt;/strong&gt;。它们是当下 LLM 应用开发领域最主流的两个开源框架，也都把 RAG（检索增强生成）作为核心能力。但只要稍微深入就会困惑——既然两者都能做 RAG，到底该学哪个、用哪个？网上大量对比文章往往停在”LangChain 适合编排、LlamaIndex 适合数据”这种口号式结论上，难以指导真实选型。&lt;/p&gt;
+&lt;p&gt;本文想跳出速查表式的罗列，用叙述的方式把这两个框架的&lt;strong&gt;来龙去脉、设计哲学、核心抽象与生态版图&lt;/strong&gt;讲透，最后再用同一份文档、同一个问题，分别用两个框架跑通一个 RAG 应用，让你在代码层面直观感受它们的差异。读完之后，你应当能根据自己的任务特点，做出有依据的判断，而不是被”哪个更火”牵着走。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="RAG" scheme="https://carlyuhq.github.io/Blogs/tags/RAG/"/>
+    
+    <category term="大模型" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+    
+    <category term="LLM" scheme="https://carlyuhq.github.io/Blogs/tags/LLM/"/>
+    
+    <category term="LangChain" scheme="https://carlyuhq.github.io/Blogs/tags/LangChain/"/>
+    
+    <category term="LlamaIndex" scheme="https://carlyuhq.github.io/Blogs/tags/LlamaIndex/"/>
+    
+  </entry>
   
   <entry>
     <title>RAG 全景解析：检索增强生成从原理到落地</title>
@@ -347,31 +377,6 @@
     
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;本文为强化学习课程 Chapter 3: Optimal State Values and Bellman Optimality Equation 的详细笔记。本章引入&lt;strong&gt;最优策略&lt;/strong&gt;和&lt;strong&gt;最优状态值&lt;/strong&gt;的概念，以及分析它们的核心工具——&lt;strong&gt;贝尔曼最优方程（Bellman Optimality Equation, BOE）&lt;/strong&gt;。通过求解 BOE，可以得到最优状态值和最优策略。&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>强化学习笔记（二）状态值与贝尔曼方程</title>
-    <link href="https://carlyuhq.github.io/Blogs/2026/05/28/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E7%8A%B6%E6%80%81%E5%80%BC%E4%B8%8E%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/"/>
-    <id>https://carlyuhq.github.io/Blogs/2026/05/28/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E7%8A%B6%E6%80%81%E5%80%BC%E4%B8%8E%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/</id>
-    <published>2026-05-27T16:00:00.000Z</published>
-    <updated>2026-05-27T15:59:34.399Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;本文为强化学习课程 Chapter 2: State Values and Bellman Equation 的详细笔记。本章引入&lt;strong&gt;状态值（state value）&lt;/strong&gt;这一核心概念和&lt;strong&gt;贝尔曼方程（Bellman equation）&lt;/strong&gt;这一重要工具。状态值定义为智能体遵循给定策略时所能获得的平均奖励，可用于评估策略的好坏。贝尔曼方程描述了所有状态值之间的关系，是分析状态值的基本工具。&lt;/p&gt;
 &lt;/blockquote&gt;</summary>
     
     
