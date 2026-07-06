@@ -6,7 +6,7 @@
   <link href="https://carlyuhq.github.io/Blogs/atom.xml" rel="self"/>
   
   <link href="https://carlyuhq.github.io/Blogs/"/>
-  <updated>2026-07-06T03:31:50.146Z</updated>
+  <updated>2026-07-06T05:47:12.282Z</updated>
   <id>https://carlyuhq.github.io/Blogs/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://carlyuhq.github.io/Blogs/2026/07/06/Agent%E6%84%8F%E5%9B%BE%E8%AF%86%E5%88%AB%E4%B8%8ESkill%E7%B2%BE%E5%87%86%E5%91%BD%E4%B8%AD/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/07/06/Agent%E6%84%8F%E5%9B%BE%E8%AF%86%E5%88%AB%E4%B8%8ESkill%E7%B2%BE%E5%87%86%E5%91%BD%E4%B8%AD/</id>
     <published>2026-07-06T08:00:00.000Z</published>
-    <updated>2026-07-06T03:31:50.146Z</updated>
+    <updated>2026-07-06T05:47:12.282Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;：本文围绕两个 Agent 工程的核心问题展开——“Agent 意图识别怎么做？”与”Agent 如何精准命中 Skill？”。由于无法直接观看原短视频，文中内容综合自牛客、53AI、阿里云、清华大学 Skill-RAG 研究等公开技术资料，整理成一份系统的技术解答。这两个问题看似独立，实则前后呼应：**意图识别回答”用户想干什么”，Skill 命中回答”我该用哪个能力去干”**，它们共同构成了 Agent 推理层的设计骨架。&lt;/p&gt;
+&lt;p&gt;本文围绕两个 Agent 工程的核心问题展开：”Agent 意图识别怎么做？”与”Agent 如何精准命中 Skill？”。由于无法直接观看原短视频，文中内容综合自牛客、53AI、阿里云、清华大学 Skill-RAG 研究等公开技术资料，整理成一份系统的技术解答。这两个问题看似独立，实则前后呼应：意图识别回答”用户想干什么”，Skill 命中回答”我该用哪个能力去干”，两者共同构成了 Agent 推理层的设计骨架。&lt;/p&gt;
 &lt;/blockquote&gt;</summary>
     
     
@@ -35,11 +35,11 @@
     
     <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
     
+    <category term="Agent" scheme="https://carlyuhq.github.io/Blogs/tags/Agent/"/>
+    
     <category term="大模型" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
     
     <category term="LLM" scheme="https://carlyuhq.github.io/Blogs/tags/LLM/"/>
-    
-    <category term="Agent" scheme="https://carlyuhq.github.io/Blogs/tags/Agent/"/>
     
   </entry>
   
@@ -61,11 +61,11 @@
     
     <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="RAG" scheme="https://carlyuhq.github.io/Blogs/tags/RAG/"/>
-    
     <category term="大模型" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
     
     <category term="LLM" scheme="https://carlyuhq.github.io/Blogs/tags/LLM/"/>
+    
+    <category term="RAG" scheme="https://carlyuhq.github.io/Blogs/tags/RAG/"/>
     
     <category term="LangChain" scheme="https://carlyuhq.github.io/Blogs/tags/LangChain/"/>
     
@@ -90,11 +90,11 @@
     
     <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
     
-    <category term="RAG" scheme="https://carlyuhq.github.io/Blogs/tags/RAG/"/>
-    
     <category term="大模型" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
     
     <category term="LLM" scheme="https://carlyuhq.github.io/Blogs/tags/LLM/"/>
+    
+    <category term="RAG" scheme="https://carlyuhq.github.io/Blogs/tags/RAG/"/>
     
   </entry>
   
