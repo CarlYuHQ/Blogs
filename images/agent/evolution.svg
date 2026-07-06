@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="e1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fca5a5"/><stop offset="100%" stop-color="#dc2626"/></linearGradient>
+    <linearGradient id="e2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fcd34d"/><stop offset="100%" stop-color="#d97706"/></linearGradient>
+    <linearGradient id="e3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#6ee7b7"/><stop offset="100%" stop-color="#047857"/></linearGradient>
+    <marker id="ar2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#6b7280"/></marker>
+  </defs>
+
+  <rect width="900" height="380" fill="#fafafa"/>
+  <text x="450" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#1f2937">Agent 能力扩展的三阶段演进</text>
+  <text x="450" y="55" text-anchor="middle" font-size="12" fill="#6b7280">从"会用工具"到"按需加载技能包"</text>
+
+  <!-- 阶段1 Function Call -->
+  <rect x="30" y="90" width="260" height="250" rx="12" fill="#fff" stroke="#dc2626" stroke-width="2"/>
+  <rect x="30" y="90" width="260" height="50" rx="12" fill="url(#e1)"/>
+  <rect x="30" y="124" width="260" height="16" fill="url(#e1)"/>
+  <text x="160" y="113" text-anchor="middle" font-size="12" fill="#fee2e2">2023 · OpenAI</text>
+  <text x="160" y="135" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">Function Calling</text>
+  <text x="160" y="172" text-anchor="middle" font-size="12" fill="#7f1d1d" font-weight="600">让大模型学会"使用工具"</text>
+  <text x="50" y="200" font-size="11" fill="#374151">模型输出结构化 JSON 调用请求</text>
+  <text x="50" y="220" font-size="11" fill="#374151">外部程序执行后回传结果</text>
+  <text x="50" y="252" font-size="11" fill="#7f1d1d" font-weight="600">局限</text>
+  <text x="50" y="270" font-size="11" fill="#6b7280">· 各应用各自定义，无统一标准</text>
+  <text x="50" y="288" font-size="11" fill="#6b7280">· 工具无法复用</text>
+  <text x="50" y="306" font-size="11" fill="#6b7280">· 全塞进 Prompt，token 消耗大</text>
+
+  <!-- 箭头 -->
+  <line x1="292" y1="215" x2="328" y2="215" stroke="#6b7280" stroke-width="2" marker-end="url(#ar2)"/>
+
+  <!-- 阶段2 MCP -->
+  <rect x="320" y="90" width="260" height="250" rx="12" fill="#fff" stroke="#d97706" stroke-width="2"/>
+  <rect x="320" y="90" width="260" height="50" rx="12" fill="url(#e2)"/>
+  <rect x="320" y="124" width="260" height="16" fill="url(#e2)"/>
+  <text x="450" y="113" text-anchor="middle" font-size="12" fill="#fef3c7">2024 · Anthropic</text>
+  <text x="450" y="135" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">MCP 协议</text>
+  <text x="450" y="172" text-anchor="middle" font-size="12" fill="#78350f" font-weight="600">统一的"工具接口标准"</text>
+  <text x="370" y="200" font-size="11" fill="#374151">AI 工具的 RPC 协议</text>
+  <text x="370" y="220" font-size="11" fill="#374151">动态发现，一次开发处处可用</text>
+  <text x="370" y="252" font-size="11" fill="#78350f" font-weight="600">本质</text>
+  <text x="370" y="270" font-size="11" fill="#6b7280">· 协议层，解决"听得懂、用得上"</text>
+  <text x="370" y="288" font-size="11" fill="#6b7280">· 多模型支持的开放标准</text>
+  <text x="370" y="306" font-size="11" fill="#6b7280">· 不解决"该用哪个工具"</text>
+
+  <line x1="582" y1="215" x2="618" y2="215" stroke="#6b7280" stroke-width="2" marker-end="url(#ar2)"/>
+
+  <!-- 阶段3 Skills -->
+  <rect x="610" y="90" width="260" height="250" rx="12" fill="#fff" stroke="#047857" stroke-width="2"/>
+  <rect x="610" y="90" width="260" height="50" rx="12" fill="url(#e3)"/>
+  <rect x="610" y="124" width="260" height="16" fill="url(#e3)"/>
+  <text x="740" y="113" text-anchor="middle" font-size="12" fill="#d1fae5">2025.10 · Anthropic</text>
+  <text x="740" y="135" text-anchor="middle" font-size="18" font-weight="700" fill="#fff">Agent Skills</text>
+  <text x="740" y="172" text-anchor="middle" font-size="12" fill="#064e3b" font-weight="600">从"工具"到"按需技能包"</text>
+  <text x="630" y="200" font-size="11" fill="#374151">指令 + 脚本 + 资源打包</text>
+  <text x="630" y="220" font-size="11" fill="#374151">按需加载，不全量塞 Prompt</text>
+  <text x="630" y="252" font-size="11" fill="#064e3b" font-weight="600">本质</text>
+  <text x="630" y="270" font-size="11" fill="#6b7280">· 提示词工程的进化</text>
+  <text x="630" y="288" font-size="11" fill="#6b7280">· 结合 Prompt Caching 降本</text>
+  <text x="630" y="306" font-size="11" fill="#6b7280">· 可关联 Tool Use 真正执行</text>
+
+  <text x="450" y="362" text-anchor="middle" font-size="11" fill="#9ca3af">三者为"协议与实现"的递进关系：Skills 内部仍通过 MCP 与服务通讯</text>
+</svg>

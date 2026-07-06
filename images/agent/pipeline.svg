@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="inBox" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9ca3af"/><stop offset="100%" stop-color="#4b5563"/>
+    </linearGradient>
+    <linearGradient id="mid1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="mid2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="mid3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#34d399"/><stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="outBox" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbbf24"/><stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+
+  <rect width="900" height="440" fill="#fafafa"/>
+  <text x="450" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#1f2937">Agent 推理前处理层：从用户输入到最终回答</text>
+  <text x="450" y="55" text-anchor="middle" font-size="12" fill="#6b7280">意图识别与 Skill 命中，是同一条流水线的两个环节</text>
+
+  <!-- 用户输入 -->
+  <rect x="20" y="195" width="92" height="60" rx="10" fill="url(#inBox)"/>
+  <text x="66" y="222" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">用户输入</text>
+  <text x="66" y="240" text-anchor="middle" font-size="10" fill="#e5e7eb">自然语言</text>
+
+  <!-- 认知中间件分组背景 -->
+  <rect x="138" y="110" width="500" height="240" rx="14" fill="#fff" stroke="#cbd5e1" stroke-dasharray="5,4"/>
+  <text x="388" y="100" text-anchor="middle" font-size="12" font-weight="700" fill="#6b7280">认知中间件（推理前处理层）</text>
+
+  <!-- 意图识别 -->
+  <rect x="158" y="195" width="140" height="60" rx="10" fill="url(#mid1)"/>
+  <text x="228" y="220" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">意图识别</text>
+  <text x="228" y="240" text-anchor="middle" font-size="10" fill="#dbeafe">Router · 分类"去哪里"</text>
+
+  <!-- 查询重写 -->
+  <rect x="318" y="195" width="140" height="60" rx="10" fill="url(#mid2)"/>
+  <text x="388" y="220" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">查询重写</text>
+  <text x="388" y="240" text-anchor="middle" font-size="10" fill="#ede9fe">Rewriter · 精准指令</text>
+
+  <!-- 实体提取 -->
+  <rect x="478" y="195" width="140" height="60" rx="10" fill="url(#mid3)"/>
+  <text x="548" y="220" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">实体提取</text>
+  <text x="548" y="240" text-anchor="middle" font-size="10" fill="#d1fae5">Extractor · 参数</text>
+
+  <!-- 中间件下方说明 -->
+  <text x="388" y="296" text-anchor="middle" font-size="11" fill="#6b7280">把模糊自然语言"翻译"成机器可执行的精准指令</text>
+  <text x="388" y="316" text-anchor="middle" font-size="11" fill="#9ca3af">规则 / 传统NLU(BERT) / 大模型 Prompt 三代方案</text>
+
+  <!-- Skill 命中 -->
+  <rect x="660" y="120" width="120" height="68" rx="10" fill="#1f2937"/>
+  <text x="720" y="148" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Skill 命中</text>
+  <text x="720" y="168" text-anchor="middle" font-size="10" fill="#d1d5db">两阶段加载</text>
+  <text x="720" y="182" text-anchor="middle" font-size="10" fill="#d1d5db">Skill-RAG</text>
+
+  <!-- 工具执行 -->
+  <rect x="660" y="262" width="120" height="68" rx="10" fill="#1f2937"/>
+  <text x="720" y="290" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">工具执行</text>
+  <text x="720" y="310" text-anchor="middle" font-size="10" fill="#d1d5db">MCP / API</text>
+  <text x="720" y="324" text-anchor="middle" font-size="10" fill="#d1d5db">结果整合</text>
+
+  <!-- 最终回答 -->
+  <rect x="810" y="195" width="72" height="60" rx="10" fill="url(#outBox)"/>
+  <text x="846" y="222" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">最终</text>
+  <text x="846" y="240" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">回答</text>
+
+  <!-- 箭头 -->
+  <line x1="112" y1="225" x2="154" y2="225" stroke="#6b7280" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="298" y1="225" x2="314" y2="225" stroke="#6b7280" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="458" y1="225" x2="474" y2="225" stroke="#6b7280" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="618" y1="225" x2="656" y2="154" stroke="#6b7280" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="720" y1="188" x2="720" y2="262" stroke="#6b7280" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="720" y1="330" x2="760" y2="225" stroke="#6b7280" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="780" y1="225" x2="806" y2="225" stroke="#6b7280" stroke-width="2" marker-end="url(#ar)"/>
+
+  <text x="450" y="392" text-anchor="middle" font-size="12" fill="#374151" font-weight="600">大模型负责模糊理解与决策，中间件负责把它约束到正确、可控的业务路径</text>
+  <text x="450" y="412" text-anchor="middle" font-size="11" fill="#9ca3af">这一层是区分简单 Chatbot 与真正智能业务助理的分水岭</text>
+</svg>
