@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 460" font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="sshG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#34d399"/><stop offset="100%" stop-color="#047857"/></linearGradient>
+    <linearGradient id="httpG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#1d4ed8"/></linearGradient>
+    <marker id="ar6" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#6b7280"/></marker>
+  </defs>
+
+  <rect width="880" height="460" fill="#fafafa"/>
+  <text x="440" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#1f2937">两类需求，两套方案</text>
+  <text x="440" y="55" text-anchor="middle" font-size="12" fill="#6b7280">SSH 协议走 ProxyJump；HTTPS/API 走 ssh -D + 代理环境变量</text>
+
+  <!-- 方案一 SSH -->
+  <rect x="40" y="80" width="800" height="160" rx="12" fill="#fff" stroke="#047857" stroke-width="2"/>
+  <rect x="40" y="80" width="800" height="42" rx="12" fill="url(#sshG)"/>
+  <rect x="40" y="106" width="800" height="16" fill="url(#sshG)"/>
+  <text x="60" y="108" text-anchor="start" font-size="11" fill="#d1fae5">需求一</text>
+  <text x="440" y="108" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">GitHub SSH 仓库 · github.com:22</text>
+
+  <g font-size="11" fill="#374151" font-family="monospace">
+    <rect x="70" y="142" width="80" height="40" rx="6" fill="#ecfdf5" stroke="#6ee7b7"/>
+    <text x="110" y="166" text-anchor="middle">git/ssh</text>
+    <rect x="240" y="142" width="80" height="40" rx="6" fill="#ecfdf5" stroke="#6ee7b7"/>
+    <text x="280" y="166" text-anchor="middle">~/.ssh/config</text>
+    <rect x="410" y="142" width="80" height="40" rx="6" fill="#ecfdf5" stroke="#6ee7b7"/>
+    <text x="450" y="166" text-anchor="middle">ProxyJump</text>
+    <rect x="580" y="142" width="80" height="40" rx="6" fill="#ecfdf5" stroke="#6ee7b7"/>
+    <text x="620" y="166" text-anchor="middle">B 跳板机</text>
+    <rect x="730" y="142" width="90" height="40" rx="6" fill="#047857"/>
+    <text x="775" y="166" text-anchor="middle" fill="#fff">github:22</text>
+  </g>
+  <line x1="150" y1="162" x2="236" y2="162" stroke="#6b7280" stroke-width="2" marker-end="url(#ar6)"/>
+  <line x1="320" y1="162" x2="406" y2="162" stroke="#6b7280" stroke-width="2" marker-end="url(#ar6)"/>
+  <line x1="490" y1="162" x2="576" y2="162" stroke="#6b7280" stroke-width="2" marker-end="url(#ar6)"/>
+  <line x1="660" y1="162" x2="726" y2="162" stroke="#6b7280" stroke-width="2" marker-end="url(#ar6)"/>
+
+  <text x="60" y="212" font-size="11" fill="#065f46" font-weight="600">配置：~/.ssh/config 里给 github.com 写 ProxyJump jumphost</text>
+  <text x="60" y="230" font-size="11" fill="#6b7280">日常用法：git clone git@github.com:用户名/repo.git（自动走跳板，认证用本机私钥）</text>
+
+  <!-- 方案二 HTTPS -->
+  <rect x="40" y="270" width="800" height="160" rx="12" fill="#fff" stroke="#1d4ed8" stroke-width="2"/>
+  <rect x="40" y="270" width="800" height="42" rx="12" fill="url(#httpG)"/>
+  <rect x="40" y="296" width="800" height="16" fill="url(#httpG)"/>
+  <text x="60" y="298" text-anchor="start" font-size="11" fill="#dbeafe">需求二</text>
+  <text x="440" y="298" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">普通 HTTPS/API · 目标:443</text>
+
+  <g font-size="11" fill="#374151" font-family="monospace">
+    <rect x="70" y="332" width="80" height="40" rx="6" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="110" y="356" text-anchor="middle">curl/SDK</text>
+    <rect x="210" y="332" width="100" height="40" rx="6" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="260" y="356" text-anchor="middle">proxy_on</text>
+    <rect x="370" y="332" width="90" height="40" rx="6" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="415" y="356" text-anchor="middle">127.0.0.1</text>
+    <text x="415" y="368" text-anchor="middle" font-size="9">:1080</text>
+    <rect x="510" y="332" width="80" height="40" rx="6" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="550" y="356" text-anchor="middle">ssh -D</text>
+    <rect x="640" y="332" width="80" height="40" rx="6" fill="#eff6ff" stroke="#93c5fd"/>
+    <text x="680" y="356" text-anchor="middle">B 跳板机</text>
+    <rect x="760" y="332" width="60" height="40" rx="6" fill="#1d4ed8"/>
+    <text x="790" y="356" text-anchor="middle" fill="#fff">:443</text>
+  </g>
+  <line x1="150" y1="352" x2="206" y2="352" stroke="#6b7280" stroke-width="2" marker-end="url(#ar6)"/>
+  <line x1="310" y1="352" x2="366" y2="352" stroke="#6b7280" stroke-width="2" marker-end="url(#ar6)"/>
+  <line x1="460" y1="352" x2="506" y2="352" stroke="#6b7280" stroke-width="2" marker-end="url(#ar6)"/>
+  <line x1="590" y1="352" x2="636" y2="352" stroke="#6b7280" stroke-width="2" marker-end="url(#ar6)"/>
+  <line x1="720" y1="352" x2="756" y2="352" stroke="#6b7280" stroke-width="2" marker-end="url(#ar6)"/>
+
+  <text x="60" y="402" font-size="11" fill="#1e3a8a" font-weight="600">配置：ssh -fN -D 127.0.0.1:1080 跳板机  +  proxy_on 设置 HTTPS_PROXY=socks5h://...</text>
+  <text x="60" y="420" font-size="11" fill="#6b7280">日常用法：socks_bg 然后 proxy_on 然后 curl -I https://目标/api（程序主动读环境变量才走代理）</text>
+
+  <text x="440" y="448" text-anchor="middle" font-size="11" fill="#9ca3af">两者不要混淆：SSH 不读 HTTPS_PROXY，SOCKS 代理也不会被所有程序自动使用</text>
+</svg>

@@ -6,7 +6,7 @@
   <link href="https://carlyuhq.github.io/Blogs/atom.xml" rel="self"/>
   
   <link href="https://carlyuhq.github.io/Blogs/"/>
-  <updated>2026-07-06T05:47:12.282Z</updated>
+  <updated>2026-07-07T03:40:32.553Z</updated>
   <id>https://carlyuhq.github.io/Blogs/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>联网了却访问不了外网？网络分层、代理与 SSH 跳板详解</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/07/07/%E8%81%94%E7%BD%91%E4%BA%86%E5%8D%B4%E8%AE%BF%E9%97%AE%E4%B8%8D%E4%BA%86%E5%A4%96%E7%BD%91-%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E4%B8%8E%E4%BB%A3%E7%90%86%E8%B7%B3%E6%9D%BF%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/07/07/%E8%81%94%E7%BD%91%E4%BA%86%E5%8D%B4%E8%AE%BF%E9%97%AE%E4%B8%8D%E4%BA%86%E5%A4%96%E7%BD%91-%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E4%B8%8E%E4%BB%A3%E7%90%86%E8%B7%B3%E6%9D%BF%E8%AF%A6%E8%A7%A3/</id>
+    <published>2026-07-07T08:00:00.000Z</published>
+    <updated>2026-07-07T03:40:32.553Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;一个非常常见的困惑是：机器明明已经联网了，能访问校内网站、能 ping 通、能上镜像站，可一旦要访问 GitHub、某些境外 API 或克隆一个仓库，就卡住、超时、报错。这篇笔记要把这件事彻底讲清楚：为什么”联网”不等于”什么都能访问”，以及当你有一台可以出网的跳板机时，该如何正确地配置代理和 SSH 跳板。&lt;/p&gt;
+&lt;p&gt;为了便于阅读，文中所有 IP、主机名、用户名、仓库地址都是&lt;strong&gt;示意占位符&lt;/strong&gt;（采用 RFC 文档保留地址段 &lt;code&gt;192.0.2.x&lt;/code&gt; &amp;#x2F; &lt;code&gt;198.51.100.x&lt;/code&gt; &amp;#x2F; &lt;code&gt;203.0.113.x&lt;/code&gt;），替换掉了真实环境里的具体信息。把它们换成你自己的实际值即可。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Linux" scheme="https://carlyuhq.github.io/Blogs/tags/Linux/"/>
+    
+    <category term="网络" scheme="https://carlyuhq.github.io/Blogs/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+    <category term="运维" scheme="https://carlyuhq.github.io/Blogs/tags/%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>Agent 意图识别怎么做？Skill 如何精准命中？</title>
@@ -201,16 +227,14 @@
   </entry>
   
   <entry>
-    <title>强化学习笔记（六）随机逼近</title>
-    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9A%8F%E6%9C%BA%E9%80%BC%E8%BF%91/"/>
-    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9A%8F%E6%9C%BA%E9%80%BC%E8%BF%91/</id>
+    <title>强化学习笔记（十）演员-评论家方法</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/</id>
     <published>2026-05-29T12:00:00.000Z</published>
-    <updated>2026-05-29T05:13:02.126Z</updated>
+    <updated>2026-05-31T08:47:56.859Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;本文为强化学习课程 Chapter 6: Stochastic Approximation 的详细笔记。本章不介绍具体的强化学习算法，而是为第七章的&lt;strong&gt;时序差分学习&lt;/strong&gt;奠定数学基础。核心内容是&lt;strong&gt;Robbins-Monro 算法&lt;/strong&gt;和&lt;strong&gt;随机梯度下降（SGD）&lt;/strong&gt;，它们是增量式算法的理论根基。&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;本章介绍演员-评论家（Actor-Critic）方法。从一个角度来看，”演员-评论家”指的是一种融合了基于策略方法和基于值方法的结构：”演员”（actor）负责策略更新步骤，之所以称为演员是因为动作是按照策略执行的；”评论家”（critic）负责值更新步骤，之所以称为评论家是因为它通过评估值来”批评”演员的表现。从另一个角度来看，演员-评论家方法仍然是策略梯度算法，可以视为第 9 章策略梯度算法的扩展。在学习本章之前，读者应当充分理解第 8 章和第 9 章的内容。&lt;/p&gt;</summary>
     
     
     
@@ -226,14 +250,16 @@
   </entry>
   
   <entry>
-    <title>强化学习笔记（十）演员-评论家方法</title>
-    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/"/>
-    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/</id>
+    <title>强化学习笔记（六）随机逼近</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9A%8F%E6%9C%BA%E9%80%BC%E8%BF%91/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9A%8F%E6%9C%BA%E9%80%BC%E8%BF%91/</id>
     <published>2026-05-29T12:00:00.000Z</published>
-    <updated>2026-05-31T08:47:56.859Z</updated>
+    <updated>2026-05-29T05:13:02.126Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本章介绍演员-评论家（Actor-Critic）方法。从一个角度来看，”演员-评论家”指的是一种融合了基于策略方法和基于值方法的结构：”演员”（actor）负责策略更新步骤，之所以称为演员是因为动作是按照策略执行的；”评论家”（critic）负责值更新步骤，之所以称为评论家是因为它通过评估值来”批评”演员的表现。从另一个角度来看，演员-评论家方法仍然是策略梯度算法，可以视为第 9 章策略梯度算法的扩展。在学习本章之前，读者应当充分理解第 8 章和第 9 章的内容。&lt;/p&gt;</summary>
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本文为强化学习课程 Chapter 6: Stochastic Approximation 的详细笔记。本章不介绍具体的强化学习算法，而是为第七章的&lt;strong&gt;时序差分学习&lt;/strong&gt;奠定数学基础。核心内容是&lt;strong&gt;Robbins-Monro 算法&lt;/strong&gt;和&lt;strong&gt;随机梯度下降（SGD）&lt;/strong&gt;，它们是增量式算法的理论根基。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
     
     
     
@@ -364,33 +390,6 @@
     <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>谈谈刷leetcode</title>
-    <link href="https://carlyuhq.github.io/Blogs/2026/05/28/%E8%B0%88%E8%B0%88%E5%88%B7leetcode/"/>
-    <id>https://carlyuhq.github.io/Blogs/2026/05/28/%E8%B0%88%E8%B0%88%E5%88%B7leetcode/</id>
-    <published>2026-05-28T07:14:45.000Z</published>
-    <updated>2026-05-29T05:07:26.792Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;刷 LeetCode 是准备技术面试时绕不开的一步，但对我来说，这段过程并不轻松。&lt;br&gt;这篇先记录一下我目前刷题的真实体验和一些心得，后面也会持续更新题目笔记与思路。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="随笔" scheme="https://carlyuhq.github.io/Blogs/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="分享" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%88%86%E4%BA%AB/"/>
-    
-    <category term="随笔" scheme="https://carlyuhq.github.io/Blogs/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-    <category term="生活" scheme="https://carlyuhq.github.io/Blogs/tags/%E7%94%9F%E6%B4%BB/"/>
-    
-    <category term="计划" scheme="https://carlyuhq.github.io/Blogs/tags/%E8%AE%A1%E5%88%92/"/>
     
   </entry>
   
