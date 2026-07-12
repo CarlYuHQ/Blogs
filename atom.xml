@@ -6,7 +6,7 @@
   <link href="https://carlyuhq.github.io/Blogs/atom.xml" rel="self"/>
   
   <link href="https://carlyuhq.github.io/Blogs/"/>
-  <updated>2026-07-12T03:47:19.800Z</updated>
+  <updated>2026-07-12T05:40:53.166Z</updated>
   <id>https://carlyuhq.github.io/Blogs/</id>
   
   <author>
@@ -17,15 +17,15 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Nanobot 详解：4000 行代码的超轻量个人 AI 智能体</title>
+    <title>Nanobot 源码详解：4000 行代码如何打造一个超轻量个人 AI 智能体</title>
     <link href="https://carlyuhq.github.io/Blogs/2026/07/12/Nanobot%E8%AF%A6%E8%A7%A3-4000%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%9A%84%E8%B6%85%E8%BD%BB%E9%87%8F%E4%B8%AA%E4%BA%BAAI%E6%99%BA%E8%83%BD%E4%BD%93/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/07/12/Nanobot%E8%AF%A6%E8%A7%A3-4000%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%9A%84%E8%B6%85%E8%BD%BB%E9%87%8F%E4%B8%AA%E4%BA%BAAI%E6%99%BA%E8%83%BD%E4%BD%93/</id>
     <published>2026-07-12T10:00:00.000Z</published>
-    <updated>2026-07-12T03:47:19.800Z</updated>
+    <updated>2026-07-12T05:40:53.166Z</updated>
     
     
     <summary type="html">&lt;p&gt;2026 年初，一个叫 &lt;strong&gt;Nanobot&lt;/strong&gt; 🐈 的开源项目在几天内冲上数千 star，理由很有意思：它宣称用&lt;strong&gt;约 4000 行 Python&lt;/strong&gt; 就复现了那个 43 万行体量的 OpenClaw 的核心智能体能力，代码量只剩原版的 1%。在”大模型应用 &amp;#x3D; 重型框架 + 海量依赖”几乎成为默认想象的今天，这种”小而可读”的反向工程美学格外吸引人。&lt;/p&gt;
-&lt;p&gt;这篇笔记要把 Nanobot 讲透：它到底是什么、整体架构如何、核心的 Agent 循环是怎么运转的，以及记忆、工具、技能、定时任务、通道集成这些关键模块的设计思路。内容综合自 Nanobot 官方仓库（&lt;code&gt;HKUDS/nanobot&lt;/code&gt;）的 README 与架构文档，以及两篇公开的源码逐行解读，并对其中若干不够准确的说法做了核对修正。&lt;/p&gt;</summary>
+&lt;p&gt;这篇笔记要把 Nanobot &lt;strong&gt;从架构到源码&lt;/strong&gt;讲透。它不只是罗列模块，而是会带你走进真实的代码：Agent 循环的 &lt;code&gt;run()&lt;/code&gt; 和 &lt;code&gt;_process_message()&lt;/code&gt; 长什么样、工具注册表的 &lt;code&gt;execute()&lt;/code&gt; 做了哪四件事、Shell 工具的危险命令黑名单正则怎么写、Session 数据类如何用 JSONL 存历史、消息总线的双队列怎么解耦通道、心跳的提示词是什么。内容综合自 Nanobot 官方仓库（&lt;code&gt;HKUDS/nanobot&lt;/code&gt;）的 README 与架构文档，以及 loaf 和掘金上的两篇源码逐行解读，并对若干不够准确的说法做了核对修正。&lt;/p&gt;</summary>
     
     
     
