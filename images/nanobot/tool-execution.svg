@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <linearGradient id="teLLM" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fbbf24"/><stop offset="100%" stop-color="#d97706"/></linearGradient>
+    <linearGradient id="teLoop" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#60a5fa"/><stop offset="100%" stop-color="#2563eb"/></linearGradient>
+    <linearGradient id="teReg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#7c3aed"/></linearGradient>
+    <linearGradient id="teBack" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#34d399"/><stop offset="100%" stop-color="#059669"/></linearGradient>
+    <marker id="teAr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#6b7280"/></marker>
+  </defs>
+
+  <rect width="900" height="480" fill="#fafafa"/>
+  <text x="450" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#1f2937">工具调用与执行：从 LLM 的 tool_call 到结果回写</text>
+  <text x="450" y="55" text-anchor="middle" font-size="12" fill="#6b7280">对应 loop.py 的工具循环 + registry.execute 的四步</text>
+
+  <!-- 顶部调用链 -->
+  <rect x="30" y="95" width="170" height="64" rx="10" fill="url(#teLLM)"/>
+  <text x="115" y="123" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">LLM 返回</text>
+  <text x="115" y="143" text-anchor="middle" font-size="12" fill="#fef3c7">tool_calls 列表</text>
+
+  <rect x="270" y="95" width="200" height="64" rx="10" fill="url(#teLoop)"/>
+  <text x="370" y="120" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">loop.py 工具循环</text>
+  <text x="370" y="140" text-anchor="middle" font-size="10" fill="#dbeafe" font-family="monospace">for tool_call in tool_calls:</text>
+
+  <rect x="540" y="95" width="200" height="64" rx="10" fill="url(#teReg)"/>
+  <text x="640" y="120" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">registry.execute</text>
+  <text x="640" y="140" text-anchor="middle" font-size="10" fill="#ede9fe" font-family="monospace">(name, params)</text>
+
+  <line x1="200" y1="127" x2="266" y2="127" stroke="#6b7280" stroke-width="2" marker-end="url(#teAr)"/>
+  <line x1="470" y1="127" x2="536" y2="127" stroke="#6b7280" stroke-width="2" marker-end="url(#teAr)"/>
+
+  <!-- registry.execute 四步（竖排，包在 try 里） -->
+  <text x="450" y="200" text-anchor="middle" font-size="13" font-weight="700" fill="#5b21b6">registry.execute() 内部四步</text>
+
+  <rect x="250" y="220" width="380" height="40" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="270" y="245" font-size="12" fill="#1f2937"><tspan font-weight="700" fill="#5b21b6">① 查找</tspan>  tool = self._tools.get(name)；找不到返回友好错误</text>
+
+  <rect x="250" y="270" width="380" height="40" rx="8" fill="#ede9fe" stroke="#7c3aed"/>
+  <text x="270" y="295" font-size="12" fill="#1f2937"><tspan font-weight="700" fill="#5b21b6">② 校验</tspan>  tool.validate_params(params)；schema 不符提前拒绝</text>
+
+  <rect x="250" y="320" width="380" height="40" rx="8" fill="#c4b5fd"/>
+  <text x="270" y="345" font-size="12" fill="#1f2937"><tspan font-weight="700" fill="#4c1d95">③ 执行</tspan>  await tool.execute(**params)；真正干活</text>
+
+  <rect x="250" y="370" width="380" height="40" rx="8" fill="#ede9fe" stroke="#7c3aed" stroke-dasharray="4,3"/>
+  <text x="270" y="395" font-size="12" fill="#1f2937"><tspan font-weight="700" fill="#5b21b6">④ 兜底</tspan>  except 把异常转成字符串错误返回（不崩 Agent）</text>
+
+  <!-- try 包围提示 -->
+  <text x="650" y="295" font-size="11" fill="#7c3aed" font-style="italic">try / except</text>
+  <line x1="640" y1="232" x2="640" y2="406" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <line x1="640" y1="159" x2="640" y2="216" stroke="#6b7280" stroke-width="2" marker-end="url(#teAr)"/>
+
+  <!-- 结果回写 -->
+  <rect x="30" y="400" width="190" height="56" rx="10" fill="url(#teBack)"/>
+  <text x="125" y="425" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">结果回写历史</text>
+  <text x="125" y="444" text-anchor="middle" font-size="10" fill="#d1fae5" font-family="monospace">add_tool_result(...)</text>
+
+  <line x1="250" y1="390" x2="225" y2="415" stroke="#6b7280" stroke-width="2" marker-end="url(#teAr)"/>
+  <text x="200" y="385" font-size="10" fill="#6b7280">结果字符串</text>
+
+  <!-- 下一轮循环 -->
+  <rect x="690" y="400" width="180" height="56" rx="10" fill="#1f2937"/>
+  <text x="780" y="425" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">下一轮迭代</text>
+  <text x="780" y="444" text-anchor="middle" font-size="10" fill="#d1d5db">再次调用 LLM（Observation）</text>
+
+  <line x1="125" y1="455" x2="125" y2="470" stroke="#6b7280" stroke-width="2"/>
+  <line x1="125" y1="470" x2="780" y2="470" stroke="#6b7280" stroke-width="2"/>
+  <line x1="780" y1="470" x2="780" y2="458" stroke="#6b7280" stroke-width="2" marker-end="url(#teAr)"/>
+</svg>

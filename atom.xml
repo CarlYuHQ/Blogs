@@ -6,7 +6,7 @@
   <link href="https://carlyuhq.github.io/Blogs/atom.xml" rel="self"/>
   
   <link href="https://carlyuhq.github.io/Blogs/"/>
-  <updated>2026-07-12T09:17:26.088Z</updated>
+  <updated>2026-07-12T09:45:04.706Z</updated>
   <id>https://carlyuhq.github.io/Blogs/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://carlyuhq.github.io/Blogs/2026/07/12/Nanobot%E8%AF%A6%E8%A7%A3-4000%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%9A%84%E8%B6%85%E8%BD%BB%E9%87%8F%E4%B8%AA%E4%BA%BAAI%E6%99%BA%E8%83%BD%E4%BD%93/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/07/12/Nanobot%E8%AF%A6%E8%A7%A3-4000%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%9A%84%E8%B6%85%E8%BD%BB%E9%87%8F%E4%B8%AA%E4%BA%BAAI%E6%99%BA%E8%83%BD%E4%BD%93/</id>
     <published>2026-07-12T10:00:00.000Z</published>
-    <updated>2026-07-12T09:17:26.088Z</updated>
+    <updated>2026-07-12T09:45:04.706Z</updated>
     
     
     <summary type="html">&lt;p&gt;2026 年初，一个叫 &lt;strong&gt;Nanobot&lt;/strong&gt; 🐈 的开源项目在几天内冲上数千 star，理由很有意思：它宣称用&lt;strong&gt;约 4000 行 Python&lt;/strong&gt; 就复现了那个 43 万行体量的 OpenClaw 的核心智能体能力，代码量只剩原版的 1%。在”大模型应用 &amp;#x3D; 重型框架 + 海量依赖”几乎成为默认想象的今天，这种”小而可读”的反向工程美学格外吸引人。&lt;/p&gt;
