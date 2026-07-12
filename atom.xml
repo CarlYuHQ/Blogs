@@ -6,7 +6,7 @@
   <link href="https://carlyuhq.github.io/Blogs/atom.xml" rel="self"/>
   
   <link href="https://carlyuhq.github.io/Blogs/"/>
-  <updated>2026-07-07T03:40:32.553Z</updated>
+  <updated>2026-07-12T03:47:19.800Z</updated>
   <id>https://carlyuhq.github.io/Blogs/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Nanobot 详解：4000 行代码的超轻量个人 AI 智能体</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/07/12/Nanobot%E8%AF%A6%E8%A7%A3-4000%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%9A%84%E8%B6%85%E8%BD%BB%E9%87%8F%E4%B8%AA%E4%BA%BAAI%E6%99%BA%E8%83%BD%E4%BD%93/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/07/12/Nanobot%E8%AF%A6%E8%A7%A3-4000%E8%A1%8C%E4%BB%A3%E7%A0%81%E7%9A%84%E8%B6%85%E8%BD%BB%E9%87%8F%E4%B8%AA%E4%BA%BAAI%E6%99%BA%E8%83%BD%E4%BD%93/</id>
+    <published>2026-07-12T10:00:00.000Z</published>
+    <updated>2026-07-12T03:47:19.800Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;2026 年初，一个叫 &lt;strong&gt;Nanobot&lt;/strong&gt; 🐈 的开源项目在几天内冲上数千 star，理由很有意思：它宣称用&lt;strong&gt;约 4000 行 Python&lt;/strong&gt; 就复现了那个 43 万行体量的 OpenClaw 的核心智能体能力，代码量只剩原版的 1%。在”大模型应用 &amp;#x3D; 重型框架 + 海量依赖”几乎成为默认想象的今天，这种”小而可读”的反向工程美学格外吸引人。&lt;/p&gt;
+&lt;p&gt;这篇笔记要把 Nanobot 讲透：它到底是什么、整体架构如何、核心的 Agent 循环是怎么运转的，以及记忆、工具、技能、定时任务、通道集成这些关键模块的设计思路。内容综合自 Nanobot 官方仓库（&lt;code&gt;HKUDS/nanobot&lt;/code&gt;）的 README 与架构文档，以及两篇公开的源码逐行解读，并对其中若干不够准确的说法做了核对修正。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Agent" scheme="https://carlyuhq.github.io/Blogs/tags/Agent/"/>
+    
+    <category term="大模型" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+    
+    <category term="开源" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%80%E6%BA%90/"/>
+    
+    <category term="源码" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%BA%90%E7%A0%81/"/>
+    
+  </entry>
   
   <entry>
     <title>联网了却访问不了外网？网络分层、代理与 SSH 跳板详解</title>
@@ -227,14 +255,16 @@
   </entry>
   
   <entry>
-    <title>强化学习笔记（十）演员-评论家方法</title>
-    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/"/>
-    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/</id>
+    <title>强化学习笔记（六）随机逼近</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9A%8F%E6%9C%BA%E9%80%BC%E8%BF%91/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9A%8F%E6%9C%BA%E9%80%BC%E8%BF%91/</id>
     <published>2026-05-29T12:00:00.000Z</published>
-    <updated>2026-05-31T08:47:56.859Z</updated>
+    <updated>2026-05-29T05:13:02.126Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本章介绍演员-评论家（Actor-Critic）方法。从一个角度来看，”演员-评论家”指的是一种融合了基于策略方法和基于值方法的结构：”演员”（actor）负责策略更新步骤，之所以称为演员是因为动作是按照策略执行的；”评论家”（critic）负责值更新步骤，之所以称为评论家是因为它通过评估值来”批评”演员的表现。从另一个角度来看，演员-评论家方法仍然是策略梯度算法，可以视为第 9 章策略梯度算法的扩展。在学习本章之前，读者应当充分理解第 8 章和第 9 章的内容。&lt;/p&gt;</summary>
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本文为强化学习课程 Chapter 6: Stochastic Approximation 的详细笔记。本章不介绍具体的强化学习算法，而是为第七章的&lt;strong&gt;时序差分学习&lt;/strong&gt;奠定数学基础。核心内容是&lt;strong&gt;Robbins-Monro 算法&lt;/strong&gt;和&lt;strong&gt;随机梯度下降（SGD）&lt;/strong&gt;，它们是增量式算法的理论根基。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
     
     
     
@@ -250,16 +280,14 @@
   </entry>
   
   <entry>
-    <title>强化学习笔记（六）随机逼近</title>
-    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9A%8F%E6%9C%BA%E9%80%BC%E8%BF%91/"/>
-    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9A%8F%E6%9C%BA%E9%80%BC%E8%BF%91/</id>
+    <title>强化学习笔记（十）演员-评论家方法</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/</id>
     <published>2026-05-29T12:00:00.000Z</published>
-    <updated>2026-05-29T05:13:02.126Z</updated>
+    <updated>2026-05-31T08:47:56.859Z</updated>
     
     
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;本文为强化学习课程 Chapter 6: Stochastic Approximation 的详细笔记。本章不介绍具体的强化学习算法，而是为第七章的&lt;strong&gt;时序差分学习&lt;/strong&gt;奠定数学基础。核心内容是&lt;strong&gt;Robbins-Monro 算法&lt;/strong&gt;和&lt;strong&gt;随机梯度下降（SGD）&lt;/strong&gt;，它们是增量式算法的理论根基。&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
+    <summary type="html">&lt;p&gt;本章介绍演员-评论家（Actor-Critic）方法。从一个角度来看，”演员-评论家”指的是一种融合了基于策略方法和基于值方法的结构：”演员”（actor）负责策略更新步骤，之所以称为演员是因为动作是按照策略执行的；”评论家”（critic）负责值更新步骤，之所以称为评论家是因为它通过评估值来”批评”演员的表现。从另一个角度来看，演员-评论家方法仍然是策略梯度算法，可以视为第 9 章策略梯度算法的扩展。在学习本章之前，读者应当充分理解第 8 章和第 9 章的内容。&lt;/p&gt;</summary>
     
     
     
@@ -353,31 +381,6 @@
     
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;本文为强化学习课程 Chapter 5: Monte Carlo Methods 的详细笔记。本章介绍第一个&lt;strong&gt;无模型（model-free）&lt;/strong&gt;强化学习算法——蒙特卡洛方法。核心思想是：如果没有模型，就必须有数据。MC 方法通过经验样本来估计动作值，从而寻找最优策略。&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>强化学习笔记（四）值迭代与策略迭代</title>
-    <link href="https://carlyuhq.github.io/Blogs/2026/05/28/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%80%BC%E8%BF%AD%E4%BB%A3%E4%B8%8E%E7%AD%96%E7%95%A5%E8%BF%AD%E4%BB%A3/"/>
-    <id>https://carlyuhq.github.io/Blogs/2026/05/28/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%80%BC%E8%BF%AD%E4%BB%A3%E4%B8%8E%E7%AD%96%E7%95%A5%E8%BF%AD%E4%BB%A3/</id>
-    <published>2026-05-28T12:00:00.000Z</published>
-    <updated>2026-05-28T09:33:18.160Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;本文为强化学习课程 Chapter 4: Value Iteration and Policy Iteration 的详细笔记。本章介绍三个密切相关的&lt;strong&gt;动态规划（Dynamic Programming）&lt;/strong&gt;算法：&lt;strong&gt;值迭代（Value Iteration）&lt;/strong&gt;、&lt;strong&gt;策略迭代（Policy Iteration）&lt;/strong&gt;和&lt;strong&gt;截断策略迭代（Truncated Policy Iteration）&lt;/strong&gt;，它们是后续无模型强化学习算法的重要基础。&lt;/p&gt;
 &lt;/blockquote&gt;</summary>
     
     
