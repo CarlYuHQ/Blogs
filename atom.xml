@@ -258,36 +258,11 @@
     <title>强化学习笔记（十）演员-评论家方法</title>
     <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/</id>
-    <published>2026-05-29T12:00:00.000Z</published>
-    <updated>2026-07-13T01:55:56.838Z</updated>
+    <published>2026-05-29T09:00:00.000Z</published>
+    <updated>2026-07-13T02:01:44.976Z</updated>
     
     
     <summary type="html">&lt;p&gt;本章介绍演员-评论家（Actor-Critic）方法。从一个角度来看，”演员-评论家”指的是一种融合了基于策略方法和基于值方法的结构：”演员”（actor）负责策略更新步骤，之所以称为演员是因为动作是按照策略执行的；”评论家”（critic）负责值更新步骤，之所以称为评论家是因为它通过评估值来”批评”演员的表现。从另一个角度来看，演员-评论家方法仍然是策略梯度算法，可以视为第 9 章策略梯度算法的扩展。在学习本章之前，读者应当充分理解第 8 章和第 9 章的内容。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>强化学习笔记（六）随机逼近</title>
-    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9A%8F%E6%9C%BA%E9%80%BC%E8%BF%91/"/>
-    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9A%8F%E6%9C%BA%E9%80%BC%E8%BF%91/</id>
-    <published>2026-05-29T12:00:00.000Z</published>
-    <updated>2026-07-13T01:48:14.367Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;本文为强化学习课程 Chapter 6: Stochastic Approximation 的详细笔记。本章不介绍具体的强化学习算法，而是为第七章的&lt;strong&gt;时序差分学习&lt;/strong&gt;奠定数学基础。核心内容是&lt;strong&gt;Robbins-Monro 算法&lt;/strong&gt;和&lt;strong&gt;随机梯度下降（SGD）&lt;/strong&gt;，它们是增量式算法的理论根基。&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
     
     
     
@@ -357,6 +332,31 @@
     
     
     <summary type="html">&lt;p&gt;本章介绍时序差分（Temporal-Difference, TD）方法。与蒙特卡洛（MC）学习类似，TD 学习也是无模型（model-free）的，但由于其增量形式而具有一些优势。借助第六章的准备工作，读者在看到 TD 学习算法时不会感到陌生。事实上，TD 学习算法可以看作是求解 Bellman 方程或 Bellman 最优方程的特殊随机逼近算法。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>强化学习笔记（六）随机逼近</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9A%8F%E6%9C%BA%E9%80%BC%E8%BF%91/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9A%8F%E6%9C%BA%E9%80%BC%E8%BF%91/</id>
+    <published>2026-05-29T03:00:00.000Z</published>
+    <updated>2026-07-13T02:01:44.944Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本文为强化学习课程 Chapter 6: Stochastic Approximation 的详细笔记。本章不介绍具体的强化学习算法，而是为第七章的&lt;strong&gt;时序差分学习&lt;/strong&gt;奠定数学基础。核心内容是&lt;strong&gt;Robbins-Monro 算法&lt;/strong&gt;和&lt;strong&gt;随机梯度下降（SGD）&lt;/strong&gt;，它们是增量式算法的理论根基。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
     
     
     
