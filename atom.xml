@@ -49,7 +49,7 @@
     <link href="https://carlyuhq.github.io/Blogs/2026/07/07/%E8%81%94%E7%BD%91%E4%BA%86%E5%8D%B4%E8%AE%BF%E9%97%AE%E4%B8%8D%E4%BA%86%E5%A4%96%E7%BD%91-%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E4%B8%8E%E4%BB%A3%E7%90%86%E8%B7%B3%E6%9D%BF%E8%AF%A6%E8%A7%A3/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/07/07/%E8%81%94%E7%BD%91%E4%BA%86%E5%8D%B4%E8%AE%BF%E9%97%AE%E4%B8%8D%E4%BA%86%E5%A4%96%E7%BD%91-%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E4%B8%8E%E4%BB%A3%E7%90%86%E8%B7%B3%E6%9D%BF%E8%AF%A6%E8%A7%A3/</id>
     <published>2026-07-07T08:00:00.000Z</published>
-    <updated>2026-07-07T03:40:32.553Z</updated>
+    <updated>2026-07-13T01:48:14.395Z</updated>
     
     
     <summary type="html">&lt;p&gt;一个非常常见的困惑是：机器明明已经联网了，能访问校内网站、能 ping 通、能上镜像站，可一旦要访问 GitHub、某些境外 API 或克隆一个仓库，就卡住、超时、报错。这篇笔记要把这件事彻底讲清楚：为什么”联网”不等于”什么都能访问”，以及当你有一台可以出网的跳板机时，该如何正确地配置代理和 SSH 跳板。&lt;/p&gt;
@@ -75,7 +75,7 @@
     <link href="https://carlyuhq.github.io/Blogs/2026/07/06/Agent%E6%84%8F%E5%9B%BE%E8%AF%86%E5%88%AB%E4%B8%8ESkill%E7%B2%BE%E5%87%86%E5%91%BD%E4%B8%AD/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/07/06/Agent%E6%84%8F%E5%9B%BE%E8%AF%86%E5%88%AB%E4%B8%8ESkill%E7%B2%BE%E5%87%86%E5%91%BD%E4%B8%AD/</id>
     <published>2026-07-06T08:00:00.000Z</published>
-    <updated>2026-07-06T05:47:12.282Z</updated>
+    <updated>2026-07-13T01:48:14.324Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -102,7 +102,7 @@
     <link href="https://carlyuhq.github.io/Blogs/2026/07/05/%E6%B5%85%E8%B0%88LangChain%E4%B8%8ELlamaIndex/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/07/05/%E6%B5%85%E8%B0%88LangChain%E4%B8%8ELlamaIndex/</id>
     <published>2026-07-05T10:00:00.000Z</published>
-    <updated>2026-07-05T09:20:08.994Z</updated>
+    <updated>2026-07-13T01:48:14.391Z</updated>
     
     
     <summary type="html">&lt;p&gt;当你第一次想用大语言模型去回答”自己私人文档里的问题”时，几乎不可避免地会撞上两个名字：&lt;strong&gt;LangChain&lt;/strong&gt; 与 &lt;strong&gt;LlamaIndex&lt;/strong&gt;。它们是当下 LLM 应用开发领域最主流的两个开源框架，也都把 RAG（检索增强生成）作为核心能力。但只要稍微深入就会困惑——既然两者都能做 RAG，到底该学哪个、用哪个？网上大量对比文章往往停在”LangChain 适合编排、LlamaIndex 适合数据”这种口号式结论上，难以指导真实选型。&lt;/p&gt;
@@ -132,7 +132,7 @@
     <link href="https://carlyuhq.github.io/Blogs/2026/07/02/RAG%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA%E7%94%9F%E6%88%90%E5%85%A8%E6%99%AF%E8%A7%A3%E6%9E%90/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/07/02/RAG%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA%E7%94%9F%E6%88%90%E5%85%A8%E6%99%AF%E8%A7%A3%E6%9E%90/</id>
     <published>2026-07-02T08:00:00.000Z</published>
-    <updated>2026-07-02T13:53:17.963Z</updated>
+    <updated>2026-07-13T01:48:14.329Z</updated>
     
     
     <summary type="html">&lt;p&gt;大语言模型（LLM）能力再强，也逃不开”知其然不知其所以然”的尴尬：训练数据有截止日期、领域知识不够深、还时不时一本正经地胡说八道。&lt;strong&gt;RAG（Retrieval-Augmented Generation，检索增强生成）&lt;/strong&gt; 正是为解决这些问题而生的一种技术范式。本文系统梳理 RAG 的核心定义、技术原理、演进分类、选型对比与上手路径，带你建立对 RAG 的完整认知地图。&lt;/p&gt;</summary>
@@ -157,7 +157,7 @@
     <link href="https://carlyuhq.github.io/Blogs/2026/06/17/Agentic-RL%E8%AF%A6%E8%A7%A3-%E4%BB%8ESFT%E5%88%B0GRPO%E7%9A%84%E6%99%BA%E8%83%BD%E4%BD%93%E8%AE%AD%E7%BB%83/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/06/17/Agentic-RL%E8%AF%A6%E8%A7%A3-%E4%BB%8ESFT%E5%88%B0GRPO%E7%9A%84%E6%99%BA%E8%83%BD%E4%BD%93%E8%AE%AD%E7%BB%83/</id>
     <published>2026-06-17T07:20:00.000Z</published>
-    <updated>2026-06-18T01:32:11.642Z</updated>
+    <updated>2026-07-13T01:48:14.320Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -186,7 +186,7 @@
     <link href="https://carlyuhq.github.io/Blogs/2026/06/17/%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3-MCP-A2A%E4%B8%8EANP/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/06/17/%E6%99%BA%E8%83%BD%E4%BD%93%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3-MCP-A2A%E4%B8%8EANP/</id>
     <published>2026-06-17T07:10:00.000Z</published>
-    <updated>2026-06-18T01:32:11.642Z</updated>
+    <updated>2026-07-13T01:48:14.386Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -213,7 +213,7 @@
     <link href="https://carlyuhq.github.io/Blogs/2026/05/31/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E5%85%A8%E6%99%AF%E6%A2%B3%E7%90%86-%E4%BB%8EMC%E5%88%B0PPO%E4%B8%8ESAC/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/05/31/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E5%85%A8%E6%99%AF%E6%A2%B3%E7%90%86-%E4%BB%8EMC%E5%88%B0PPO%E4%B8%8ESAC/</id>
     <published>2026-05-31T10:00:00.000Z</published>
-    <updated>2026-06-01T01:45:57.543Z</updated>
+    <updated>2026-07-13T01:48:14.382Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文系统梳理强化学习（Reinforcement Learning, RL）中常见算法的演进脉络、核心公式、适用场景，重点说明 PPO 最核心的部分，以及与 Flappy Bird 项目的代码对应关系。&lt;/p&gt;</summary>
@@ -255,34 +255,11 @@
   </entry>
   
   <entry>
-    <title>强化学习笔记（十）演员-评论家方法</title>
-    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/"/>
-    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/</id>
-    <published>2026-05-29T12:00:00.000Z</published>
-    <updated>2026-05-31T08:47:56.859Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本章介绍演员-评论家（Actor-Critic）方法。从一个角度来看，”演员-评论家”指的是一种融合了基于策略方法和基于值方法的结构：”演员”（actor）负责策略更新步骤，之所以称为演员是因为动作是按照策略执行的；”评论家”（critic）负责值更新步骤，之所以称为评论家是因为它通过评估值来”批评”演员的表现。从另一个角度来看，演员-评论家方法仍然是策略梯度算法，可以视为第 9 章策略梯度算法的扩展。在学习本章之前，读者应当充分理解第 8 章和第 9 章的内容。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>强化学习笔记（六）随机逼近</title>
     <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9A%8F%E6%9C%BA%E9%80%BC%E8%BF%91/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E9%9A%8F%E6%9C%BA%E9%80%BC%E8%BF%91/</id>
     <published>2026-05-29T12:00:00.000Z</published>
-    <updated>2026-05-29T05:13:02.126Z</updated>
+    <updated>2026-07-13T01:48:14.367Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
@@ -303,11 +280,34 @@
   </entry>
   
   <entry>
+    <title>强化学习笔记（十）演员-评论家方法</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/</id>
+    <published>2026-05-29T12:00:00.000Z</published>
+    <updated>2026-07-13T01:48:14.367Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本章介绍演员-评论家（Actor-Critic）方法。从一个角度来看，”演员-评论家”指的是一种融合了基于策略方法和基于值方法的结构：”演员”（actor）负责策略更新步骤，之所以称为演员是因为动作是按照策略执行的；”评论家”（critic）负责值更新步骤，之所以称为评论家是因为它通过评估值来”批评”演员的表现。从另一个角度来看，演员-评论家方法仍然是策略梯度算法，可以视为第 9 章策略梯度算法的扩展。在学习本章之前，读者应当充分理解第 8 章和第 9 章的内容。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>强化学习笔记（九）策略梯度方法</title>
     <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%E6%96%B9%E6%B3%95/</id>
     <published>2026-05-29T08:00:00.000Z</published>
-    <updated>2026-05-31T08:48:06.956Z</updated>
+    <updated>2026-07-13T01:48:14.351Z</updated>
     
     
     <summary type="html">&lt;p&gt;函数逼近的思想不仅可以用于表示状态&amp;#x2F;动作值（第 8 章），还可以用于表示策略。本章介绍如何将策略表示为参数化函数 &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;π&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;∣&lt;/mi&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mo separator=&quot;true&quot;&gt;,&lt;/mo&gt;&lt;mi&gt;θ&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;&#92;pi(a|s, &#92;theta)&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:1em;vertical-align:-0.25em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.03588em;&quot;&gt;π&lt;/span&gt;&lt;span class=&quot;mopen&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;∣&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;mpunct&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.1667em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.02778em;&quot;&gt;θ&lt;/span&gt;&lt;span class=&quot;mclose&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;，其中 &lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;θ&lt;/mi&gt;&lt;mo&gt;∈&lt;/mo&gt;&lt;msup&gt;&lt;mi mathvariant=&quot;double-struck&quot;&gt;R&lt;/mi&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;annotation encoding=&quot;application/x-tex&quot;&gt;&#92;theta &#92;in &#92;mathbb{R}^m&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.7335em;vertical-align:-0.0391em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.02778em;&quot;&gt;θ&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2778em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mrel&quot;&gt;∈&lt;/span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.2778em;&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.6889em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mord mathbb&quot;&gt;R&lt;/span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.6644em;&quot;&gt;&lt;span style=&quot;top:-3.063em;margin-right:0.05em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.7em;&quot;&gt;&lt;/span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mathnormal mtight&quot;&gt;m&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 是参数向量。当策略表示为函数时，最优策略可以通过优化某个标量度量来获得——这种方法称为&lt;strong&gt;策略梯度&lt;/strong&gt;（policy gradient）。这是本书的一大步跨越，因为之前所有方法都是基于值的（value-based），而策略梯度是基于策略的（policy-based）。&lt;/p&gt;</summary>
@@ -330,7 +330,7 @@
     <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E5%80%BC%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%85%AB%E7%AB%A0-%E5%80%BC%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95/</id>
     <published>2026-05-29T07:00:00.000Z</published>
-    <updated>2026-05-31T08:48:06.928Z</updated>
+    <updated>2026-07-13T01:48:14.362Z</updated>
     
     
     <summary type="html">&lt;p&gt;本章继续研究时序差分学习算法，但使用不同的方法来表示状态&amp;#x2F;动作值。目前为止，状态&amp;#x2F;动作值一直用表格表示。表格方法直观易懂，但处理大型状态或动作空间时效率低下。本章介绍值函数方法，它已成为表示值的标准方式，也是将人工神经网络作为函数逼近器引入强化学习的入口。&lt;/p&gt;</summary>
@@ -353,7 +353,7 @@
     <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E6%97%B6%E5%BA%8F%E5%B7%AE%E5%88%86%E6%96%B9%E6%B3%95/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%B8%83%E7%AB%A0-%E6%97%B6%E5%BA%8F%E5%B7%AE%E5%88%86%E6%96%B9%E6%B3%95/</id>
     <published>2026-05-29T06:00:00.000Z</published>
-    <updated>2026-05-31T09:40:44.598Z</updated>
+    <updated>2026-07-13T01:48:14.343Z</updated>
     
     
     <summary type="html">&lt;p&gt;本章介绍时序差分（Temporal-Difference, TD）方法。与蒙特卡洛（MC）学习类似，TD 学习也是无模型（model-free）的，但由于其增量形式而具有一些优势。借助第六章的准备工作，读者在看到 TD 学习算法时不会感到陌生。事实上，TD 学习算法可以看作是求解 Bellman 方程或 Bellman 最优方程的特殊随机逼近算法。&lt;/p&gt;</summary>
@@ -376,7 +376,7 @@
     <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95/"/>
     <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95/</id>
     <published>2026-05-29T02:00:00.000Z</published>
-    <updated>2026-05-29T04:06:57.159Z</updated>
+    <updated>2026-07-13T01:48:14.359Z</updated>
     
     
     <summary type="html">&lt;blockquote&gt;
