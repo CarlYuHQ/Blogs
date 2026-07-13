@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/pi/pi-answer.png">
 <meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/pi/pi-review.png">
 <meta property="article:published_time" content="2026-07-13T10:00:00.000Z">
-<meta property="article:modified_time" content="2026-07-13T02:05:00.050Z">
+<meta property="article:modified_time" content="2026-07-13T02:07:50.885Z">
 <meta property="article:author" content="老于真的不老">
 <meta property="article:tag" content="学习">
 <meta property="article:tag" content="Agent">
@@ -58,54 +58,54 @@ IconifyProviders = {
 </blockquote>
 <span id="more"></span>
 
-<h2 id="开篇：OpenClaw-爆火，但引擎是-Pi"><a href="#开篇：OpenClaw-爆火，但引擎是-Pi" class="headerlink" title="开篇：OpenClaw 爆火，但引擎是 Pi"></a>开篇：OpenClaw 爆火，但引擎是 Pi</h2><p>如果你这几天没有与世隔绝，应该已经注意到了我朋友 Peter 的项目在网上刷屏了。它有过很多名字——最近一个叫 <strong>OpenClaw</strong>，新闻里你可能见过 ClawdBot 或 MoltBot（取决于你什么时候看到的）。它本质上是一个连接到你选择的通讯渠道、能自主运行代码的智能体。</p>
+<h2 id="开篇：OpenClaw-爆火，但引擎是-Pi"><a href="#开篇：OpenClaw-爆火，但引擎是-Pi" class="headerlink" title="开篇：OpenClaw 爆火，但引擎是 Pi"></a>开篇：OpenClaw 爆火，但引擎是 Pi</h2><p>如果你这几天没有与世隔绝，应该已经注意到了我朋友 Peter 的项目在网上刷屏了。它有过很多名字，最近一个叫 <strong>OpenClaw</strong>，新闻里你可能见过 ClawdBot 或 MoltBot（取决于你什么时候看到的）。它本质上是一个连接到你选择的通讯渠道、能自主运行代码的智能体。</p>
 <p>但很多人不知道的是：<strong>OpenClaw 引擎盖下跑的，是一个叫 Pi 的小型编码智能体</strong>。而 Pi，恰好是我目前几乎每天都在用的编码智能体。过去几周我越来越像 Pi 的义务推销员。最近做完一次相关演讲后，我意识到还没在博客上正式写过 Pi，所以决定交代一下背景：我为什么对它着迷，它和 OpenClaw 又是什么关系。</p>
-<p>Pi 的作者是 Mario Zechner。与 Peter 追求”科幻加一点疯狂”的风格不同，Mario 非常务实。尽管风格迥异，OpenClaw 和 Pi 遵循同一个核心理念：<strong>LLM 极其擅长写代码和运行代码，那就拥抱这件事</strong>。这并非巧合——Peter 去年让我和 Mario 都迷上了这个想法。</p>
-<h2 id="Pi-是什么？"><a href="#Pi-是什么？" class="headerlink" title="Pi 是什么？"></a>Pi 是什么？</h2><p>Pi 是一个编码智能体。市面上有很多编码智能体——说实话，你现在随便拿一个都能体验”智能体编程”的感觉。在之前的评测里我好评过 AMP，原因之一是它真正像是由一群既沉迷智能体编程、又尝试过多种方案后才打磨出来的产品，而不只是套了个花哨 UI。</p>
+<p>Pi 的作者是 Mario Zechner。与 Peter 追求”科幻加一点疯狂”的风格不同，Mario 非常务实。尽管风格迥异，OpenClaw 和 Pi 遵循同一个核心理念：<strong>LLM 极其擅长写代码和运行代码，那就拥抱这件事</strong>。这并非巧合，Peter 去年让我和 Mario 都迷上了这个想法。</p>
+<h2 id="Pi-是什么？"><a href="#Pi-是什么？" class="headerlink" title="Pi 是什么？"></a>Pi 是什么？</h2><p>Pi 是一个编码智能体。市面上有很多编码智能体，说实话，你现在随便拿一个都能体验”智能体编程”的感觉。在之前的评测里我好评过 AMP，原因之一是它真正像是由一群既沉迷智能体编程、又尝试过多种方案后才打磨出来的产品，而不只是套了个花哨 UI。</p>
 <p>Pi 吸引我主要有两点：</p>
-<p><strong>第一，它的内核极小。</strong> Pi 拥有我所知的最短的系统提示词，只有四个工具：<code>Read</code>（读）、<code>Write</code>（写）、<code>Edit</code>（编辑）、<code>Bash</code>（执行命令）。就这四个。没有花里胡哨的几十个工具注册表，没有复杂的 MCP（Model Context Protocol）集成——就是读、写、编辑、运行命令。</p>
+<p><strong>第一，它的内核极小。</strong> Pi 拥有我所知的最短的系统提示词，只有四个工具：<code>Read</code>（读）、<code>Write</code>（写）、<code>Edit</code>（编辑）、<code>Bash</code>（执行命令）。就这四个。没有花里胡哨的几十个工具注册表，没有复杂的 MCP（Model Context Protocol）集成，就是读、写、编辑、运行命令。</p>
 <p><strong>第二，它用一个扩展系统来弥补极小内核的不足。</strong> 扩展不仅能添加功能，还能将状态持久化到会话（session）中，这极其强大。</p>
-<p>还有一个加分项：Pi 本身的工程质量极高。它不闪烁、不吃内存、不无故崩溃，非常可靠——作者对进入代码库的每一行都极为审慎。</p>
+<p>还有一个加分项：Pi 本身的工程质量极高。它不闪烁、不吃内存、不无故崩溃，非常可靠，作者对进入代码库的每一行都极为审慎。</p>
 <p>Pi 也是一组小组件的集合，你可以在它之上构建自己的智能体。OpenClaw 就是这么做的；我也用它搭了自己的 Telegram 机器人；Mario 甚至用它给自己做了一个”mom”（管理日常事务的智能体）。如果你想做一个连接到某个平台的智能体，只要把 Pi 指向自身和 mom，它就能帮你变一个出来。</p>
 <blockquote>
-<p><strong>补充说明</strong>：这里的”mom”是 Mario Zechner 的个人助手智能体，类似于一个全自动的私人管家——可以管理日程、回复消息、执行任务。Pi 的强大之处在于：你不需要从零写代码，只要告诉 Pi “给我做一个像 mom 那样的助手”，它就能自己生成一个。</p>
+<p><strong>补充说明</strong>：这里的”mom”是 Mario Zechner 的个人助手智能体，类似于一个全自动的私人管家，可以管理日程、回复消息、执行任务。Pi 的强大之处在于：你不需要从零写代码，只要告诉 Pi “给我做一个像 mom 那样的助手”，它就能自己生成一个。</p>
 </blockquote>
 <h2 id="Pi-里没有什么？"><a href="#Pi-里没有什么？" class="headerlink" title="Pi 里没有什么？"></a>Pi 里没有什么？</h2><p>要理解 Pi 有什么，更重要的是理解它<strong>没有什么</strong>、为什么没有、以及为什么将来也不会有。</p>
-<p><strong>最明显的缺失是 MCP 支持。</strong> Pi 不内置 MCP。虽然你可以为它写一个 MCP 扩展，但你也可以像 OpenClaw 那样用 mcporter——一个把 MCP 调用暴露为 CLI 接口或 TypeScript 绑定的工具，让智能体通过命令行间接使用 MCP 能力。</p>
-<p>这不是偷懒。这是 Pi 的核心哲学决定的：<strong>如果你想让智能体做一件它还不会做的事，你不应该去下载一个扩展或技能（skill），你应该让智能体自己扩展自己。</strong> Pi 庆祝的是”写代码 + 运行代码”这个理念——你需要什么功能，就让它现场写一个。</p>
-<p>这并不是说不能下载扩展——Pi 完全支持下载别人的扩展。但与其鼓励你下载一个现成的扩展，Pi 更希望你把智能体指向一个已有的扩展，然后说”照着那个做一个，但改成我喜欢的样子”。</p>
+<p><strong>最明显的缺失是 MCP 支持。</strong> Pi 不内置 MCP。虽然你可以为它写一个 MCP 扩展，但你也可以像 OpenClaw 那样用 mcporter，一个把 MCP 调用暴露为 CLI 接口或 TypeScript 绑定的工具，让智能体通过命令行间接使用 MCP 能力。</p>
+<p>这不是偷懒。这是 Pi 的核心哲学决定的：<strong>如果你想让智能体做一件它还不会做的事，你不应该去下载一个扩展或技能（skill），你应该让智能体自己扩展自己。</strong> Pi 庆祝的是”写代码 + 运行代码”这个理念，你需要什么功能，就让它现场写一个。</p>
+<p>这并不是说不能下载扩展，Pi 完全支持下载别人的扩展。但与其鼓励你下载一个现成的扩展，Pi 更希望你把智能体指向一个已有的扩展，然后说”照着那个做一个，但改成我喜欢的样子”。</p>
 <blockquote>
 <p><strong>补充说明</strong>：这跟 Nanobot 的 Skills 系统（从 ClawHub 技能市场下载）形成了有趣的对比。Nanobot 走的是”标准化技能包，按需加载”路线；Pi 走的是”让智能体自己写自己需要的工具”路线。两种哲学各有优势：前者生态复用性强，后者灵活度极高。</p>
 </blockquote>
-<h2 id="为智能体构建智能体而生"><a href="#为智能体构建智能体而生" class="headerlink" title="为智能体构建智能体而生"></a>为智能体构建智能体而生</h2><p>当你审视 Pi 以及由它衍生的 OpenClaw 在做什么，你会发现它们像粘土一样可塑的软件。这对底层架构有特殊要求——某些约束必须内建到核心设计中。</p>
+<h2 id="为智能体构建智能体而生"><a href="#为智能体构建智能体而生" class="headerlink" title="为智能体构建智能体而生"></a>为智能体构建智能体而生</h2><p>当你审视 Pi 以及由它衍生的 OpenClaw 在做什么，你会发现它们像粘土一样可塑的软件。这对底层架构有特殊要求，某些约束必须内建到核心设计中。</p>
 <p><strong>跨模型可移植的会话。</strong> Pi 的底层 AI SDK 被设计成一个会话可以包含来自多个不同模型供应商的消息。它意识到会话在不同模型供应商之间的可移植性是有限的，所以不会过度依赖某个供应商的专有特性。</p>
-<p><strong>自定义消息层。</strong> 除了模型消息，Pi 在会话文件中维护自定义消息——扩展可以用它存状态，系统本身也可以用它存”完全不发给 AI 或只发一部分”的信息。</p>
+<p><strong>自定义消息层。</strong> 除了模型消息，Pi 在会话文件中维护自定义消息，扩展可以用它存状态，系统本身也可以用它存”完全不发给 AI 或只发一部分”的信息。</p>
 <p><strong>热重载。</strong> 因为扩展状态可以持久化到磁盘，Pi 内置了热重载机制：智能体可以写代码、重载、测试、循环，直到扩展真正可用。它还自带文档和示例，智能体可以用这些资料来扩展自己。</p>
-<p><strong>会话是树形结构。</strong> Pi 的会话不是线性列表，而是一棵树。你可以分支、在会话内导航，这打开了各种有趣的可能性——比如在主会话不浪费上下文的前提下，开一个”支线任务”去修复一个坏掉的工具。修好后，你可以把会话倒回分支前的状态，Pi 会把支线上发生的事总结给你。</p>
+<p><strong>会话是树形结构。</strong> Pi 的会话不是线性列表，而是一棵树。你可以分支、在会话内导航，这打开了各种有趣的可能性，比如在主会话不浪费上下文的前提下，开一个”支线任务”去修复一个坏掉的工具。修好后，你可以把会话倒回分支前的状态，Pi 会把支线上发生的事总结给你。</p>
 <blockquote>
-<p><strong>补充说明</strong>：树形会话是 Pi 最独特的设计之一。想象你在写代码时发现一个工具坏了——传统做法是停下主线任务去修工具，修完回来时上下文已经被污染了。Pi 的做法是开一个分支去修工具，修完后合并回来，主线上下文干干净净。这就像 Git 的分支模型，但用在 AI 对话上。</p>
+<p><strong>补充说明</strong>：树形会话是 Pi 最独特的设计之一。想象你在写代码时发现一个工具坏了。传统做法是停下主线任务去修工具，修完回来时上下文已经被污染了。Pi 的做法是开一个分支去修工具，修完后合并回来，主线上下文干干净净。这就像 Git 的分支模型，但用在 AI 对话上。</p>
 </blockquote>
 <p>这一切为什么重要？以 MCP 为例：大多数模型供应商要求工具（包括 MCP 的工具）在会话开始时就被加载进系统上下文。这意味着你几乎不可能在不破坏缓存或让 AI 困惑的情况下，中途完全重新加载工具的定义。Pi 的自定义消息和树形会话绕过了这个限制。</p>
 <h2 id="上下文之外的工具"><a href="#上下文之外的工具" class="headerlink" title="上下文之外的工具"></a>上下文之外的工具</h2><p>Pi 的扩展可以向 LLM 注册一个可调用的工具。偶尔我会用到这个功能。比如，尽管我批评过 Beads 的实现方式，但我确实认为给智能体一个待办清单是非常有用的。我用一个本地的 issue tracker（智能体自己帮我搭的），为了让它也能管理待办，我给它注册了一个工具而不是 CLI。这是目前我加载到上下文中的唯一额外工具。</p>
-<p>但大部分时候，我添加给智能体的东西要么是技能（skill），要么是 TUI 扩展。除了斜杠命令，Pi 扩展可以直接在终端里渲染自定义的 TUI 组件：加载动画、进度条、交互式文件选择器、数据表格、预览面板。TUI 灵活到 Mario 证明了你可以在里面跑 Doom——虽然不实用，但如果你能跑 Doom，你就能做出有用的仪表盘或调试界面。</p>
+<p>但大部分时候，我添加给智能体的东西要么是技能（skill），要么是 TUI 扩展。除了斜杠命令，Pi 扩展可以直接在终端里渲染自定义的 TUI 组件：加载动画、进度条、交互式文件选择器、数据表格、预览面板。TUI 灵活到 Mario 证明了你可以在里面跑 Doom，虽然不实用，但如果你能跑 Doom，你就能做出有用的仪表盘或调试界面。</p>
 <p>下面介绍几个我做的扩展，让你感受一下可能性。虽然你可以直接用它们，但整个理念是：你把智能体指向其中一个，然后随心所欲地改造。</p>
-<h3 id="answer：优雅地回答智能体的问题"><a href="#answer：优雅地回答智能体的问题" class="headerlink" title="/answer：优雅地回答智能体的问题"></a><code>/answer</code>：优雅地回答智能体的问题</h3><p>我不用计划模式（plan mode）。我鼓励智能体提问，形成有来有往的对话。但我不喜欢用结构化的”问题对话框”工具——我更喜欢智能体用自然的散文加上解释和图表。</p>
+<h3 id="answer：优雅地回答智能体的问题"><a href="#answer：优雅地回答智能体的问题" class="headerlink" title="/answer：优雅地回答智能体的问题"></a><code>/answer</code>：优雅地回答智能体的问题</h3><p>我不用计划模式（plan mode）。我鼓励智能体提问，形成有来有往的对话。但我不喜欢用结构化的”问题对话框”工具，我更喜欢智能体用自然的散文加上解释和图表。</p>
 <p>问题是：在对话流中直接回答问题容易混乱。所以 <code>/answer</code> 会读取智能体的最后一条回复，提取出所有问题，重新格式化成一个漂亮的输入框。</p>
 <p><img src="/Blogs/./images/pi/pi-answer.png" alt="/answer 扩展：问题对话框" loading="lazy"></p>
 <h3 id="todos：待办管理"><a href="#todos：待办管理" class="headerlink" title="/todos：待办管理"></a><code>/todos</code>：待办管理</h3><p>尽管我批评过 Beads，但给智能体一个待办清单确实有用。<code>/todos</code> 命令调出 <code>.pi/todos</code> 目录下所有的 markdown 文件。智能体和我都能编辑它们，会话可以认领任务来标记”进行中”。</p>
 <h3 id="review：智能体先自审，人类再审"><a href="#review：智能体先自审，人类再审" class="headerlink" title="/review：智能体先自审，人类再审"></a><code>/review</code>：智能体先自审，人类再审</h3><p>随着越来越多代码由智能体写出，在人类审查之前先让智能体自审一轮是合理的。因为 Pi 的会话是树形的，我可以开一个干净的审查分支，拿到发现后把修复合并回主会话。</p>
 <p><img src="/Blogs/./images/pi/pi-review.png" alt="/review 扩展：审查预设选项" loading="lazy"></p>
-<p>UI 参考了 Codex 的设计，可以方便地审查 commit、diff、未提交的更改或远程 PR。提示词关注我在意的事情——比如它会特别标出”新增了依赖”这种我希望被提醒的变更。</p>
-<h3 id="control：多智能体实验"><a href="#control：多智能体实验" class="headerlink" title="/control：多智能体实验"></a><code>/control</code>：多智能体实验</h3><p>一个我在实验但没在正式使用的扩展。它允许一个 Pi 智能体向另一个发送 prompt——一个不需要复杂编排的简单多智能体系统，适合做实验。</p>
-<h3 id="files：会话文件管理"><a href="#files：会话文件管理" class="headerlink" title="/files：会话文件管理"></a><code>/files</code>：会话文件管理</h3><p>列出会话中所有被修改或引用的文件。可以在 Finder 中打开、在 VS Code 里 diff、Quick Look 预览，或在 prompt 中引用。<code>shift+ctrl+r</code> 可以 Quick Look 最近提到的文件——当智能体生成了一个 PDF 时特别好用。</p>
+<p>UI 参考了 Codex 的设计，可以方便地审查 commit、diff、未提交的更改或远程 PR。提示词关注我在意的事情，比如它会特别标出”新增了依赖”这种我希望被提醒的变更。</p>
+<h3 id="control：多智能体实验"><a href="#control：多智能体实验" class="headerlink" title="/control：多智能体实验"></a><code>/control</code>：多智能体实验</h3><p>一个我在实验但没在正式使用的扩展。它允许一个 Pi 智能体向另一个发送 prompt，一个不需要复杂编排的简单多智能体系统，适合做实验。</p>
+<h3 id="files：会话文件管理"><a href="#files：会话文件管理" class="headerlink" title="/files：会话文件管理"></a><code>/files</code>：会话文件管理</h3><p>列出会话中所有被修改或引用的文件。可以在 Finder 中打开、在 VS Code 里 diff、Quick Look 预览，或在 prompt 中引用。<code>shift+ctrl+r</code> 可以 Quick Look 最近提到的文件，当智能体生成了一个 PDF 时特别好用。</p>
 <p>其他人也做了扩展：Nico 做了子智能体扩展和交互式 shell（让 Pi 能在可观测的 TUI overlay 中自主运行交互式 CLI）。</p>
-<h2 id="软件构建软件"><a href="#软件构建软件" class="headerlink" title="软件构建软件"></a>软件构建软件</h2><p>以上只是你能用智能体做什么的一些想法。关键是：<strong>这些扩展没有一个是我手写的——都是智能体按照我的需求自己创建的</strong>。我告诉 Pi 做一个扩展，它就做了。没有 MCP，没有社区技能市场，什么都没有。</p>
-<p>别误会，我用了大量技能。但它们是我的 Pi（昵称 clanker）手工定制的，不是从哪里下载的。比如我用一个基于 CDP（Chrome DevTools Protocol）的技能完全替代了所有浏览器自动化的 CLI 和 MCP——不是因为别的方案不好，而是因为这样做简单自然，智能体自己维护自己的功能。</p>
+<h2 id="软件构建软件"><a href="#软件构建软件" class="headerlink" title="软件构建软件"></a>软件构建软件</h2><p>以上只是你能用智能体做什么的一些想法。关键是：<strong>这些扩展没有一个是我手写的，都是智能体按照我的需求自己创建的</strong>。我告诉 Pi 做一个扩展，它就做了。没有 MCP，没有社区技能市场，什么都没有。</p>
+<p>别误会，我用了大量技能。但它们是我的 Pi（昵称 clanker）手工定制的，不是从哪里下载的。比如我用一个基于 CDP（Chrome DevTools Protocol）的技能完全替代了所有浏览器自动化的 CLI 和 MCP，不是因为别的方案不好，而是因为这样做简单自然，智能体自己维护自己的功能。</p>
 <p>我的智能体有不少技能，而且不需要的我就删。比如我给它一个读取其他工程师分享的 Pi 会话的技能（帮助代码审查），还有一个帮助它按照我想要的方式写 commit 消息和更新 changelog 的技能。我还有一个希望帮助 Pi 用 <code>uv</code> 而非 <code>pip</code> 的技能，同时我还加了一个自定义扩展来拦截 <code>pip</code> 和 <code>python</code> 命令，自动重定向到 <code>uv</code>。</p>
 <blockquote>
-<p><strong>补充说明</strong>：<code>uv</code> 是一个用 Rust 编写的极速 Python 包管理器（由 Astral 开发），比 <code>pip</code> 快 10-100 倍。Armin 让智能体自动用 <code>uv</code> 替代 <code>pip</code>，体现了”智能体优化自己的工作流”这一理念——它不只是帮你写代码，还帮你把开发工具链变得更高效。</p>
+<p><strong>补充说明</strong>：<code>uv</code> 是一个用 Rust 编写的极速 Python 包管理器（由 Astral 开发），比 <code>pip</code> 快 10-100 倍。Armin 让智能体自动用 <code>uv</code> 替代 <code>pip</code>，体现了”智能体优化自己的工作流”这一理念，它不只是帮你写代码，还帮你把开发工具链变得更高效。</p>
 </blockquote>
-<p>使用 Pi 这样的极简智能体给我带来的魅力在于：它让你真正活在”用软件构建更多软件”的理念里。把这种理念推到极致——去掉 UI、去掉输出、连接到你的聊天工具——就是 OpenClaw 做的事。考虑到它爆炸式的增长，我越来越觉得，这在某种意义上就是我们未来的方向。</p>
+<p>使用 Pi 这样的极简智能体给我带来的魅力在于：它让你真正活在”用软件构建更多软件”的理念里。把这种理念推到极致：去掉 UI、去掉输出、连接到你的聊天工具，就是 OpenClaw 做的事。考虑到它爆炸式的增长，我越来越觉得，这在某种意义上就是我们未来的方向。</p>
 <blockquote>
 <p>原文链接：<a target="_blank" rel="noopener" href="https://lucumr.pocoo.org/2026/1/31/pi/">Pi: The Minimal Agent Within OpenClaw</a> — Armin Ronacher, 2026-01-31</p>
 </blockquote>
