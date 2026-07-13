@@ -6,7 +6,7 @@
   <link href="https://carlyuhq.github.io/Blogs/atom.xml" rel="self"/>
   
   <link href="https://carlyuhq.github.io/Blogs/"/>
-  <updated>2026-07-12T16:06:33.255Z</updated>
+  <updated>2026-07-13T02:05:00.050Z</updated>
   <id>https://carlyuhq.github.io/Blogs/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Pi：OpenClaw 内部的极简编码智能体</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/07/13/Pi-OpenClaw%E5%86%85%E9%83%A8%E7%9A%84%E6%9E%81%E7%AE%80%E7%BC%96%E7%A0%81%E6%99%BA%E8%83%BD%E4%BD%93/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/07/13/Pi-OpenClaw%E5%86%85%E9%83%A8%E7%9A%84%E6%9E%81%E7%AE%80%E7%BC%96%E7%A0%81%E6%99%BA%E8%83%BD%E4%BD%93/</id>
+    <published>2026-07-13T10:00:00.000Z</published>
+    <updated>2026-07-13T02:05:00.050Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本文翻译整理自 Armin Ronacher（Flask、Jinja2 作者）的博客文章 &lt;a href=&quot;https://lucumr.pocoo.org/2026/1/31/pi/&quot;&gt;Pi: The Minimal Agent Within OpenClaw&lt;/a&gt;（2026 年 1 月 31 日）。原文以第一人称讲述了他为什么迷恋 Pi 这个极简编码智能体，以及它与 OpenClaw 的关系。译文在忠实原文的基础上做了适度润色和补充说明，帮助中文读者理解上下文。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Agent" scheme="https://carlyuhq.github.io/Blogs/tags/Agent/"/>
+    
+    <category term="大模型" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+    
+    <category term="翻译" scheme="https://carlyuhq.github.io/Blogs/tags/%E7%BF%BB%E8%AF%91/"/>
+    
+  </entry>
   
   <entry>
     <title>Nanobot 源码详解：4000 行代码如何打造一个超轻量个人 AI 智能体</title>
@@ -356,31 +383,6 @@
     
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;本文为强化学习课程 Chapter 6: Stochastic Approximation 的详细笔记。本章不介绍具体的强化学习算法，而是为第七章的&lt;strong&gt;时序差分学习&lt;/strong&gt;奠定数学基础。核心内容是&lt;strong&gt;Robbins-Monro 算法&lt;/strong&gt;和&lt;strong&gt;随机梯度下降（SGD）&lt;/strong&gt;，它们是增量式算法的理论根基。&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>强化学习笔记（五）蒙特卡洛方法</title>
-    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95/"/>
-    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95/</id>
-    <published>2026-05-29T02:00:00.000Z</published>
-    <updated>2026-07-13T01:48:14.359Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;本文为强化学习课程 Chapter 5: Monte Carlo Methods 的详细笔记。本章介绍第一个&lt;strong&gt;无模型（model-free）&lt;/strong&gt;强化学习算法——蒙特卡洛方法。核心思想是：如果没有模型，就必须有数据。MC 方法通过经验样本来估计动作值，从而寻找最优策略。&lt;/p&gt;
 &lt;/blockquote&gt;</summary>
     
     
