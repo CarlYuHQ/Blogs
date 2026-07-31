@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#2abaaa"><meta name="author" content="老于真的不老"><meta name="copyright" content="老于真的不老"><meta name="generator" content="Hexo 7.3.0"><meta name="theme" content="hexo-theme-yun"><title>Claude Code 的核心：所有机制挂在同一个循环上 | 老于真的不老の随笔</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/star-markdown-css@0.4.1/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/prism-theme-vars/base.css"><link rel="icon" type="image/png" href="/Blogs/favicon.ico"><link rel="mask-icon" href="/Blogs/favicon.ico" color="#2abaaa"><link rel="preload" href="/Blogs/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/Blogs/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fastly.jsdelivr.net/npm/" crossorigin><script id="yun-config">
+    window.Yun = {}
+    window.CONFIG = {"hostname":"carlyuhq.github.io","root":"/Blogs/","title":"老于真的不老の随笔","version":"1.10.11","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}.","hits":"${hits} results found","hits_time":"${hits} results found in ${time} ms"},"anonymous_image":"https://cdn.yunyoujun.cn/img/avatar/none.jpg","say":{"api":"https://v1.hitokoto.cn","hitokoto":true},"algolia":{"appID":"HBLOT8G58K","apiKey":"0305cb4e761b90fb98bf049d598fcee6","indexName":"Blogs","hits":{"per_page":8}},"vendors":{"host":"https://fastly.jsdelivr.net/npm/","darken":"https://fastly.jsdelivr.net/npm/darken@1.5.0"}};
+  </script><link rel="stylesheet" href="/Blogs/css/hexo-theme-yun.css"><script src="/Blogs/js/hexo-theme-yun.js" type="module"></script><link rel="alternate" href="/Blogs/atom.xml" title="老于真的不老の随笔" type="application/atom+xml"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;family=Noto+Sans+SC:wght@400;500;700&amp;display=swap"><script src="/Blogs/js/ac-sidebar-author.js" defer></script><script src="/Blogs/js/ac-site.js" defer></script><script src="/Blogs/js/ac-typewriter.js" defer></script><link rel="preconnect" href="https://www.google-analytics.com" crossorigin><script async src="https://www.googletagmanager.com/gtag/js?id=G-1LL0D86CY9"></script><script>if (CONFIG.hostname === location.hostname) {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1LL0D86CY9');
+}</script><script>(function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https') {
+    bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else {
+    bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();</script><!-- Google Tag Manager --><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M9KWR9L');</script><!-- End Google Tag Manager --><meta name="description" content="本文整理自 Learn Claude Code 课程的学习笔记。课程把一个 Claude Code 式的编码智能体拆成 20 步，每步只往主循环里加一个机制。本文聚焦最核心的理念和前六步——从「会说话」到「会干活」的单 Agent 主干。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Claude Code 的核心：所有机制挂在同一个循环上">
+<meta property="og:url" content="https://carlyuhq.github.io/Blogs/2026/07/14/LearnClaudeCode-%E6%A0%B8%E5%BF%83%E5%BE%AA%E7%8E%AF%E4%B8%8E%E5%8D%95Agent%E4%B8%BB%E5%B9%B2/index.html">
+<meta property="og:site_name" content="老于真的不老の随笔">
+<meta property="og:description" content="本文整理自 Learn Claude Code 课程的学习笔记。课程把一个 Claude Code 式的编码智能体拆成 20 步，每步只往主循环里加一个机制。本文聚焦最核心的理念和前六步——从「会说话」到「会干活」的单 Agent 主干。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/lcc/s03-permission-overview.svg">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/lcc/s03-permission-pipeline.svg">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/lcc/s04-hooks-overview.svg">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/lcc/s05-todo-overview.svg">
+<meta property="og:image" content="https://carlyuhq.github.io/Blogs/images/lcc/s06-subagent-overview.svg">
+<meta property="article:published_time" content="2026-07-14T12:00:00.000Z">
+<meta property="article:modified_time" content="2026-07-31T03:15:48.744Z">
+<meta property="article:author" content="老于真的不老">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="Agent">
+<meta property="article:tag" content="大模型">
+<meta property="article:tag" content="Claude Code">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://carlyuhq.github.io/Blogs/images/lcc/s03-permission-overview.svg"><script>(function() {
+  if (CONFIG.mode !== 'auto') return
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const setting = localStorage.getItem('darken-mode') || 'auto'
+  if (setting === 'dark' || (prefersDark && setting !== 'light'))
+    document.documentElement.classList.toggle('dark', true)
+})()</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --></head><body><script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script><script>// Define global variable
+IconifyProviders = {
+  // Empty prefix: overwrite default API provider configuration
+  '': {
+    // Use custom API first, use Iconify public API as backup
+    resources: [
+        'https://api.iconify.design',
+    ],
+    // Wait for 1 second before switching API hosts
+    rotate: 1000,
+  },
+};</script><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/Blogs/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="Table of Contents"><span class="icon iconify" data-icon="ri:list-ordered"></span></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="Overview"><span class="icon iconify" data-icon="ri:passport-line"></span></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/Blogs/about/" title="老于真的不老"><img width="96" loading="lazy" src="https://carlyuhq.github.io/Blogs/images/author-96.jpg" alt="老于真的不老"><span class="site-author-status" title="静待花开">😄</span></a><div class="site-author-name"><a href="/Blogs/about/">老于真的不老</a></div><span class="site-name">老于真的不老の随笔</span><sub class="site-subtitle">紫荆花开，岁月如歌</sub><div class="site-description">致我们终将逝去的青春</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/Blogs/" title="Home"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:home-4-line"></span></span></a><div class="site-state-item"><a href="/Blogs/archives/" title="Archives"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:archive-line"></span></span><span class="site-state-item-count">29</span></a></div><div class="site-state-item"><a href="/Blogs/categories/" title="Categories"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:folder-2-line"></span></span><span class="site-state-item-count">2</span></a></div><div class="site-state-item"><a href="/Blogs/tags/" title="Tags"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="site-state-item-count">27</span></a></div><a class="site-state-item hty-icon-button" href="https://carlyuhq.github.io/" title="个人主页"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:user-smile-line"></span></span></a></nav><hr style="margin-bottom:0.5rem"><div class="links-of-author"><a class="links-of-author-item hty-icon-button" rel="noopener" href="/atom.xml" title="RSS" target="_blank" style="color:orange"><span class="icon iconify" data-icon="ri:rss-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="/images/qq.jpg" title="QQ" target="_blank" style="color:#12B7F5"><span class="icon iconify" data-icon="ri:qq-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://github.com/CarlYuHQ" title="GitHub" target="_blank" style="color:#6e5494"><span class="icon iconify" data-icon="ri:github-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://www.zhihu.com/people/deng-feng-28-75" title="知乎" target="_blank" style="color:#0084FF"><span class="icon iconify" data-icon="ri:zhihu-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://space.bilibili.com/1783114481" title="哔哩哔哩" target="_blank" style="color:#FF8EB3"><span class="icon iconify" data-icon="ri:bilibili-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="/images/weixin.jpg" title="微信" target="_blank" style="color:#1AAD19"><span class="icon iconify" data-icon="ri:wechat-2-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="https://x.com/yhnqng3" title="Twitter" target="_blank" style="color:#1da1f2"><span class="icon iconify" data-icon="ri:twitter-line"></span></a><a class="links-of-author-item hty-icon-button" rel="noopener" href="mailto:2100016634@stu.pku.edu.cn" title="E-Mail" target="_blank" style="color:#8E71C1"><span class="icon iconify" data-icon="ri:mail-line"></span></a></div><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/Blogs/links/" title="我的小伙伴们" style="color:dodgerblue"><span class="icon iconify" data-icon="ri:genderless-line"></span></a><a class="links-item hty-icon-button" href="/Blogs/girls/" title="喜欢的女孩子" style="color:hotpink"><span class="icon iconify" data-icon="ri:women-line"></span></a><a class="links-item hty-icon-button" href="/Blogs/albums/" title="相册" style="color:null"><span class="icon iconify" data-icon="ri:gallery-line"></span></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><span class="icon iconify" data-icon="ri:contrast-2-line"></span></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%90%86%E8%A7%A3-Claude-Code-%E7%9A%84%E8%AE%BE%E8%AE%A1%E5%93%B2%E5%AD%A6"><span class="toc-number">1.</span> <span class="toc-text">一句话理解 Claude Code 的设计哲学</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E9%97%AD%E7%8E%AF%EF%BC%9A130-%E8%A1%8C%E4%BB%A3%E7%A0%81%E8%AE%A9%E6%A8%A1%E5%9E%8B%E3%80%8C%E4%BC%9A%E5%B9%B2%E6%B4%BB%E3%80%8D"><span class="toc-number">2.</span> <span class="toc-text">最小闭环：130 行代码让模型「会干活」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E8%B7%AF%E7%94%B1%EF%BC%9A%E5%8A%A0%E5%B7%A5%E5%85%B7%E4%B8%8D%E6%94%B9%E5%BE%AA%E7%8E%AF"><span class="toc-number">3.</span> <span class="toc-text">工具路由：加工具不改循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E7%B3%BB%E7%BB%9F%EF%BC%9A%E6%84%8F%E5%9B%BE%E5%85%88%E8%BF%87%E5%AE%89%E5%85%A8%E9%97%B8%E9%97%A8"><span class="toc-number">4.</span> <span class="toc-text">权限系统：意图先过安全闸门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hook-%E7%B3%BB%E7%BB%9F%EF%BC%9A%E4%B8%8D%E6%94%B9%E4%B8%BB%E5%BE%AA%E7%8E%AF%E4%B9%9F%E8%83%BD%E6%89%A9%E5%B1%95"><span class="toc-number">5.</span> <span class="toc-text">Hook 系统：不改主循环也能扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%85%E5%8A%9E%E5%86%99%E5%85%A5%EF%BC%9A%E8%AE%A9-Agent-%E5%AD%A6%E4%BC%9A%E5%81%9A%E8%AE%A1%E5%88%92"><span class="toc-number">6.</span> <span class="toc-text">待办写入：让 Agent 学会做计划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%90%E4%BB%A3%E7%90%86%EF%BC%9A%E5%AD%90%E4%BB%BB%E5%8A%A1%E4%BD%BF%E7%94%A8%E5%85%A8%E6%96%B0%E4%B8%8A%E4%B8%8B%E6%96%87"><span class="toc-number">7.</span> <span class="toc-text">子代理：子任务使用全新上下文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E7%BB%93%EF%BC%9A%E5%85%AD%E4%B8%AA%E6%9C%BA%E5%88%B6%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%BE%AA%E7%8E%AF"><span class="toc-number">8.</span> <span class="toc-text">小结：六个机制，一个循环</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#2abaaa;"><link itemprop="mainEntityOfPage" href="https://CarlYuHQ.github.io/Blogs/Blogs/2026/07/14/LearnClaudeCode-%E6%A0%B8%E5%BF%83%E5%BE%AA%E7%8E%AF%E4%B8%8E%E5%8D%95Agent%E4%B8%BB%E5%B9%B2/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="老于真的不老"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="老于真的不老の随笔"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">Claude Code 的核心：所有机制挂在同一个循环上</h1><div class="post-meta"><div class="post-time" style="display:block"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-line"></span></span> <time title="Created: 2026-07-14 20:00:00" itemprop="dateCreated datePublished" datetime="2026-07-14T20:00:00+08:00">2026-07-14</time><span class="post-meta-divider">-</span><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-2-line"></span></span> <time title="Modified: 2026-07-31 11:15:48" itemprop="dateModified" datetime="2026-07-31T11:15:48+08:00">2026-07-31</time></div><span class="post-count"><span class="post-symbolcount"><span class="post-meta-item-icon" title="Word count in article"><span class="icon iconify" data-icon="ri:file-word-line"></span></span> <span title="Word count in article">2.2k</span><span class="post-meta-divider">-</span><span class="post-meta-item-icon" title="Reading time"><span class="icon iconify" data-icon="ri:timer-line"></span></span> <span title="Reading time">8m</span></span></span><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><span class="icon iconify" data-icon="ri:folder-line"></span></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">课程笔记</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag-item" href="/Blogs/tags/%E5%AD%A6%E4%B9%A0/" style="--text-color:saddlebrown"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">学习</span></a><a class="tag-item" href="/Blogs/tags/Agent/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">Agent</span></a><a class="tag-item" href="/Blogs/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">大模型</span></a><a class="tag-item" href="/Blogs/tags/Claude-Code/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">Claude Code</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><blockquote>
+<p>本文整理自 <a target="_blank" rel="noopener" href="https://learn.shareai.run/zh/">Learn Claude Code</a> 课程的学习笔记。课程把一个 Claude Code 式的编码智能体拆成 20 步，每步只往主循环里加一个机制。本文聚焦最核心的理念和前六步——从「会说话」到「会干活」的单 Agent 主干。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="一句话理解-Claude-Code-的设计哲学"><a href="#一句话理解-Claude-Code-的设计哲学" class="headerlink" title="一句话理解 Claude Code 的设计哲学"></a>一句话理解 Claude Code 的设计哲学</h2><p><strong>机制很多，循环一个。</strong></p>
+<p>一个能长期工作的编码智能体，需要同时拥有工具分发与权限边界、Hook 扩展点、待办计划与任务图、技能&#x2F;记忆&#x2F;系统提示词组装、上下文压缩与错误恢复、后台任务与定时调度、多智能体协作、工作区隔离、MCP 外部工具接入。听起来很复杂，但 Claude Code 的设计思路是：<strong>这些机制全都挂在同一个 <code>while True</code> 循环的不同位置上。循环本体从头到尾几乎没变，变的是循环周围的 harness 越来越完整。</strong></p>
+<p>循环的核心逻辑可以浓缩成一段话：</p>
+<blockquote>
+<p>调用模型 → 检查响应里有没有 <code>tool_use</code> → 有就执行工具 → 把结果追加回 <code>messages</code> → 继续下一轮。</p>
+</blockquote>
+<p><strong>Agent 的核心不是「模型很聪明」，而是「系统持续把现实结果喂回模型」。</strong></p>
+<h2 id="最小闭环：130-行代码让模型「会干活」"><a href="#最小闭环：130-行代码让模型「会干活」" class="headerlink" title="最小闭环：130 行代码让模型「会干活」"></a>最小闭环：130 行代码让模型「会干活」</h2><p>语言模型本身只会生成下一段文本。它不会自己打开文件、运行命令、观察报错，更不会把工具结果用于下一步推理。如果没有一层代码在中间反复做这件事，模型就只是一个「会说话的程序」，还不是一个「会干活的 Agent」。</p>
+<p>最小闭环的核心思路：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">用户消息 → 模型推理</span><br><span class="line">                ├── 普通文本回答 → 结束</span><br><span class="line">                └── tool_use → 执行工具 → tool_result → 写回 messages → 下一轮</span><br></pre></td></tr></table></figure>
+
+<p>这里面最关键的一步，不是「有一个 while True」，而是：<strong>工具结果必须重新进入消息历史，成为下一轮推理的输入。</strong> 少了这一步，模型就无法基于真实观察继续工作。</p>
+<p>用代码表达就是这样一个循环：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">agent_loop</span>(<span class="params">state</span>):</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="comment"># 把消息历史发给模型</span></span><br><span class="line">        response = client.messages.create(</span><br><span class="line">            model=MODEL,</span><br><span class="line">            system=SYSTEM,</span><br><span class="line">            messages=state[<span class="string">&quot;messages&quot;</span>],</span><br><span class="line">            tools=TOOLS,</span><br><span class="line">            max_tokens=<span class="number">8000</span>,</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="comment"># assistant 回复必须写回历史</span></span><br><span class="line">        state[<span class="string">&quot;messages&quot;</span>].append(&#123;</span><br><span class="line">            <span class="string">&quot;role&quot;</span>: <span class="string">&quot;assistant&quot;</span>,</span><br><span class="line">            <span class="string">&quot;content&quot;</span>: response.content,</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 如果模型没有调用工具，说明任务完成了</span></span><br><span class="line">        <span class="keyword">if</span> response.stop_reason != <span class="string">&quot;tool_use&quot;</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 执行模型请求的工具，把结果写回历史</span></span><br><span class="line">        results = []</span><br><span class="line">        <span class="keyword">for</span> block <span class="keyword">in</span> response.content:</span><br><span class="line">            <span class="keyword">if</span> block.<span class="built_in">type</span> == <span class="string">&quot;tool_use&quot;</span>:</span><br><span class="line">                output = run_tool(block)</span><br><span class="line">                results.append(&#123;</span><br><span class="line">                    <span class="string">&quot;type&quot;</span>: <span class="string">&quot;tool_result&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;tool_use_id&quot;</span>: block.<span class="built_in">id</span>,</span><br><span class="line">                    <span class="string">&quot;content&quot;</span>: output,</span><br><span class="line">                &#125;)</span><br><span class="line"></span><br><span class="line">        state[<span class="string">&quot;messages&quot;</span>].append(&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: results&#125;)</span><br><span class="line">        state[<span class="string">&quot;turn_count&quot;</span>] += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>这段代码里有三个「必须写回 <code>messages</code>」的东西：用户消息、assistant 回复、工具结果。初学者最容易犯的错就是只保存前两种，忘了第三种。记住：<strong>在 Agent 里，<code>messages</code> 不是聊天记录展示层，而是模型下一轮要读的工作上下文。</strong></p>
+<h2 id="工具路由：加工具不改循环"><a href="#工具路由：加工具不改循环" class="headerlink" title="工具路由：加工具不改循环"></a>工具路由：加工具不改循环</h2><p>最小闭环只有一个 <code>bash</code> 工具，所有操作都走 shell。但 <code>cat</code> 截断不可预测、<code>sed</code> 遇到特殊字符就崩、每次 bash 调用都是不受约束的安全面。需要专用工具。</p>
+<p>关键洞察：<strong>加工具不需要改循环。</strong> 做法很简单——用一个字典把工具名映射到处理函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">TOOL_HANDLERS = &#123;</span><br><span class="line">    <span class="string">&quot;bash&quot;</span>:       <span class="keyword">lambda</span> **kw: run_bash(kw[<span class="string">&quot;command&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;read_file&quot;</span>:  <span class="keyword">lambda</span> **kw: run_read(kw[<span class="string">&quot;path&quot;</span>], kw.get(<span class="string">&quot;limit&quot;</span>)),</span><br><span class="line">    <span class="string">&quot;write_file&quot;</span>: <span class="keyword">lambda</span> **kw: run_write(kw[<span class="string">&quot;path&quot;</span>], kw[<span class="string">&quot;content&quot;</span>]),</span><br><span class="line">    <span class="string">&quot;edit_file&quot;</span>:  <span class="keyword">lambda</span> **kw: run_edit(kw[<span class="string">&quot;path&quot;</span>], kw[<span class="string">&quot;old_text&quot;</span>],</span><br><span class="line">                                        kw[<span class="string">&quot;new_text&quot;</span>]),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>循环体里只需把「直接调 <code>run_bash</code>」改成「按 <code>block.name</code> 查表分发」：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> block <span class="keyword">in</span> response.content:</span><br><span class="line">    <span class="keyword">if</span> block.<span class="built_in">type</span> == <span class="string">&quot;tool_use&quot;</span>:</span><br><span class="line">        handler = TOOL_HANDLERS.get(block.name)</span><br><span class="line">        output = handler(**block.<span class="built_in">input</span>) <span class="keyword">if</span> handler \</span><br><span class="line">            <span class="keyword">else</span> <span class="string">f&quot;Unknown tool: <span class="subst">&#123;block.name&#125;</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>文件类工具还可以在工具层面做路径沙箱，防止模型逃逸出工作目录：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">safe_path</span>(<span class="params">p: <span class="built_in">str</span></span>) -&gt; Path:</span><br><span class="line">    path = (WORKDIR / p).resolve()</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> path.is_relative_to(WORKDIR):</span><br><span class="line">        <span class="keyword">raise</span> ValueError(<span class="string">f&quot;Path escapes workspace: <span class="subst">&#123;p&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> path</span><br></pre></td></tr></table></figure>
+
+<p>所以加工具 &#x3D; 加一个 handler 函数 + 加一条 schema 定义。循环永远不变。</p>
+<h2 id="权限系统：意图先过安全闸门"><a href="#权限系统：意图先过安全闸门" class="headerlink" title="权限系统：意图先过安全闸门"></a>权限系统：意图先过安全闸门</h2><p>当工具越来越多，执行命令的风险也越来越高。<code>rm -rf /</code> 和 <code>cat README.md</code> 应该有不同的信任级别。Claude Code 在工具执行前插了三道闸门：</p>
+<p><img src="/Blogs/./images/lcc/s03-permission-overview.svg" alt="权限系统总览" loading="lazy"></p>
+<p><strong>第一道：deny（直接拒绝）。</strong> 黑名单规则，比如「永远不允许 <code>sudo</code>」。</p>
+<p><strong>第二道：rules（规则匹配）。</strong> 看命令是否匹配预设规则，比如「允许读取但禁止删除」。</p>
+<p><strong>第三道：ask（问用户）。</strong> 前两道都放行后，如果配置了交互模式，就把命令展示给用户确认。</p>
+<p><img src="/Blogs/./images/lcc/s03-permission-pipeline.svg" alt="权限管线流程" loading="lazy"></p>
+<p>这三道闸门串在一起，形成一条管线。模型发出的每个工具调用都要先穿过这条管线，才能到达实际执行函数。<strong>主循环不需要知道权限系统的存在，权限系统也不需要知道主循环的存在——它们通过「工具执行前拦截」这一个接口点连接。</strong></p>
+<h2 id="Hook-系统：不改主循环也能扩展"><a href="#Hook-系统：不改主循环也能扩展" class="headerlink" title="Hook 系统：不改主循环也能扩展"></a>Hook 系统：不改主循环也能扩展</h2><p>权限是「工具执行前」的拦截，但 Agent 生命周期的其他节点呢？比如「用户提交 prompt 之前」想注入一些上下文，「工具执行完之后」想做日志记录，「整个循环停止之后」想做清理。</p>
+<p>Claude Code 的做法是定义四个 Hook 扩展点，覆盖一个完整轮次的始终：</p>
+<p><img src="/Blogs/./images/lcc/s04-hooks-overview.svg" alt="Hook 系统总览" loading="lazy"></p>
+<ul>
+<li><strong>UserPromptSubmit</strong>：用户输入提交前，可以修改或注入内容</li>
+<li><strong>PreToolUse</strong>：工具执行前（权限闸门之外的第二层拦截）</li>
+<li><strong>PostToolUse</strong>：工具执行后，可以修改返回值或记录日志</li>
+<li><strong>Stop</strong>：循环结束时，可以做清理或收尾</li>
+</ul>
+<p>Hook 的设计理念是：<strong>外部代码可以在不修改主循环源码的前提下，在循环的特定位置插入自定义逻辑。</strong> 这让 Agent 变成了一个可扩展的平台，而不是一个封闭的黑盒。</p>
+<h2 id="待办写入：让-Agent-学会做计划"><a href="#待办写入：让-Agent-学会做计划" class="headerlink" title="待办写入：让 Agent 学会做计划"></a>待办写入：让 Agent 学会做计划</h2><p>模型在工作过程中经常需要记录待办事项：先做 A，再做 B，最后检查 C。如果没有一种持久化的方式记录这些计划，模型就只能靠对话历史里的自然语言「记住」任务列表，随着上下文增长很容易遗漏。</p>
+<p>Claude Code 给模型提供了一个 <code>todo_write</code> 工具，让模型自己维护一个结构化的待办列表：</p>
+<p><img src="/Blogs/./images/lcc/s05-todo-overview.svg" alt="待办系统总览" loading="lazy"></p>
+<p>模型可以往里写任务、标记完成状态、更新内容。系统还有一个 nag reminder 机制：如果模型写了待办但迟迟不执行，系统会主动提醒它「你还有未完成的任务」。</p>
+<p><strong>待办写入的本质是给模型一个外部记忆，让它在多轮工具调用之间不会丢失对全局计划的感知。</strong></p>
+<h2 id="子代理：子任务使用全新上下文"><a href="#子代理：子任务使用全新上下文" class="headerlink" title="子代理：子任务使用全新上下文"></a>子代理：子任务使用全新上下文</h2><p>当主 Agent 遇到一个可以独立完成的子任务时（比如「搜索这个函数的定义」），如果让主 Agent 自己去做，会消耗主上下文的 token。更好的做法是委派一个子代理去完成，它有自己的独立消息历史，做完后只把结果摘要返回。</p>
+<p><img src="/Blogs/./images/lcc/s06-subagent-overview.svg" alt="子代理系统总览" loading="lazy"></p>
+<p>子代理的关键特征：<strong>隔离的消息历史</strong>。主 Agent 看不到子代理内部的对话细节，子代理也看不到主 Agent 的完整上下文——它只收到一段任务描述，完成后返回一段结果。这样既节省了 token，又避免了不同任务之间的上下文污染。</p>
+<h2 id="小结：六个机制，一个循环"><a href="#小结：六个机制，一个循环" class="headerlink" title="小结：六个机制，一个循环"></a>小结：六个机制，一个循环</h2><p>回顾这一篇覆盖的六个机制：</p>
+<table>
+<thead>
+<tr>
+<th>机制</th>
+<th>挂在循环的哪个位置</th>
+<th>解决什么问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Agent 循环</td>
+<td>循环本身</td>
+<td>把模型从「会说」变成「会做」</td>
+</tr>
+<tr>
+<td>工具路由</td>
+<td>工具执行环节</td>
+<td>加工具不改循环</td>
+</tr>
+<tr>
+<td>权限闸门</td>
+<td>工具执行前</td>
+<td>拦截危险操作</td>
+</tr>
+<tr>
+<td>Hook 扩展点</td>
+<td>循环各节点</td>
+<td>不改源码也能扩展</td>
+</tr>
+<tr>
+<td>待办写入</td>
+<td>作为工具被调用</td>
+<td>给模型外部记忆</td>
+</tr>
+<tr>
+<td>子代理</td>
+<td>作为工具被调用</td>
+<td>隔离上下文、节省 token</td>
+</tr>
+</tbody></table>
+<p>注意一个规律：后面五个机制，有的是在工具执行前插入（权限），有的是在循环各节点插入（Hook），有的干脆就是作为一个工具被调用（待办、子代理）。<strong>不管挂在哪，循环本体始终是同一个 <code>while True</code>。</strong></p>
+<p>这就是 Claude Code 最核心的设计理念。后面的章节会继续往这个循环上挂更多机制——技能按需加载、上下文压缩、长期记忆、系统提示词动态装配、错误恢复、后台任务、多 Agent 协作——但循环本身不变。</p>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://learn.shareai.run/zh/">Learn Claude Code</a> 课程及配套教学仓库</p>
+</blockquote>
+</div></section><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="Donate" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><span class="icon iconify" data-icon="ri:hand-coin-line"></span></span><div id="reward-comment">我很可爱，请给我钱</div><div id="qr" style="display:none;"><div style="display:inline-block"><a href="/images/wechatpay-qrcode.png"><img loading="lazy" src="/Blogs/images/wechatpay-qrcode.png" alt="微信支付" title="微信支付"></a><div><span style="color:#2DC100"><span class="icon iconify" data-icon="ri:wechat-pay-line"></span></span></div></div></div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>Post author: </strong>老于真的不老</li><li class="post-copyright-link"><strong>Post link: </strong><a href="https://carlyuhq.github.io/Blogs/2026/07/14/LearnClaudeCode-%E6%A0%B8%E5%BF%83%E5%BE%AA%E7%8E%AF%E4%B8%8E%E5%8D%95Agent%E4%B8%BB%E5%B9%B2/" title="Claude Code 的核心：所有机制挂在同一个循环上">https://carlyuhq.github.io/Blogs/2026/07/14/LearnClaudeCode-%E6%A0%B8%E5%BF%83%E5%BE%AA%E7%8E%AF%E4%B8%8E%E5%8D%95Agent%E4%B8%BB%E5%B9%B2/</a></li><li class="post-copyright-license"><strong>Copyright Notice: </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><span class="icon iconify" data-icon="ri:creative-commons-line"></span><span class="icon iconify" data-icon="ri:creative-commons-by-line"></span><span class="icon iconify" data-icon="ri:creative-commons-nc-line"></span><span class="icon iconify" data-icon="ri:creative-commons-sa-line"></span></a> unless otherwise stated.</li></ul></article><div class="post-nav"><div class="post-nav-item"></div><div class="post-nav-item"><a class="post-nav-next" href="/Blogs/2026/07/14/Docker%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B-%E4%BB%8E%E5%AE%89%E8%A3%85%E5%88%B0%E5%AE%9E%E6%88%98/" rel="next" title="Docker 入门教程：从安装到实战"><span class="post-nav-text">Docker 入门教程：从安装到实战</span><span class="icon iconify" data-icon="ri:arrow-right-s-line"></span></a></div></div></div><div class="hty-card" id="comment"><div class="comment-tooltip text-center"><span>如果您有任何关于博客内容的相关讨论，欢迎前往 <a href="https://github.com/CarlYuHQ/CarlYuHQ.github.io/discussions" target="_blank">GitHub Discussions</a> 与我交流。</span><br><a class="hty-button hty-button--raised" id="github-discussions" target="_blank" rel="noopener" href="https://github.com/CarlYuHQ/CarlYuHQ.github.io/discussions/new">GitHub Discussions</a></div></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2025 – 2026 </span><span class="with-love" id="animate"><span class="icon iconify" data-icon="ri:cloud-line"></span></span><span class="author"> 老于真的不老</span></div><div class="powered"><span>Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> v7.3.0</span><span class="footer-separator">|</span><span>Theme - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.10.11</span></div><div class="live-time"><span>本博客已萌萌哒地运行</span><span id="display_live_time"></span><span class="moe-text">(●'◡'●)</span><script>function blog_live_time() {
+  setTimeout(blog_live_time, 1000);
+  const start = new Date('2025-06-01T00:00:00');
+  const now = new Date();
+  const timeDiff = (now.getTime() - start.getTime());
+  const msPerMinute = 60 * 1000;
+  const msPerHour = 60 * msPerMinute;
+  const msPerDay = 24 * msPerHour;
+  const passDay = Math.floor(timeDiff / msPerDay);
+  const passHour = Math.floor((timeDiff % msPerDay) / 60 / 60 / 1000);
+  const passMinute = Math.floor((timeDiff % msPerHour) / 60 / 1000);
+  const passSecond = Math.floor((timeDiff % msPerMinute) / 1000);
+  display_live_time.innerHTML = ` ${passDay} Days ${passHour} Hours ${passMinute} Minutes ${passSecond} Seconds`;
+}
+blog_live_time();
+</script></div><div class="footer-custom-text"><a href="https://carlyuhq.github.io/">返回个人主页</a></div><div class="footer-support"><span>本网站由</span><a class="footer-support-logo" href="https://www.upyun.com" target="blank" title="又拍云"><img height="30" src="https://cdn.yunyoujun.cn/img/logo/upyun-logo.png" alt="又拍云"></a><span>提供 CDN 加速</span></div></footer></div><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><span class="icon iconify" data-icon="ri:arrow-up-s-line"></span><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#2abaaa" stroke-width="2" stroke-linecap="round"></circle></svg></a><a class="popup-trigger hty-icon-button icon-search" id="search" href="javascript:;" title="Search"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:search-line"></span></span></a><script>window.addEventListener("DOMContentLoaded", () => {
+  // Handle and trigger popup window
+  document.querySelector(".popup-trigger").addEventListener("click", () => {
+    document.querySelector(".popup").classList.add("show");
+    setTimeout(() => {
+      document.querySelector(".search-input").focus();
+    }, 100);
+  });
+
+  // Monitor main search box
+  const onPopupClose = () => {
+    document.querySelector(".popup").classList.remove("show");
+  };
+
+  document.querySelector(".popup-btn-close").addEventListener("click", () => {
+    onPopupClose();
+  });
+
+  window.addEventListener("keyup", event => {
+    if (event.key === "Escape") {
+      onPopupClose();
+    }
+  });
+});
+</script><script defer src="https://fastly.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.umd.js"></script><script defer src="https://fastly.jsdelivr.net/npm/instantsearch.js@4/dist/instantsearch.production.min.js"></script><script defer src="/Blogs/js/search/algolia-search.js" type="module"></script><div class="popup search-popup"><div class="search-header"><span class="popup-btn-close close-icon hty-icon-button"><span class="icon iconify" data-icon="ri:close-line"></span></span></div><div class="search-input-container"></div><div class="algolia-results"><div id="algolia-stats"></div><div id="algolia-hits"></div><div class="algolia-pagination" id="algolia-pagination"></div></div></div><script src="https://fastly.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script><script>const images = [...document.querySelectorAll('.markdown-body img')]
+mediumZoom(images)</script><style>.medium-zoom-image {
+  z-index: 99;
+}</style></body></html>
