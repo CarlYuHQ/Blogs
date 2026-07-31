@@ -6,7 +6,7 @@
   <link href="https://carlyuhq.github.io/Blogs/atom.xml" rel="self"/>
   
   <link href="https://carlyuhq.github.io/Blogs/"/>
-  <updated>2026-07-31T03:36:13.405Z</updated>
+  <updated>2026-07-31T03:42:18.779Z</updated>
   <id>https://carlyuhq.github.io/Blogs/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Claude Code 多 Agent 平台与综合归位：从单兵作战到团队协作</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/07/15/LearnClaudeCode-%E5%A4%9AAgent%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%BB%BC%E5%90%88%E5%BD%92%E4%BD%8D/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/07/15/LearnClaudeCode-%E5%A4%9AAgent%E5%B9%B3%E5%8F%B0%E4%B8%8E%E7%BB%BC%E5%90%88%E5%BD%92%E4%BD%8D/</id>
+    <published>2026-07-15T12:00:00.000Z</published>
+    <updated>2026-07-31T03:42:18.779Z</updated>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本文是 &lt;a href=&quot;https://learn.shareai.run/zh/&quot;&gt;Learn Claude Code&lt;/a&gt; 学习笔记的第四篇也是最终篇。前三篇讲了单 Agent 核心（循环&amp;#x2F;工具&amp;#x2F;权限&amp;#x2F;Hook&amp;#x2F;待办&amp;#x2F;子代理）、系统加固（技能&amp;#x2F;压缩&amp;#x2F;记忆&amp;#x2F;提示词&amp;#x2F;错误恢复）、任务运行时（持久任务&amp;#x2F;后台执行&amp;#x2F;定时调度）。这一篇讲多 Agent 协作平台（团队&amp;#x2F;协议&amp;#x2F;自治&amp;#x2F;隔离&amp;#x2F;MCP）和综合归位（全部机制挂回同一个循环）。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Agent" scheme="https://carlyuhq.github.io/Blogs/tags/Agent/"/>
+    
+    <category term="大模型" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+    
+    <category term="Claude Code" scheme="https://carlyuhq.github.io/Blogs/tags/Claude-Code/"/>
+    
+  </entry>
   
   <entry>
     <title>Claude Code 任务运行时：从临时计划到持久任务、后台执行与定时调度</title>
@@ -375,29 +402,6 @@
     
     
     <summary type="html">&lt;p&gt;本附录汇总了本书中频繁使用的数学预备知识，包括概率论基础（附录 A）、测度论概率（附录 B）、序列收敛（附录 C）和梯度下降（附录 D）。这些内容为理解正文中的算法推导和收敛性分析提供了必要的数学基础。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="课程笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="强化学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="机器学习" scheme="https://carlyuhq.github.io/Blogs/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>强化学习笔记（十）演员-评论家方法</title>
-    <link href="https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/"/>
-    <id>https://carlyuhq.github.io/Blogs/2026/05/29/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0-%E7%AC%AC%E5%8D%81%E7%AB%A0-%E6%BC%94%E5%91%98%E8%AF%84%E8%AE%BA%E5%AE%B6%E6%96%B9%E6%B3%95/</id>
-    <published>2026-05-29T09:00:00.000Z</published>
-    <updated>2026-07-13T02:01:44.976Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本章介绍演员-评论家（Actor-Critic）方法。从一个角度来看，”演员-评论家”指的是一种融合了基于策略方法和基于值方法的结构：”演员”（actor）负责策略更新步骤，之所以称为演员是因为动作是按照策略执行的；”评论家”（critic）负责值更新步骤，之所以称为评论家是因为它通过评估值来”批评”演员的表现。从另一个角度来看，演员-评论家方法仍然是策略梯度算法，可以视为第 9 章策略梯度算法的扩展。在学习本章之前，读者应当充分理解第 8 章和第 9 章的内容。&lt;/p&gt;</summary>
     
     
     
