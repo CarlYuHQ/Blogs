@@ -1,0 +1,415 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#0078E7"><meta name="author" content="老于真的不老"><meta name="copyright" content="老于真的不老"><meta name="generator" content="Hexo 7.3.0"><meta name="theme" content="hexo-theme-yun"><title>打满显存带宽：Roofline、Little's Law 与 Reduce 的七级优化 | 老于真的不老の随笔</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@900&amp;display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/star-markdown-css@0.4.1/dist/yun/yun-markdown.min.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/prism-theme-vars/base.css"><script src="https://fastly.jsdelivr.net/npm/scrollreveal/dist/scrollreveal.min.js" defer></script><script>function initScrollReveal() {
+  [".post-card",".markdown-body img"].forEach((target)=> {
+    ScrollReveal().reveal(target);
+  })
+}
+document.addEventListener("DOMContentLoaded", initScrollReveal);
+document.addEventListener("pjax:success", initScrollReveal);
+</script><link rel="icon" type="image/svg+xml" href="/Blogs/yun.svg"><link rel="mask-icon" href="/Blogs/yun.svg" color="#0078E7"><link rel="preload" href="/Blogs/css/hexo-theme-yun.css" as="style"><link rel="prefetch" href="/Blogs/js/sidebar.js" as="script"><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin><link rel="preconnect" href="https://fastly.jsdelivr.net/npm/" crossorigin><script id="yun-config">
+    window.Yun = {}
+    window.CONFIG = {"hostname":"carlyuhq.github.io","root":"/Blogs/","title":"云游君的小站","version":"1.10.11","mode":"auto","copycode":true,"page":{"isPost":true},"i18n":{"placeholder":"搜索...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）"},"anonymous_image":"https://cdn.yunyoujun.cn/img/avatar/none.jpg","say":{"api":"https://el-bot-api.vercel.app/api/words/young"},"fireworks":{"colors":null},"vendors":{"host":"https://fastly.jsdelivr.net/npm/","darken":"https://fastly.jsdelivr.net/npm/darken@1.5.0"}};
+  </script><link rel="stylesheet" href="/Blogs/css/hexo-theme-yun.css"><script src="/Blogs/js/hexo-theme-yun.js" type="module"></script><link rel="alternate" href="/Blogs/atom.xml" title="老于真的不老の随笔" type="application/atom+xml"><meta name="description" content="一个 kernel 到底能跑多快？答案不在「代码写得多巧」，而在一个上界：算力峰值、显存带宽，以及你的访存模式离这个上界有多远。本文从 Roofline 出发，用 Little’s Law 解释「为什么必须让足够多的数据同时在飞」，再沿着一个 Reduce kernel 的七级优化，把 coalescing、occupancy、向量化、bank conflict、warp shuffle 这些概念">
+<meta property="og:type" content="article">
+<meta property="og:title" content="打满显存带宽：Roofline、Little&#39;s Law 与 Reduce 的七级优化">
+<meta property="og:url" content="https://carlyuhq.github.io/2026/11/26/%E6%89%93%E6%BB%A1%E6%98%BE%E5%AD%98%E5%B8%A6%E5%AE%BD-Roofline-%E4%B8%8E-Reduce-%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:site_name" content="老于真的不老の随笔">
+<meta property="og:description" content="一个 kernel 到底能跑多快？答案不在「代码写得多巧」，而在一个上界：算力峰值、显存带宽，以及你的访存模式离这个上界有多远。本文从 Roofline 出发，用 Little’s Law 解释「为什么必须让足够多的数据同时在飞」，再沿着一个 Reduce kernel 的七级优化，把 coalescing、occupancy、向量化、bank conflict、warp shuffle 这些概念">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-11-26T11:50:00.000Z">
+<meta property="article:modified_time" content="2026-11-26T11:51:58.461Z">
+<meta property="article:author" content="老于真的不老">
+<meta property="article:tag" content="GPU">
+<meta property="article:tag" content="CUDA">
+<meta property="article:tag" content="内存层次">
+<meta property="article:tag" content="Roofline">
+<meta property="article:tag" content="Occupancy">
+<meta property="article:tag" content="Coalescing">
+<meta property="article:tag" content="Warp Shuffle">
+<meta property="article:tag" content="Reduce">
+<meta name="twitter:card" content="summary"><script>(function() {
+  if (CONFIG.mode !== 'auto') return
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+  const setting = localStorage.getItem('darken-mode') || 'auto'
+  if (setting === 'dark' || (prefersDark && setting !== 'light'))
+    document.documentElement.classList.toggle('dark', true)
+})()</script></head><body><script src="https://code.iconify.design/2/2.1.1/iconify.min.js"></script><script>// Define global variable
+IconifyProviders = {
+  // Empty prefix: overwrite default API provider configuration
+  '': {
+    // Use custom API first, use Iconify public API as backup
+    resources: [
+        'https://api.iconify.design',
+    ],
+    // Wait for 1 second before switching API hosts
+    rotate: 1000,
+  },
+};</script><script defer src="https://fastly.jsdelivr.net/npm/animejs@latest"></script><script defer src="/Blogs/js/ui/fireworks.js" type="module"></script><canvas class="fireworks"></canvas><div class="container"><a class="sidebar-toggle hty-icon-button" id="menu-btn"><div class="hamburger hamburger--spin" type="button"><span class="hamburger-box"><span class="hamburger-inner"></span></span></div></a><div class="sidebar-toggle sidebar-overlay"></div><aside class="sidebar"><script src="/Blogs/js/sidebar.js" type="module"></script><ul class="sidebar-nav"><li class="sidebar-nav-item sidebar-nav-toc hty-icon-button sidebar-nav-active" data-target="post-toc-wrap" title="文章目录"><span class="icon iconify" data-icon="ri:list-ordered"></span></li><li class="sidebar-nav-item sidebar-nav-overview hty-icon-button" data-target="site-overview-wrap" title="站点概览"><span class="icon iconify" data-icon="ri:passport-line"></span></li></ul><div class="sidebar-panel" id="site-overview-wrap"><div class="site-info fix-top"><a class="site-author-avatar" href="/Blogs/about/" title="老于真的不老"><img width="96" loading="lazy" src="/Blogs/yun.png" alt="老于真的不老"></a><div class="site-author-name"><a href="/Blogs/about/">老于真的不老</a></div><span class="site-name">老于真的不老の随笔</span><sub class="site-subtitle">紫荆花开，岁月如歌</sub><div class="site-description">致我们终将逝去的青春</div></div><nav class="site-state"><a class="site-state-item hty-icon-button icon-home" href="/Blogs/" title="首页"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:home-4-line"></span></span></a><div class="site-state-item"><a href="/Blogs/archives/" title="归档"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:archive-line"></span></span><span class="site-state-item-count">2</span></a></div><div class="site-state-item"><a href="/Blogs/categories/" title="分类"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:folder-2-line"></span></span><span class="site-state-item-count">1</span></a></div><div class="site-state-item"><a href="/Blogs/tags/" title="标签"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="site-state-item-count">12</span></a></div><a class="site-state-item hty-icon-button" target="_blank" rel="noopener" href="https://yun.yunyoujun.cn" title="文档"><span class="site-state-item-icon"><span class="icon iconify" data-icon="ri:settings-line"></span></span></a></nav><hr style="margin-bottom:0.5rem"><hr style="margin:0.5rem 1rem"><div class="links"><a class="links-item hty-icon-button" href="/Blogs/links/" title="我的小伙伴们" style="color:dodgerblue"><span class="icon iconify" data-icon="ri:genderless-line"></span></a></div><br><a class="links-item hty-icon-button" id="toggle-mode-btn" href="javascript:;" title="Mode" style="color: #f1cb64"><span class="icon iconify" data-icon="ri:contrast-2-line"></span></a></div><div class="sidebar-panel sidebar-panel-active" id="post-toc-wrap"><div class="post-toc"><div class="post-toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Roofline%EF%BC%9A%E5%85%88%E5%88%A4%E6%96%AD%E8%A2%AB%E4%BB%80%E4%B9%88%E5%8D%A1%E4%BD%8F"><span class="toc-number">1.</span> <span class="toc-text">1. Roofline：先判断被什么卡住</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%80%E4%B8%AA%E3%80%8C%E7%90%86%E6%83%B3%E5%B8%A6%E5%AE%BD-kernel%E3%80%8D%E7%9A%84%E5%89%8D%E6%8F%90"><span class="toc-number">2.</span> <span class="toc-text">2. 一个「理想带宽 kernel」的前提</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Little%E2%80%99s-Law%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E5%85%89%E6%9C%89%E5%B8%A6%E5%AE%BD%E4%B8%8D%E5%A4%9F"><span class="toc-number">3.</span> <span class="toc-text">3. Little’s Law：为什么光有带宽不够</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Occupancy%EF%BC%9A%E7%94%A8%E8%B6%B3%E5%A4%9F%E5%A4%9A%E7%9A%84-warp-%E5%A1%AB%E6%BB%A1%E5%BB%B6%E8%BF%9F"><span class="toc-number">4.</span> <span class="toc-text">4. Occupancy：用足够多的 warp 填满延迟</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%AE%A9%E6%AF%8F%E4%B8%AA%E7%BA%BF%E7%A8%8B%E5%A4%9A%E6%90%AC%E4%B8%80%E7%82%B9%EF%BC%9Agrid-stride%E3%80%81%E5%B1%95%E5%BC%80%E4%B8%8E%E5%90%91%E9%87%8F%E5%8C%96"><span class="toc-number">5.</span> <span class="toc-text">5. 让每个线程多搬一点：grid-stride、展开与向量化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-grid-stride-%E5%BE%AA%E7%8E%AF%E5%B1%95%E5%BC%80"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 grid-stride + 循环展开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E5%90%91%E9%87%8F%E5%8C%96%E8%AE%BF%E5%AD%98"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 向量化访存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%90%88%E5%B9%B6%E8%AE%BF%E5%AD%98%EF%BC%9Asector-%E6%98%AF%E6%9C%80%E5%B0%8F%E8%AE%A1%E8%B4%B9%E5%8D%95%E4%BD%8D"><span class="toc-number">6.</span> <span class="toc-text">6. 合并访存：sector 是最小计费单位</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Shared-memory-%E7%9A%84-bank-conflict"><span class="toc-number">7.</span> <span class="toc-text">7. Shared memory 的 bank conflict</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%A1%88%E4%BE%8B%EF%BC%9AReduce-%E7%9A%84%E4%B8%83%E7%BA%A7%E4%BC%98%E5%8C%96"><span class="toc-number">8.</span> <span class="toc-text">8. 案例：Reduce 的七级优化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#v1%EF%BC%9A%E5%85%A8%E5%B1%80%E5%8E%9F%E5%AD%90%E5%8A%A0"><span class="toc-number">8.1.</span> <span class="toc-text">v1：全局原子加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v2%EF%BC%9Ashared-memory-%E4%BA%A4%E9%94%99%E6%8A%98%E5%8D%8A"><span class="toc-number">8.2.</span> <span class="toc-text">v2：shared memory + 交错折半</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v3%EF%BC%9A%E8%BF%9E%E7%BB%AD%E7%B4%A2%E5%BC%95%E6%B6%88%E9%99%A4-divergence"><span class="toc-number">8.3.</span> <span class="toc-text">v3：连续索引消除 divergence</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v4%EF%BC%9A%E4%BB%8E%E5%A4%A7%E5%88%B0%E5%B0%8F%E6%8A%98%E5%8D%8A"><span class="toc-number">8.4.</span> <span class="toc-text">v4：从大到小折半</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v5%EF%BC%9Agrid-stride-%E7%B4%AF%E5%8A%A0-%E5%9B%BA%E5%AE%9A-grid-%E8%A7%84%E6%A8%A1"><span class="toc-number">8.5.</span> <span class="toc-text">v5：grid-stride 累加 + 固定 grid 规模</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v6%EF%BC%9Awarp-shuffle-%E4%B8%A4%E7%BA%A7%E5%BD%92%E7%BA%A6"><span class="toc-number">8.6.</span> <span class="toc-text">v6：warp shuffle 两级归约</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v7%EF%BC%9A%E5%90%91%E9%87%8F%E5%8C%96%E5%8A%A0%E8%BD%BD%E6%94%B6%E5%B0%BE"><span class="toc-number">8.7.</span> <span class="toc-text">v7：向量化加载收尾</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-Warp-Shuffle-%E5%8E%9F%E8%AF%AD"><span class="toc-number">9.</span> <span class="toc-text">9. Warp Shuffle 原语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E4%BB%8E-1087-%E5%88%B0-1572-GB-s-%E5%81%9A%E5%AF%B9%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-number">10.</span> <span class="toc-text">10. 从 1087 到 1572 GB&#x2F;s 做对了什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E4%BC%98%E5%8C%96%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95"><span class="toc-number">11.</span> <span class="toc-text">11. 优化检查清单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%B6%E4%BC%B8%E9%98%85%E8%AF%BB"><span class="toc-number">12.</span> <span class="toc-text">延伸阅读</span></a></li></ol></div></div></div></aside><main class="sidebar-translate" id="content"><div id="post"><article class="hty-card post-block" itemscope itemtype="https://schema.org/Article" style="--smc-primary:#0078E7;"><link itemprop="mainEntityOfPage" href="https://carlyuhq.github.io/Blogs/2026/11/26/%E6%89%93%E6%BB%A1%E6%98%BE%E5%AD%98%E5%B8%A6%E5%AE%BD-Roofline-%E4%B8%8E-Reduce-%E4%BC%98%E5%8C%96/"><span hidden itemprop="author" itemscope itemtype="https://schema.org/Person"><meta itemprop="name" content="老于真的不老"><meta itemprop="description"></span><span hidden itemprop="publisher" itemscope itemtype="https://schema.org/Organization"><meta itemprop="name" content="老于真的不老の随笔"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">打满显存带宽：Roofline、Little's Law 与 Reduce 的七级优化</h1><div class="post-meta"><div class="post-time"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:calendar-line"></span></span> <time title="创建时间：2026-11-26 19:50:00" itemprop="dateCreated datePublished" datetime="2026-11-26T19:50:00+08:00">2026-11-26</time></div><div class="post-classify"><span class="post-category"> <span class="post-meta-item-icon" style="margin-right:3px;"><span class="icon iconify" data-icon="ri:folder-line"></span></span><span itemprop="about" itemscope itemtype="https://schema.org/Thing"><a class="category-item" href="/Blogs/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" style="--text-color:var(--hty-text-color)" itemprop="url" rel="index"><span itemprop="text">技术笔记</span></a></span></span><span class="post-tag"><span class="post-meta-divider">-</span><a class="tag-item" href="/Blogs/tags/GPU/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">GPU</span></a><a class="tag-item" href="/Blogs/tags/CUDA/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">CUDA</span></a><a class="tag-item" href="/Blogs/tags/%E5%86%85%E5%AD%98%E5%B1%82%E6%AC%A1/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">内存层次</span></a><a class="tag-item" href="/Blogs/tags/Roofline/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">Roofline</span></a><a class="tag-item" href="/Blogs/tags/Occupancy/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">Occupancy</span></a><a class="tag-item" href="/Blogs/tags/Coalescing/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">Coalescing</span></a><a class="tag-item" href="/Blogs/tags/Warp-Shuffle/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">Warp Shuffle</span></a><a class="tag-item" href="/Blogs/tags/Reduce/" style="--text-color:var(--hty-text-color)"><span class="post-meta-item-icon"><span class="icon iconify" data-icon="ri:price-tag-3-line"></span></span><span class="tag-name">Reduce</span></a></span></div></div></header><section class="post-body" itemprop="articleBody"><div class="post-content markdown-body"><p>一个 kernel 到底能跑多快？答案不在「代码写得多巧」，而在一个上界：算力峰值、显存带宽，以及你的访存模式离这个上界有多远。本文从 Roofline 出发，用 Little’s Law 解释「为什么必须让足够多的数据同时在飞」，再沿着一个 Reduce kernel 的七级优化，把 coalescing、occupancy、向量化、bank conflict、warp shuffle 这些概念逐一落到具体的数字上。</p>
+<span id="more"></span>
+
+<h2 id="1-Roofline：先判断被什么卡住"><a href="#1-Roofline：先判断被什么卡住" class="headerlink" title="1. Roofline：先判断被什么卡住"></a>1. Roofline：先判断被什么卡住</h2><p>性能上界由两条线决定：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">P = min(P_peak, BW × I)</span><br><span class="line">I = FLOPs / Bytes from DRAM</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>P_peak</code>：算力峰值，水平线。</li>
+<li><code>BW × I</code>：带宽线，斜率就是显存带宽。</li>
+<li><code>I</code>：算术强度（Operational Intensity），单位 FLOPs&#x2F;byte，即每从 DRAM 读一个字节能做多少计算。</li>
+<li>两条线的交点是<strong>脊点</strong> <code>I* = P_peak / BW</code>。</li>
+</ul>
+<p>在 Roofline 图上，脊点左侧的应用（低算术强度）无论怎么优化算力都受带宽约束；右侧的应用才可能触到算力天花板。图上三个典型点很直观：<code>I = 4</code> 的应用落在斜线下方，<code>I = 16</code> 的应用刚过脊点却远离峰值水平线，<code>I = 512</code> 的应用仍然受峰值限制 —— <strong>算术强度决定你在哪条线上，实现质量决定你离那条线多远</strong>。</p>
+<p>绝大多数逐元素算子、归约、拷贝类 kernel 的算术强度极低，属于 memory-bound。对它们而言，优化目标只有一个：把有效带宽打到接近硬件标称值。</p>
+<h2 id="2-一个「理想带宽-kernel」的前提"><a href="#2-一个「理想带宽-kernel」的前提" class="headerlink" title="2. 一个「理想带宽 kernel」的前提"></a>2. 一个「理想带宽 kernel」的前提</h2><p>要打满带宽，需要同时满足五个条件：</p>
+<ol>
+<li>完美合并访存（coalesced）；</li>
+<li>没有 warp divergence，没有同步停顿；</li>
+<li>100% occupancy；</li>
+<li>任务 embarrassingly parallel，没有数据依赖；</li>
+<li>每个内存请求都足够大、足够连续。</li>
+</ol>
+<p>现实中的 kernel 总是缺其中几条。后面所有优化，本质上是在逐项逼近这个理想状态。</p>
+<h2 id="3-Little’s-Law：为什么光有带宽不够"><a href="#3-Little’s-Law：为什么光有带宽不够" class="headerlink" title="3. Little’s Law：为什么光有带宽不够"></a>3. Little’s Law：为什么光有带宽不够</h2><p>先看一个类比：一段有 20 个台阶的楼梯，每个台阶站 1 个人，走一个台阶要 2 秒。</p>
+<ul>
+<li>吞吐：<code>0.5 人/秒</code>；</li>
+<li>单个乘客从底到顶的延迟：<code>20 × 2s = 40s</code>；</li>
+<li>要占满吞吐，必须同时有 <code>带宽 × 延迟 = 0.5 × 40 = 20 人</code> 在楼梯上。</li>
+</ul>
+<p>内存系统完全一样：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在飞字节数 = 带宽 × 延迟</span><br></pre></td></tr></table></figure>
+
+<p>带宽是「每秒能搬多少」，延迟是「一次请求多久回来」；只有把足够多的请求同时挂在流水线上，带宽才吃得满。这就是 Little’s Law <code>L = λW</code> 在显存上的形式。</p>
+<p>用真实硬件算一遍：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>A100 80GB</th>
+<th>H100 SXM</th>
+<th>B200</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内存带宽 B</td>
+<td>1.94 TB&#x2F;s</td>
+<td>3.35 TB&#x2F;s</td>
+<td>8 TB&#x2F;s</td>
+</tr>
+<tr>
+<td>DRAM 延迟 L</td>
+<td>500 ns</td>
+<td>600 ns</td>
+<td>650 ns</td>
+</tr>
+<tr>
+<td>全 GPU 在飞字节 B×L</td>
+<td>1.0 MB</td>
+<td>2.0 MB</td>
+<td>5.2 MB</td>
+</tr>
+<tr>
+<td>SM 数量</td>
+<td>108</td>
+<td>132</td>
+<td>148</td>
+</tr>
+<tr>
+<td>每 SM 需要</td>
+<td>9 KB</td>
+<td>15 KB</td>
+<td>35 KB</td>
+</tr>
+<tr>
+<td>每 SM 最大驻留线程</td>
+<td>2048</td>
+<td>2048</td>
+<td>2048</td>
+</tr>
+<tr>
+<td>每线程需要</td>
+<td>4.7 B</td>
+<td>7.4 B</td>
+<td>17 B</td>
+</tr>
+</tbody></table>
+<p>结论很硬：在 B200 上，每个线程必须平均维持 <strong>17 字节在飞</strong>，才能喂满 8 TB&#x2F;s。只让一个线程发一个 4 字节的 load，无论启动多少个 block，都填不满这条流水线。这直接引出两个手段 —— <strong>足够的 occupancy</strong> 和 <strong>每线程多element &#x2F; 向量化加载</strong>。</p>
+<h2 id="4-Occupancy：用足够多的-warp-填满延迟"><a href="#4-Occupancy：用足够多的-warp-填满延迟" class="headerlink" title="4. Occupancy：用足够多的 warp 填满延迟"></a>4. Occupancy：用足够多的 warp 填满延迟</h2><p>一个 SM 内部有 4 个 SMSP（SM 子分区），每个都有独立的 warp scheduler，每个 cycle 从 eligible 的 warp 里挑一个发射；每个 SMSP 最多驻留 16 个 warp。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Occupancy = 实际活动 warp 数 / 最大支持 warp 数</span><br></pre></td></tr></table></figure>
+
+<p>限制 occupancy 的资源是硬性的：</p>
+<table>
+<thead>
+<tr>
+<th>资源</th>
+<th>每 SM 上限</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Shared memory</td>
+<td>164 KB（A100）、228 KB（H100 &#x2F; B200）</td>
+</tr>
+<tr>
+<td>寄存器</td>
+<td>65536 个 32-bit 寄存器</td>
+</tr>
+</tbody></table>
+<p>寄存器用量、<code>__shared__</code> 数组大小、block 大小三者共同决定能同时驻留多少 warp。寄存器压力上升 → occupancy 下降 → 在飞请求数下降 → 带宽打不满。所以「把块长调大」不是直觉问题，而是在 <code>blockDim</code>、<code>regs/thread</code>、<code>smem/block</code> 之间解一个约束方程。</p>
+<p>值得注意的是：<strong>高 occupancy 不是目的，足够的在飞字节数才是</strong>。当一个 kernel 靠向量化加载让每个线程维持多字节在飞时，即使 occupancy 略低也能打满带宽。</p>
+<h2 id="5-让每个线程多搬一点：grid-stride、展开与向量化"><a href="#5-让每个线程多搬一点：grid-stride、展开与向量化" class="headerlink" title="5. 让每个线程多搬一点：grid-stride、展开与向量化"></a>5. 让每个线程多搬一点：grid-stride、展开与向量化</h2><h3 id="5-1-grid-stride-循环展开"><a href="#5-1-grid-stride-循环展开" class="headerlink" title="5.1 grid-stride + 循环展开"></a>5.1 grid-stride + 循环展开</h3><p>让每个线程用 grid stride 处理 2 个元素，并展开循环：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">__global__ <span class="type">void</span> <span class="title">kernel</span><span class="params">(<span class="type">const</span> <span class="type">float</span>* __restrict__ a,</span></span></span><br><span class="line"><span class="params"><span class="function">                       <span class="type">const</span> <span class="type">float</span>* __restrict__ b,</span></span></span><br><span class="line"><span class="params"><span class="function">                       <span class="type">float</span>* __restrict__ c)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> tid = blockIdx.x * blockDim.x + threadIdx.x;</span><br><span class="line">    <span class="type">int</span> stride = blockDim.x * gridDim.x;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">pragma</span> unroll 2</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> idx = tid + i * stride;</span><br><span class="line">        c[idx] += a[idx] * b[idx];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时序图上，两个元素的 load 被提前发射，第一组 load 与 FMA 之间形成 20 字节在飞，第二组 8 字节，最后 4 字节；总周期 <code>2011</code>，做到 <strong>2 倍的工作量只用 2 倍周期</strong> —— 关键不是省了周期，而是把原本空等的延迟槽填上了独立请求。</p>
+<h3 id="5-2-向量化访存"><a href="#5-2-向量化访存" class="headerlink" title="5.2 向量化访存"></a>5.2 向量化访存</h3><p><code>float4</code> 让一条指令搬 16 字节（<code>cudaMalloc</code> 的分配天然满足 16 字节对齐）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">__global__ <span class="type">void</span> <span class="title">saxpy_vectorized</span><span class="params">(<span class="type">const</span> float4* __restrict__ x,</span></span></span><br><span class="line"><span class="params"><span class="function">                                 float4* __restrict__ y, <span class="type">float</span> a, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> i = blockIdx.x * blockDim.x + threadIdx.x;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> n4 = n / <span class="number">4</span>;</span><br><span class="line">    <span class="keyword">if</span> (i &lt; n4) &#123;</span><br><span class="line">        <span class="type">const</span> float4 xv = x[i];</span><br><span class="line">        <span class="type">const</span> float4 yv = y[i];</span><br><span class="line">        y[i] = <span class="built_in">make_float4</span>(a * xv.x + yv.x, a * xv.y + yv.y,</span><br><span class="line">                           a * xv.z + yv.z, a * xv.w + yv.w);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>收益有三层：指令数减少到 1&#x2F;4、每次请求 16 字节更接近 sector 粒度、单个线程的在飞字节数直接翻 4 倍。这正是上一节 Little’s Law 里「每线程 17 B」那种需求的解法。</p>
+<h2 id="6-合并访存：sector-是最小计费单位"><a href="#6-合并访存：sector-是最小计费单位" class="headerlink" title="6. 合并访存：sector 是最小计费单位"></a>6. 合并访存：sector 是最小计费单位</h2><p>内存访问不是按字节计费，而是按 <strong>sector</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>规则</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>最小访存粒度</td>
+<td>32 bytes &#x3D; 1 sector</td>
+</tr>
+<tr>
+<td>L1 → L2</td>
+<td>1 sector</td>
+</tr>
+<tr>
+<td>L2 → Global</td>
+<td>2 sectors（默认；<code>cudaDeviceSet...</code> 可设 preferred granularity，但只是 hint）</td>
+</tr>
+<tr>
+<td>Cache line</td>
+<td>128 bytes &#x3D; 4 sectors</td>
+</tr>
+<tr>
+<td>Cache 管理粒度</td>
+<td>1 cache line（请求合并、逐出都按此粒度）</td>
+</tr>
+<tr>
+<td>对齐要求</td>
+<td>128-byte alignment</td>
+</tr>
+</tbody></table>
+<p>一个 warp 的 32 个线程各读一个 4 字节 <code>float</code>，若起始地址对齐且连续，正好落在 4 个 sector；若起始地址偏移（例如从 160 开始读到 288），则要触碰 <strong>5 个 sector</strong>，多付 25% 的带宽。图示里 32 条斜线跨过 5 个绿色 sector，就是这个浪费。</p>
+<p>所以访存优化的判据非常直接：<strong>让 warp 内 32 个 lane 的地址连续、起始 128 字节对齐、避免跨步和随机小粒度访问</strong>。</p>
+<h2 id="7-Shared-memory-的-bank-conflict"><a href="#7-Shared-memory-的-bank-conflict" class="headerlink" title="7. Shared memory 的 bank conflict"></a>7. Shared memory 的 bank conflict</h2><p>Shared memory 被分成 32 个 bank，4 字节宽度交织编址。同一条指令里，若多个线程命中同一 bank 的<strong>不同地址</strong>，请求会串行化：</p>
+<table>
+<thead>
+<tr>
+<th>访问模式</th>
+<th>代码</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>连续访问</td>
+<td><code>shmem[threadIdx.x] = data[tid]</code></td>
+<td>无冲突</td>
+</tr>
+<tr>
+<td>跨步访问</td>
+<td><code>shmem[threadIdx.x * 2] = data[tid]</code></td>
+<td>2-way bank conflict</td>
+</tr>
+<tr>
+<td>广播访问</td>
+<td><code>data = shmem[0]</code></td>
+<td>无冲突（广播是特例）</td>
+</tr>
+</tbody></table>
+<p>在归约类 kernel 里，<code>s[tid] + s[tid + stride]</code> 的步长会让不同线程落到同一 bank；分析工具会显示 shared load 平均 3.5-way bank conflict、L1&#x2F;TEX wavefronts 上升、shared 吞吐下降。规避手段是 padding、swizzle 或换一种索引映射 —— <strong>本质都是把「同一 bank 的不同地址」拆开</strong>。</p>
+<h2 id="8-案例：Reduce-的七级优化"><a href="#8-案例：Reduce-的七级优化" class="headerlink" title="8. 案例：Reduce 的七级优化"></a>8. 案例：Reduce 的七级优化</h2><p>下面这组数字是同一个归约任务从最朴素写法一路优化到接近 HBM 带宽上限的完整阶梯：</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>关键改动</th>
+<th>时间</th>
+<th>有效带宽</th>
+<th>相对加速</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>v1</td>
+<td>每线程 <code>atomicAdd</code> 到全局内存</td>
+<td>197 ms</td>
+<td>1.4 GB&#x2F;s</td>
+<td>—</td>
+</tr>
+<tr>
+<td>v2</td>
+<td>搬进 shared memory，交错折半归约</td>
+<td>1.67 ms</td>
+<td>160 GB&#x2F;s</td>
+<td>118×</td>
+</tr>
+<tr>
+<td>v3</td>
+<td>改连续索引，消除 warp divergence</td>
+<td>0.87 ms</td>
+<td>308 GB&#x2F;s</td>
+<td>1.9×</td>
+</tr>
+<tr>
+<td>v4</td>
+<td>从 <code>blockDim.x / 2</code> 起折半，减少无效线程与同步</td>
+<td>0.78 ms</td>
+<td>344 GB&#x2F;s</td>
+<td>—</td>
+</tr>
+<tr>
+<td>v5</td>
+<td>grid-stride 每线程累加多元素，<code>gridDim = SM 数 × 16</code></td>
+<td>0.25 ms</td>
+<td>1074 GB&#x2F;s</td>
+<td>—</td>
+</tr>
+<tr>
+<td>v6</td>
+<td>warp shuffle 两级归约替代 shared memory</td>
+<td>0.247 ms</td>
+<td>1087 GB&#x2F;s</td>
+<td>—</td>
+</tr>
+<tr>
+<td>v7</td>
+<td><code>float4</code> 向量化加载 + warp 归约</td>
+<td>0.17 ms</td>
+<td>1572 GB&#x2F;s</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<h3 id="v1：全局原子加"><a href="#v1：全局原子加" class="headerlink" title="v1：全局原子加"></a>v1：全局原子加</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">__global__ <span class="type">void</span> <span class="title">reduce_v1</span><span class="params">(<span class="type">const</span> <span class="type">float</span>* x, <span class="type">float</span>* out, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> i = blockIdx.x * blockDim.x + threadIdx.x;</span><br><span class="line">    <span class="keyword">if</span> (i &lt; n) <span class="built_in">atomicAdd</span>(out, x[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所有线程争抢同一个全局地址，原子操作串行化，带宽只有 1.4 GB&#x2F;s。<strong>问题不在带宽，而在把并行任务压成了一个串行瓶颈</strong>。</p>
+<h3 id="v2：shared-memory-交错折半"><a href="#v2：shared-memory-交错折半" class="headerlink" title="v2：shared memory + 交错折半"></a>v2：shared memory + 交错折半</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">__shared__ <span class="type">float</span> s[BLOCK];</span><br><span class="line"><span class="type">int</span> tid = threadIdx.x;</span><br><span class="line"><span class="type">int</span> i = blockIdx.x * blockDim.x + tid;</span><br><span class="line">s[tid] = (i &lt; n) ? x[i] : <span class="number">0.0f</span>;</span><br><span class="line">__syncthreads();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> stride = <span class="number">1</span>; stride &lt; blockDim.x; stride *= <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (tid % (<span class="number">2</span> * stride) == <span class="number">0</span>) s[tid] += s[tid + stride];</span><br><span class="line">    __syncthreads();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (tid == <span class="number">0</span>) <span class="built_in">atomicAdd</span>(out, s[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>118 倍加速来自把 N 次全局原子操作收敛成「每 block 一次」。但 <code>tid % (2*stride) == 0</code> 让同一个 warp 内只有部分 lane 活跃，控制流发散、shared 访问也不连续。</p>
+<h3 id="v3：连续索引消除-divergence"><a href="#v3：连续索引消除-divergence" class="headerlink" title="v3：连续索引消除 divergence"></a>v3：连续索引消除 divergence</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> stride = <span class="number">1</span>; stride &lt; blockDim.x; stride *= <span class="number">2</span>) &#123;</span><br><span class="line">    <span class="type">int</span> idx = <span class="number">2</span> * stride * tid;</span><br><span class="line">    <span class="keyword">if</span> (idx &lt; blockDim.x) s[idx] += s[idx + stride];</span><br><span class="line">    __syncthreads();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>活跃线程变成连续的 <code>tid &lt; blockDim.x / (2*stride)</code>，warp 内控制流一致，带宽从 160 提到 308 GB&#x2F;s。</p>
+<h3 id="v4：从大到小折半"><a href="#v4：从大到小折半" class="headerlink" title="v4：从大到小折半"></a>v4：从大到小折半</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> stride = blockDim.x / <span class="number">2</span>; stride &gt; <span class="number">0</span>; stride &gt;&gt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (tid &lt; stride) s[tid] += s[tid + stride];</span><br><span class="line">    __syncthreads();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是最经典的树形归约：第一轮就让一半线程干活，同步次数相同但每轮的有效 warp 更集中。此时分析指标为：Compute (SM) Throughput 62.22%、Memory Throughput 70.38%、L1&#x2F;TEX Cache Throughput 72.44%、L2 Cache Throughput 18.93%、DRAM Throughput 18.01% —— <strong>DRAM 只用了 18%，说明瓶颈还在访存组织和同步，不在显存本身</strong>。</p>
+<h3 id="v5：grid-stride-累加-固定-grid-规模"><a href="#v5：grid-stride-累加-固定-grid-规模" class="headerlink" title="v5：grid-stride 累加 + 固定 grid 规模"></a>v5：grid-stride 累加 + 固定 grid 规模</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> sum = <span class="number">0.0f</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = blockIdx.x * blockDim.x + tid; i &lt; n;</span><br><span class="line">     i += gridDim.x * blockDim.x) &#123;</span><br><span class="line">    sum += x[i];</span><br><span class="line">&#125;</span><br><span class="line">s[tid] = sum;</span><br><span class="line">__syncthreads();</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> stride = blockDim.x / <span class="number">2</span>; stride &gt; <span class="number">0</span>; stride &gt;&gt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (tid &lt; stride) s[tid] += s[tid + stride];</span><br><span class="line">    __syncthreads();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (tid == <span class="number">0</span>) <span class="built_in">atomicAdd</span>(out, s[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>关键改动是启动参数：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">之前: gridDim.x = ceil(n / blockDim.x)</span><br><span class="line">现在: gridDim.x = SM 数 × 16</span><br></pre></td></tr></table></figure>
+
+<p>不再为每个数据元素各开一个 block，而是开「刚好喂满所有 SM」的持久化 block，每个线程用 grid-stride 循环累加多个元素。启动开销、block 调度开销、原子操作次数同时下降，带宽直接跳到 1074 GB&#x2F;s。这正是第 3 节 Little’s Law 的兑现：让每个线程维持多个在飞请求。</p>
+<h3 id="v6：warp-shuffle-两级归约"><a href="#v6：warp-shuffle-两级归约" class="headerlink" title="v6：warp shuffle 两级归约"></a>v6：warp shuffle 两级归约</h3><p>折半归约到 <code>stride ≤ 16</code> 时，参与的线程全在一个 warp 内；32 个 lane 可以直接交换寄存器，不必再经 shared memory 和 <code>__syncthreads()</code>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">__device__ <span class="type">float</span> <span class="title">warp_reduce_sum</span><span class="params">(<span class="type">float</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> offset = <span class="number">16</span>; offset &gt; <span class="number">0</span>; offset &gt;&gt;= <span class="number">1</span>)</span><br><span class="line">        v += __shfl_down_sync(<span class="number">0xffffffff</span>, v, offset);</span><br><span class="line">    <span class="keyword">return</span> v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// block 内：先每 warp 归约，再把各 warp 的部分和收进 warp_sum[32]</span></span><br><span class="line">__shared__ <span class="type">float</span> warp_sum[<span class="number">32</span>];</span><br><span class="line"><span class="type">int</span> lane = threadIdx.x &amp; <span class="number">31</span>;</span><br><span class="line"><span class="type">int</span> wid  = threadIdx.x &gt;&gt; <span class="number">5</span>;</span><br><span class="line"><span class="type">float</span> sum = <span class="built_in">warp_reduce_sum</span>(local_sum);</span><br><span class="line"><span class="keyword">if</span> (lane == <span class="number">0</span>) warp_sum[wid] = sum;</span><br><span class="line">__syncthreads();</span><br><span class="line"><span class="keyword">if</span> (wid == <span class="number">0</span>) &#123;</span><br><span class="line">    sum = (lane &lt; blockDim.x / <span class="number">32</span>) ? warp_sum[lane] : <span class="number">0.0f</span>;</span><br><span class="line">    sum = <span class="built_in">warp_reduce_sum</span>(sum);</span><br><span class="line">    <span class="keyword">if</span> (lane == <span class="number">0</span>) <span class="built_in">atomicAdd</span>(out, sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只剩一次跨 warp 的 shared memory 中转和一次同步，0.247 ms &#x2F; 1087 GB&#x2F;s。</p>
+<h3 id="v7：向量化加载收尾"><a href="#v7：向量化加载收尾" class="headerlink" title="v7：向量化加载收尾"></a>v7：向量化加载收尾</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">__global__ <span class="type">void</span> <span class="title">reduce_v7</span><span class="params">(<span class="type">const</span> float4* __restrict__ x4, <span class="type">float</span>* out, <span class="type">int</span> n4)</span> </span>&#123;</span><br><span class="line">    <span class="type">float</span> sum = <span class="number">0.0f</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = blockIdx.x * blockDim.x + threadIdx.x; i &lt; n4;</span><br><span class="line">         i += gridDim.x * blockDim.x) &#123;</span><br><span class="line">        float4 v = x4[i];</span><br><span class="line">        sum += v.x + v.y + v.z + v.w;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 之后接 warp_reduce_sum + warp_sum 两级归约</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一次 load 拿 4 个 float，配合固定 grid 规模与 warp shuffle，最终 <strong>0.17 ms &#x2F; 1572 GB&#x2F;s</strong>。从 197 ms 到 0.17 ms，约 <strong>1159 倍</strong>；从 1.4 GB&#x2F;s 到 1572 GB&#x2F;s，约 <strong>1123 倍</strong>。</p>
+<h2 id="9-Warp-Shuffle-原语"><a href="#9-Warp-Shuffle-原语" class="headerlink" title="9. Warp Shuffle 原语"></a>9. Warp Shuffle 原语</h2><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>lane i 接收</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>__shfl_sync(mask, var, srcLane, width)</code></td>
+<td>指定的 srcLane</td>
+<td>广播 &#x2F; 置换</td>
+</tr>
+<tr>
+<td><code>__shfl_up_sync(mask, var, delta, width)</code></td>
+<td><code>i - delta</code></td>
+<td>Prefix sum、stencil</td>
+</tr>
+<tr>
+<td><code>__shfl_down_sync(mask, var, delta, width)</code></td>
+<td><code>i + delta</code></td>
+<td>Reduce（结果落在 lane 0）</td>
+</tr>
+<tr>
+<td><code>__shfl_xor_sync(mask, var, laneMask, width)</code></td>
+<td><code>i xor laneMask</code></td>
+<td>Butterfly Reduce（所有 lane 都拿到结果）</td>
+</tr>
+</tbody></table>
+<p>两种归约形态：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Shuffle Down：offset = 16, 8, 4, 2, 1，只有 lane 0 得到总和</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> offset = <span class="number">16</span>; offset &gt; <span class="number">0</span>; offset &gt;&gt;= <span class="number">1</span>)</span><br><span class="line">    v += __shfl_down_sync(<span class="number">0xffffffff</span>, v, offset);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Butterfly XOR：offset = 1, 2, 4, 8, 16，所有 lane 都得到总和</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> offset = <span class="number">1</span>; offset &lt; <span class="number">32</span>; offset &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">    v += __shfl_xor_sync(<span class="number">0xffffffff</span>, v, offset);</span><br></pre></td></tr></table></figure>
+
+<p>两个容易踩坑的参数：</p>
+<ul>
+<li><strong>mask</strong>：<code>0xffffffff</code> 表示全部 32 个 lane 参与；分支导致 lane 与 mask 不符时是未定义行为，收敛的 warp 用 <code>__activemask()</code> 取实际活跃集合。</li>
+<li><strong>width</strong>：默认 32（<code>warpSize</code>）；设为 8 时把一个 warp 切成 4 段，每段 8 个 lane 在段内交换，适合「每 8 个 lane 处理一行」这类布局。</li>
+</ul>
+<h2 id="10-从-1087-到-1572-GB-s-做对了什么"><a href="#10-从-1087-到-1572-GB-s-做对了什么" class="headerlink" title="10. 从 1087 到 1572 GB&#x2F;s 做对了什么"></a>10. 从 1087 到 1572 GB&#x2F;s 做对了什么</h2><p>最后一级没有引入新硬件特性，只是把前面所有原则叠满：</p>
+<ol>
+<li><code>float4</code> 让每线程在飞字节数翻 4 倍（Little’s Law）；</li>
+<li>固定 <code>gridDim = SM 数 × 16</code>，避免过量 block 调度；</li>
+<li>warp shuffle 替掉 shared memory 与同步，减少 stall；</li>
+<li>地址 16 字节对齐且连续，sector 利用率最高；</li>
+<li>每线程累加多个元素，用 ILP 而不是 occupancy 去填延迟。</li>
+</ol>
+<p>所以这不是「某个神奇指令把速度提上去」，而是<strong>把每一处带宽浪费逐个消掉</strong>：原子争用 → 全局访存次数 → divergence → 无效同步 → 启动规模 → shared memory 中转 → 单次请求粒度。</p>
+<h2 id="11-优化检查清单"><a href="#11-优化检查清单" class="headerlink" title="11. 优化检查清单"></a>11. 优化检查清单</h2><table>
+<thead>
+<tr>
+<th>检查项</th>
+<th>判据</th>
+<th>手段</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>是否 memory-bound</td>
+<td>算术强度低于脊点 <code>P_peak / BW</code></td>
+<td>提高数据复用，或减少 DRAM 往返</td>
+</tr>
+<tr>
+<td>在飞字节数够不够</td>
+<td><code>带宽 × 延迟</code> 与每线程在飞字节对比</td>
+<td>grid-stride、循环展开、向量化加载</td>
+</tr>
+<tr>
+<td>occupancy 是否受限</td>
+<td>活动 warp &#x2F; 最大 warp</td>
+<td>控制寄存器与 shared memory 用量，调块长</td>
+</tr>
+<tr>
+<td>访存是否合并</td>
+<td>warp 请求落在几个 sector</td>
+<td>地址连续、128 字节对齐、避免跨步</td>
+</tr>
+<tr>
+<td>shared 是否有 bank conflict</td>
+<td>分析工具的 wavefront &#x2F; conflict 指标</td>
+<td>padding、swizzle、换索引映射</td>
+</tr>
+<tr>
+<td>是否还在用全局原子操作收敛</td>
+<td>原子操作次数 ≈ block 数？</td>
+<td>block 内先归约，每 block 一次原子</td>
+</tr>
+<tr>
+<td>是否还在用 <code>__syncthreads()</code> 做 warp 内归约</td>
+<td><code>stride ≤ 16</code></td>
+<td>换成 warp shuffle</td>
+</tr>
+<tr>
+<td>启动规模是否过大</td>
+<td><code>gridDim ≈ ceil(n / blockDim)</code></td>
+<td>固定为 <code>SM 数 × 每 SM 目标 block 数</code></td>
+</tr>
+<tr>
+<td>单次 load 是否太细</td>
+<td>每线程 4 字节</td>
+<td><code>float4</code> &#x2F; <code>int4</code> 向量化</td>
+</tr>
+</tbody></table>
+<h2 id="延伸阅读"><a href="#延伸阅读" class="headerlink" title="延伸阅读"></a>延伸阅读</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/">NVIDIA CUDA C++ Programming Guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/">CUDA C++ Best Practices Guide</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.nvidia.com/deeplearning/performance/">NVIDIA Deep Learning Performance Documentation</a></li>
+</ul>
+</div></section><div id="reward-container"><span class="hty-icon-button button-glow" id="reward-button" title="打赏" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === &quot;none&quot;) ? &quot;block&quot; : &quot;none&quot;;"><span class="icon iconify" data-icon="ri:hand-coin-line"></span></span><div id="reward-comment">I'm so cute. Please give me money.</div></div><ul class="post-copyright"><li class="post-copyright-author"><strong>本文作者：</strong>老于真的不老</li><li class="post-copyright-link"><strong>本文链接：</strong><a href="https://carlyuhq.github.io/2026/11/26/%E6%89%93%E6%BB%A1%E6%98%BE%E5%AD%98%E5%B8%A6%E5%AE%BD-Roofline-%E4%B8%8E-Reduce-%E4%BC%98%E5%8C%96/" title="打满显存带宽：Roofline、Little's Law 与 Reduce 的七级优化">https://carlyuhq.github.io/2026/11/26/%E6%89%93%E6%BB%A1%E6%98%BE%E5%AD%98%E5%B8%A6%E5%AE%BD-Roofline-%E4%B8%8E-Reduce-%E4%BC%98%E5%8C%96/</a></li><li class="post-copyright-license"><strong>版权声明：</strong>本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 "><span class="icon iconify" data-icon="ri:creative-commons-line"></span><span class="icon iconify" data-icon="ri:creative-commons-by-line"></span><span class="icon iconify" data-icon="ri:creative-commons-nc-line"></span><span class="icon iconify" data-icon="ri:creative-commons-sa-line"></span></a> 许可协议。</li></ul></article><div class="post-nav"><div class="post-nav-item"></div><div class="post-nav-item"><a class="post-nav-next" href="/Blogs/2026/11/25/%E4%BB%8E%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97%E5%88%B0-Tile-Level-%E7%BC%96%E7%A8%8B/" rel="next" title="从并行计算到 Tile-Level 编程：CUDA、Triton 与 TileLang"><span class="post-nav-text">从并行计算到 Tile-Level 编程：CUDA、Triton 与 TileLang</span><span class="icon iconify" data-icon="ri:arrow-right-s-line"></span></a></div></div></div><div class="hty-card" id="comment"></div></main><footer class="sidebar-translate" id="footer"><div class="copyright"><span>&copy; 2019 – 2026 </span><span class="with-love" id="animate"><span class="icon iconify" data-icon="ri:cloud-line"></span></span><span class="author"> 老于真的不老</span></div><div class="powered"><span>由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v7.3.0</span><span class="footer-separator">|</span><span>主题 - <a rel="noopener" href="https://github.com/YunYouJun/hexo-theme-yun" target="_blank"><span>Yun</span></a> v1.10.11</span></div></footer></div><a class="hty-icon-button" id="back-to-top" aria-label="back-to-top" href="#"><span class="icon iconify" data-icon="ri:arrow-up-s-line"></span><svg class="progress-circle-container" viewBox="0 0 100 100"><circle class="progress-circle" id="progressCircle" cx="50" cy="50" r="48" fill="none" stroke="#0078E7" stroke-width="2" stroke-linecap="round"></circle></svg></a></body></html>
