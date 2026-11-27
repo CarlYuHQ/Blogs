@@ -6,7 +6,7 @@
   <link href="https://carlyuhq.github.io/Blogs/atom.xml" rel="self"/>
   
   <link href="https://carlyuhq.github.io/Blogs/"/>
-  <updated>2026-11-26T11:54:17.000Z</updated>
+  <updated>2026-11-27T03:32:09.000Z</updated>
   <id>https://carlyuhq.github.io/Blogs/</id>
   
   <author>
@@ -16,6 +16,15 @@
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
+  <entry>
+    <title>从 Naive GEMM 到 Register Tiling：FP32 矩阵乘法的逐级优化</title>
+    <link href="https://carlyuhq.github.io/Blogs/2026/11/27/%E4%BB%8E-Naive-GEMM-%E5%88%B0-Register-Tiling/"/>
+    <id>https://carlyuhq.github.io/Blogs/2026/11/27/%E4%BB%8E-Naive-GEMM-%E5%88%B0-Register-Tiling/</id>
+    <published>2026-11-27T03:30:00.000Z</published>
+    <updated>2026-11-27T03:30:00.000Z</updated>
+    <summary type="html">&lt;p&gt;矩阵乘法是少数能把一个 kernel 从带宽受限一路推到算力受限的算子。本文沿 FP32 GEMM 的完整优化路径，从每线程一个输出元素、shared memory 分块、合并与向量化访存，走到寄存器分块、MIO 队列瓶颈与异步搬运。&lt;/p&gt;</summary>
+    <category term="技术笔记" scheme="https://carlyuhq.github.io/Blogs/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"/><category term="GPU" scheme="https://carlyuhq.github.io/Blogs/tags/GPU/"/><category term="CUDA" scheme="https://carlyuhq.github.io/Blogs/tags/CUDA/"/><category term="GEMM" scheme="https://carlyuhq.github.io/Blogs/tags/GEMM/"/><category term="矩阵乘法" scheme="https://carlyuhq.github.io/Blogs/tags/%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/"/><category term="Shared Memory" scheme="https://carlyuhq.github.io/Blogs/tags/Shared%20Memory/"/><category term="Register Tiling" scheme="https://carlyuhq.github.io/Blogs/tags/Register%20Tiling/"/><category term="Coalescing" scheme="https://carlyuhq.github.io/Blogs/tags/Coalescing/"/><category term="MIO" scheme="https://carlyuhq.github.io/Blogs/tags/MIO/"/>
+  </entry>
   <entry>
     <title>打满显存带宽：Roofline、Little&#x27;s Law 与 Reduce 的七级优化</title>
     <link href="https://carlyuhq.github.io/Blogs/2026/11/26/%E6%89%93%E6%BB%A1%E6%98%BE%E5%AD%98%E5%B8%A6%E5%AE%BD-Roofline-%E4%B8%8E-Reduce-%E4%BC%98%E5%8C%96/"/>
